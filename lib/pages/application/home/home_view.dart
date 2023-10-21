@@ -1,6 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
+import 'package:thietthach_app/pages/application/home/display_blog.dart';
+import 'package:thietthach_app/pages/application/home/display_infor.dart';
+import 'package:thietthach_app/pages/application/home/display_interior.dart';
+import 'package:thietthach_app/pages/application/home/display_shop.dart';
 import 'package:thietthach_app/pages/application/home/home_controller.dart';
 
 import '../../../colors/colors.dart';
@@ -36,14 +40,14 @@ class HomePage extends GetView<HomeController>{
                           contentPadding: const EdgeInsets.only(top: 3,left: 10),
                           filled: true,
                           fillColor: AppColors.searchColor,
-                          prefixIcon: Icon(Icons.search,color: AppColors.iconColor,size: 30,),
+                          prefixIcon: const Icon(Icons.search,color: AppColors.iconColor,size: 30,),
                           enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(12),
-                            borderSide: BorderSide(color: AppColors.searchColor,width: 1),
+                            borderRadius: BorderRadius.circular(13),
+                            borderSide: const BorderSide(color: AppColors.searchColor,width: 1),
                           ),
                           focusedBorder:  OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(12),
-                            borderSide: BorderSide(color: AppColors.searchColor),
+                            borderRadius: BorderRadius.circular(13),
+                            borderSide: const BorderSide(color: AppColors.searchColor),
                           ),
                           hintText: 'Tìm kiếm môn học',
                           hintStyle: const TextStyle(color: AppColors.iconColor,fontWeight: FontWeight.w500,),
@@ -63,7 +67,7 @@ class HomePage extends GetView<HomeController>{
                 ],
               ),
 
-              Row(
+              const Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 mainAxisSize: MainAxisSize.max,
                 children: [
@@ -79,7 +83,7 @@ class HomePage extends GetView<HomeController>{
                       ),
 
                       Text(
-                        'Thư viện',
+                        'Library',
                         style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.w500
@@ -100,7 +104,7 @@ class HomePage extends GetView<HomeController>{
                       ),
 
                       Text(
-                          'Chi phí',
+                          'Expenses',
                         style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.w500
@@ -121,7 +125,7 @@ class HomePage extends GetView<HomeController>{
                       ),
 
                       Text(
-                          'Sản phẩm',
+                          'Products',
                         style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.w500
@@ -142,7 +146,7 @@ class HomePage extends GetView<HomeController>{
                       ),
 
                       Text(
-                          'Kiến thức',
+                          'Discussion',
                         style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.w500
@@ -156,7 +160,114 @@ class HomePage extends GetView<HomeController>{
           ),
         ),
       ),
-      body: Container(),
+      body: SingleChildScrollView(
+        scrollDirection: Axis.vertical,
+        child: Column(
+          mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(left: 10.0,right: 10,top: 15),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Expanded(
+                    child: Text(
+                      'THIETTHACH Company',
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 18,
+                        fontWeight: FontWeight.w600
+                      ),
+                    ),
+                  ),
+
+                  Text(
+                    'See All',
+                    style: TextStyle(
+                      color: AppColors.iconColor,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+
+                  Icon(Icons.arrow_forward_ios,size: 16,color: AppColors.iconColor,)
+                ],
+              ),
+            ),
+
+            InforCompany(),
+
+            Padding(
+              padding: const EdgeInsets.only(left: 10.0,right: 10,top: 10),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Expanded(
+                    child: Text(
+                      'Interior Design',
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 18,
+                          fontWeight: FontWeight.w600
+                      ),
+                    ),
+                  ),
+
+                  Text(
+                    'See All',
+                    style: TextStyle(
+                      color: AppColors.iconColor,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+
+                  Icon(Icons.arrow_forward_ios,size: 16,color: AppColors.iconColor,)
+                ],
+              ),
+            ),
+
+            ShopDepartment(),
+            //InteriorList(),
+
+            Padding(
+              padding: const EdgeInsets.only(left: 10.0,right: 10,top: 10),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Expanded(
+                    child: Text(
+                      'Shop by Department',
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 18,
+                          fontWeight: FontWeight.w600
+                      ),
+                    ),
+                  ),
+
+                  Text(
+                    'See All',
+                    style: TextStyle(
+                      color: AppColors.iconColor,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+
+                  Icon(Icons.arrow_forward_ios,size: 16,color: AppColors.iconColor,)
+                ],
+              ),
+            ),
+
+            //ShopDepartment(),
+            InteriorList(),
+            BlogList(),
+          ],
+        ),
+      ),
     );
   }
 }
