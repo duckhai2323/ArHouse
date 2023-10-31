@@ -1,5 +1,23 @@
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class HomeController extends GetxController{
+  HomeController();
+  final statePageView = 0.obs;
+  final itemNum = 5.obs;
+  final checkLove = false.obs;
+  PageController pageController = PageController(initialPage: 0);
 
+  void ChangePageView(int index){
+    statePageView.value = index;
+  }
+
+  void ClickItemHeart(){
+    if(checkLove.isTrue){
+      checkLove.value = false;
+    } else{
+      checkLove.value = true;
+    }
+  }
 }

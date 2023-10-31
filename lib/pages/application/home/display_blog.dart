@@ -1,5 +1,7 @@
+import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
 import 'package:thietthach_app/pages/application/home/home_controller.dart';
 
@@ -13,7 +15,7 @@ class BlogList extends GetView<HomeController>{
       width: MediaQuery.of(context).size.width,
       child: ListView.builder(
           scrollDirection: Axis.vertical,
-          itemCount: 5,
+          itemCount: 4,
           shrinkWrap: true,
           physics: NeverScrollableScrollPhysics(),
           itemBuilder: (BuildContext contex,index){
@@ -43,14 +45,66 @@ class BlogList extends GetView<HomeController>{
                     ),
                   ),
 
-                  Stack(
+                  Obx(() => Stack(
                     children: [
-                      Image(
-                        image: AssetImage('assets/images/2.jpg'),
+                      Container(
                         width: MediaQuery.of(context).size.width,
                         height: 200,
-                        alignment: Alignment.center,
-                        fit: BoxFit.cover,
+                        child: PageView(
+                          controller: controller.pageController,
+                          onPageChanged: (index){
+                            controller.ChangePageView(index);
+                          },
+                          children: [
+                            Image(
+                              image: AssetImage('assets/images/2.jpg'),
+                              width: MediaQuery.of(context).size.width,
+                              height: 200,
+                              alignment: Alignment.center,
+                              fit: BoxFit.cover,
+                            ),
+
+                            Image(
+                              image: AssetImage('assets/images/2.jpg'),
+                              width: MediaQuery.of(context).size.width,
+                              height: 200,
+                              alignment: Alignment.center,
+                              fit: BoxFit.cover,
+                            ),
+
+                            Image(
+                              image: AssetImage('assets/images/2.jpg'),
+                              width: MediaQuery.of(context).size.width,
+                              height: 200,
+                              alignment: Alignment.center,
+                              fit: BoxFit.cover,
+                            ),
+
+                            Image(
+                              image: AssetImage('assets/images/2.jpg'),
+                              width: MediaQuery.of(context).size.width,
+                              height: 200,
+                              alignment: Alignment.center,
+                              fit: BoxFit.cover,
+                            ),
+                          ],
+                        ),
+                      ),
+
+                      Positioned(
+                        bottom: 10,
+                        left: 40,
+                        right: 40,
+                        child: DotsIndicator(
+                          dotsCount: 4,
+                          position:controller.statePageView.value,
+                          decorator: DotsDecorator(
+                            activeColor: Colors.white,
+                            size: const Size.square(8.0),
+                            activeSize: const Size(12.0, 8.0),
+                            activeShape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(3.0)),
+                          ),
+                        ),
                       ),
 
                       Positioned(
@@ -63,17 +117,22 @@ class BlogList extends GetView<HomeController>{
                               color: Color.fromRGBO(73, 73, 73, 0.87),
                               shape: BoxShape.circle
                           ),
-                          child: Center(
-                            child: Icon(
-                              CupertinoIcons.heart,
-                              size: 30,
-                              color: Colors.white,
+                          child: InkWell(
+                            onTap: (){
+                              controller.ClickItemHeart();
+                            },
+                            child: Center(
+                              child: Icon(
+                                controller.checkLove.isTrue ? CupertinoIcons.heart_solid:CupertinoIcons.heart,
+                                size: 30,
+                                color: Colors.white,
+                              ),
                             ),
                           ),
                         ),
                       ),
                     ],
-                  ),
+                  )),
 
                   Container(
                     color: AppColors.backgroundColor,
@@ -97,9 +156,9 @@ class BlogList extends GetView<HomeController>{
                     child: Text(
                       'ngay 3 thang 11, 2020',
                       style: TextStyle(
-                        fontSize: 14,
-                        color: Colors.black,
-                        fontWeight: FontWeight.w500
+                          fontSize: 14,
+                          color: Colors.black,
+                          fontWeight: FontWeight.w500
                       ),
                     ),
                   ),
