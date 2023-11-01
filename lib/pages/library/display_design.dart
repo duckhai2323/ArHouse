@@ -1,28 +1,33 @@
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
 
-import '../../../colors/colors.dart';
-import 'home_controller.dart';
+import '../../colors/colors.dart';
+import 'library_controller.dart';
 
-class InforCompany extends GetView<HomeController>{
-  const InforCompany({super.key});
-
+class DisplayDesign extends GetView<LibraryController>{
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 200,
+      margin: EdgeInsets.symmetric(horizontal: 10,vertical: 10),
       width: MediaQuery.of(context).size.width,
-      child: ListView.builder(
-        scrollDirection:Axis.horizontal,
-        itemCount: 5,
+      child: GridView.builder(
+        scrollDirection:Axis.vertical,
+        physics: NeverScrollableScrollPhysics(),
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 2, // Number of columns in the grid
+          crossAxisSpacing: 15, // Spacing between columns
+          mainAxisSpacing: 15,
+          mainAxisExtent: 200,// Spacing between rows
+        ),
+        itemCount: 6,
         shrinkWrap: true,
         itemBuilder: (BuildContext context, index){
           return Container(
-            margin: EdgeInsets.only(left: 10,bottom: 10, top: 10,right: 5),
-            width: 250,
-            height: 180,
+            width: 200,
+            height: 190,
             decoration: BoxDecoration(
               color: AppColors.backgroundColor,
               borderRadius: BorderRadius.circular(5),
@@ -49,40 +54,27 @@ class InforCompany extends GetView<HomeController>{
                 ClipRRect(
                   borderRadius: BorderRadius.only(topRight:Radius.circular(5),topLeft: Radius.circular(5)),
                   child: Image(
-                    image: AssetImage('assets/images/infor.png'),
-                    width: 250,
-                    height: 120,
+                    image: AssetImage('assets/images/nhadep.jpg'),
+                    width: 200,
+                    height: 130,
                     fit: BoxFit.fill,
                   ),
                 ),
 
                 Container(
-                  width: 250,
-                  padding: EdgeInsets.only(left: 20,right: 20,top: 5),
-                  child: Text(
-                    'Chuc mung ngay 20/10',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontWeight: FontWeight.w500,
-                      fontSize: 18,
+                  width: 200,
+                  height: 60,
+                  padding: EdgeInsets.only(left: 30,right: 30,top: 5),
+                  child: Center(
+                    child: Text(
+                      'Kitchen & Dinning',
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontWeight: FontWeight.w500,
+                        fontSize: 18,
+                      ),
+                      textAlign:TextAlign.center,
                     ),
-                    textAlign:TextAlign.center,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                ),
-
-                Container(
-                  width: 250,
-                  padding: EdgeInsets.symmetric(horizontal: 10),
-                  child: Text(
-                    'abc cong ty nay xin vcl luon y ao fsfs fbsb bfs sfsf ffsf fsfhshf sfsbfjsbf sfsbf',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontWeight: FontWeight.w500,
-                      fontSize: 16,
-                    ),
-                    textAlign:TextAlign.center,
-                    overflow: TextOverflow.ellipsis,
                   ),
                 ),
               ],

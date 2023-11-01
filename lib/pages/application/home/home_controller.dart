@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:thietthach_app/routes/names.dart';
 
 class HomeController extends GetxController{
   HomeController();
@@ -8,7 +9,6 @@ class HomeController extends GetxController{
   final itemNum = 5.obs;
   final checkLove = false.obs;
   PageController pageController = PageController(initialPage: 0);
-
   void ChangePageView(int index){
     statePageView.value = index;
   }
@@ -19,5 +19,9 @@ class HomeController extends GetxController{
     } else{
       checkLove.value = true;
     }
+  }
+
+  void HandlePageLibrary(){
+    Get.toNamed(AppRoutes.LIBRARYHOUSE);
   }
 }

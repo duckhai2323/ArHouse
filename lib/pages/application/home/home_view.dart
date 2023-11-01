@@ -10,6 +10,8 @@ import 'package:thietthach_app/pages/application/home/home_controller.dart';
 import '../../../colors/colors.dart';
 
 class HomePage extends GetView<HomeController>{
+  const HomePage({super.key});
+
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +19,7 @@ class HomePage extends GetView<HomeController>{
       appBar: AppBar(
         backgroundColor:AppColors.backgroundColor,
         bottom: PreferredSize(
-          preferredSize: const Size.fromHeight(100),
+          preferredSize: Size.fromHeight(100),
           child: Container(
             color: Colors.grey.withOpacity(0.3),
             height: 1,
@@ -52,8 +54,6 @@ class HomePage extends GetView<HomeController>{
                           hintText: 'Tìm kiếm môn học',
                           hintStyle: const TextStyle(color: AppColors.iconColor,fontWeight: FontWeight.w500,),
                         ),
-                        onTap: (){
-                        },
                       ),
                     ),
                   ),
@@ -67,29 +67,34 @@ class HomePage extends GetView<HomeController>{
                 ],
               ),
 
-              const Row(
+              Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 mainAxisSize: MainAxisSize.max,
                 children: [
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Image(
-                        image: AssetImage('assets/images/logo1.png'),
-                        height: 48,
-                        width: 48,
-                        alignment: Alignment.center,
-                        fit: BoxFit.fill,
-                      ),
-
-                      Text(
-                        'Library',
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w500
+                  InkWell(
+                    onTap: (){
+                      controller.HandlePageLibrary();
+                    },
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Image(
+                          image: AssetImage('assets/images/logo1.png'),
+                          height: 48,
+                          width: 48,
+                          alignment: Alignment.center,
+                          fit: BoxFit.fill,
                         ),
-                      ),
-                    ],
+
+                        Text(
+                          'Library',
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w500
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
 
                   Column(
@@ -174,7 +179,7 @@ class HomePage extends GetView<HomeController>{
                 children: [
                   Expanded(
                     child: Text(
-                      'THIETTHACH Company',
+                      'ArHouse Company',
                       style: TextStyle(
                         color: Colors.black,
                         fontSize: 18,
@@ -186,13 +191,13 @@ class HomePage extends GetView<HomeController>{
                   Text(
                     'See All',
                     style: TextStyle(
-                      color: AppColors.iconColor,
+                      color: AppColors.backgroundIntro,
                       fontSize: 16,
                       fontWeight: FontWeight.w500,
                     ),
                   ),
 
-                  Icon(Icons.arrow_forward_ios,size: 16,color: AppColors.iconColor,)
+                  Icon(Icons.arrow_forward_ios,size: 16,color: AppColors.backgroundIntro,)
                 ],
               ),
             ),
@@ -218,13 +223,13 @@ class HomePage extends GetView<HomeController>{
                   Text(
                     'See All',
                     style: TextStyle(
-                      color: AppColors.iconColor,
+                      color: AppColors.backgroundIntro,
                       fontSize: 16,
                       fontWeight: FontWeight.w500,
                     ),
                   ),
 
-                  Icon(Icons.arrow_forward_ios,size: 16,color: AppColors.iconColor,)
+                  Icon(Icons.arrow_forward_ios,size: 16,color: AppColors.backgroundIntro,)
                 ],
               ),
             ),
@@ -251,13 +256,13 @@ class HomePage extends GetView<HomeController>{
                   Text(
                     'See All',
                     style: TextStyle(
-                      color: AppColors.iconColor,
+                      color: AppColors.backgroundIntro,
                       fontSize: 16,
                       fontWeight: FontWeight.w500,
                     ),
                   ),
 
-                  Icon(Icons.arrow_forward_ios,size: 16,color: AppColors.iconColor,)
+                  Icon(Icons.arrow_forward_ios,size: 16,color: AppColors.backgroundIntro,)
                 ],
               ),
             ),
