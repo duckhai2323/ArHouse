@@ -7,19 +7,17 @@ import 'package:thietthach_app/pages/alldesign/itemfilter.dart';
 
 class AllDesignController extends GetxController{
   List<ItemFilter> listFilter0 = <ItemFilter>[].obs;
+  List<ItemFilter> listFilter1 = <ItemFilter>[].obs;
+  List<ItemFilter> listFilter2 = <ItemFilter>[].obs;
   @override
   void onInit(){
     super.onInit();
-    ConstListFilter();
-  }
-
-  void ConstListFilter(){
-    listFilter0.clear();
-    listFilter0.add(ItemFilter('Room',Colors.black,"room"));
-    listFilter0.add(ItemFilter('Style',Colors.black,"style"));
-    listFilter0.add(ItemFilter('Budget',Colors.black,"budget"));
-    listFilter0.add(ItemFilter('Size',Colors.black,"size"));
-    listFilter0.add(ItemFilter('Color',Colors.black,"color"));
+    listFilter1.add(ItemFilter('Room',Colors.black,"room"));
+    listFilter1.add(ItemFilter('Style',Colors.black,"style"));
+    listFilter1.add(ItemFilter('Budget',Colors.black,"budget"));
+    listFilter1.add(ItemFilter('Size',Colors.black,"size"));
+    listFilter1.add(ItemFilter('Color',Colors.black,"color"));
+    listFilter0 = List.from(listFilter1);
   }
 
   void ShowDialogFilter(BuildContext context, String key){
@@ -133,20 +131,22 @@ class AllDesignController extends GetxController{
                         itemBuilder: (_,index){
                           return InkWell(
                             onTap: (){
-                              ConstListFilter();
-                              listFilter0.add(ItemFilter('Layout',Colors.black,"layout"));
-                              listFilter0.add(ItemFilter('Type',Colors.black,"type"));
-                              listFilter0.add(ItemFilter('Number of Islands',Colors.black,"numberofislands"));
-                              listFilter0.add(ItemFilter('Cabinet Style',Colors.black,"cabinetstyle"));
-                              listFilter0.add(ItemFilter('Cabinet Finish',Colors.black,"cabinetfinish"));
-                              listFilter0.add(ItemFilter('Counter Material',Colors.black,"countermaterial"));
-                              listFilter0.add(ItemFilter('Counter Color',Colors.black,"countercolor"));
-                              listFilter0.add(ItemFilter('Backplash Material',Colors.black,"blackpashmaterial"));
-                              listFilter0.add(ItemFilter('Appliance Finish',Colors.black,"appliance"));
-                              listFilter0.add(ItemFilter('Sink',Colors.black,"sink"));
-                              listFilter0.add(ItemFilter('Floor Material',Colors.black,"floormaterial"));
-                              listFilter0.add(ItemFilter('Floor Color',Colors.black,"Floor Color"));
-                              listFilter0.add(ItemFilter('Ceiling Design',Colors.black,"ceiling"));
+                              listFilter2.clear();
+                              listFilter0.clear();
+                              listFilter2.add(ItemFilter('Layout',Colors.black,"layout"));
+                              listFilter2.add(ItemFilter('Type',Colors.black,"type"));
+                              listFilter2.add(ItemFilter('Number of Islands',Colors.black,"numberofislands"));
+                              listFilter2.add(ItemFilter('Cabinet Style',Colors.black,"cabinetstyle"));
+                              listFilter2.add(ItemFilter('Cabinet Finish',Colors.black,"cabinetfinish"));
+                              listFilter2.add(ItemFilter('Counter Material',Colors.black,"countermaterial"));
+                              listFilter2.add(ItemFilter('Counter Color',Colors.black,"countercolor"));
+                              listFilter2.add(ItemFilter('Backplash Material',Colors.black,"blackpashmaterial"));
+                              listFilter2.add(ItemFilter('Appliance Finish',Colors.black,"appliance"));
+                              listFilter2.add(ItemFilter('Sink',Colors.black,"sink"));
+                              listFilter2.add(ItemFilter('Floor Material',Colors.black,"floormaterial"));
+                              listFilter2.add(ItemFilter('Floor Color',Colors.black,"Floor Color"));
+                              listFilter2.add(ItemFilter('Ceiling Design',Colors.black,"ceiling"));
+                              listFilter0 = listFilter1 + listFilter2;
                             },
                             child: Padding(
                               padding: EdgeInsets.only(left: 15,top: 15,bottom: 10),
