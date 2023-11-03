@@ -36,28 +36,33 @@ class MenuLibrary extends GetView<LibraryController>{
                     ),
                   ],
                 ),
-                child: Row(
-                  mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Image(
-                      image: AssetImage('assets/images/icon4.png'),
-                      width: 30,
-                      height: 30,
-                    ),
+                child: InkWell(
+                  onTap: (){
+                    controller.HandleAllDesign();
+                  },
+                  child: Row(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Image(
+                        image: AssetImage('assets/images/icon4.png'),
+                        width: 30,
+                        height: 30,
+                      ),
 
-                    Padding(
-                      padding: const EdgeInsets.only(left: 5),
-                      child: Text(
-                        'Tất cả hình ảnh',
-                        style: TextStyle(
-                          fontSize: 17,
-                          fontWeight: FontWeight.w500,
+                      Padding(
+                        padding: const EdgeInsets.only(left: 5),
+                        child: Text(
+                          'Tất cả hình ảnh',
+                          style: TextStyle(
+                            fontSize: 17,
+                            fontWeight: FontWeight.w500,
+                          ),
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
 

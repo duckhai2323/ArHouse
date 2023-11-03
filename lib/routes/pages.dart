@@ -1,4 +1,6 @@
 import 'package:get/get_navigation/src/routes/get_route.dart';
+import 'package:thietthach_app/pages/alldesign/alldesign_bidings.dart';
+import 'package:thietthach_app/pages/alldesign/alldesign_view.dart';
 import 'package:thietthach_app/pages/application/application_bindings.dart';
 
 import '../pages/application/application_view.dart';
@@ -19,6 +21,12 @@ class AppPages {
       name: AppRoutes.LIBRARYHOUSE,
       page: ()=>LibraryPage(),
       binding: LibraryBinding(),
+    ),
+
+    GetPage(
+      name: AppRoutes.ALLDESIGN,
+      page: ()=>AllDesignPage(),
+      binding: AllDesigBinding(),
     ),
   ];
 }

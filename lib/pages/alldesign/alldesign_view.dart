@@ -1,13 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:thietthach_app/pages/library/display_design.dart';
-import 'package:thietthach_app/pages/library/library_controller.dart';
-import 'package:thietthach_app/pages/library/menu.dart';
+import 'package:thietthach_app/pages/alldesign/display_filter.dart';
 
 import '../../colors/colors.dart';
+import 'alldesign_controller.dart';
 
-class LibraryPage extends GetView<LibraryController>{
+class AllDesignPage extends GetView<AllDesignController>{
 
   @override
   Widget build(BuildContext context) {
@@ -22,10 +21,12 @@ class LibraryPage extends GetView<LibraryController>{
           bottom: PreferredSize(
             preferredSize: Size.fromHeight(17),
             child: Container(
+              color: Colors.grey.shade300,
               height: 1,
             ),
           ),
           flexibleSpace: Center(
+
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               mainAxisSize: MainAxisSize.max,
@@ -51,7 +52,7 @@ class LibraryPage extends GetView<LibraryController>{
                               borderRadius: BorderRadius.circular(13),
                               borderSide: const BorderSide(color: AppColors.searchColor),
                             ),
-                            hintText: 'Tìm kiếm môn học',
+                            hintText: 'Search',
                             hintStyle: const TextStyle(color: AppColors.iconColor,fontWeight: FontWeight.w500,),
                           ),
                         ),
@@ -70,6 +71,7 @@ class LibraryPage extends GetView<LibraryController>{
             ),
           ),
         ),
+
         body: SingleChildScrollView(
           scrollDirection: Axis.vertical,
           child: Column(
@@ -77,42 +79,24 @@ class LibraryPage extends GetView<LibraryController>{
             mainAxisSize: MainAxisSize.max,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              MenuLibrary(),
-              Padding(
-                padding: const EdgeInsets.only(left: 10.0,right: 10,top: 5,bottom: 10),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Expanded(
-                      child: Text(
-                        'ArHouse Design',
-                        style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 18,
-                            fontWeight: FontWeight.w600
-                        ),
-                      ),
-                    ),
-
-                    Text(
-                      'Fliter',
-                      style: TextStyle(
-                        color: AppColors.backgroundIntro,
-                        fontSize: 16,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
-
-                    SizedBox(width: 5,),
-
-                    Icon(Icons.menu_open,size: 30,color: AppColors.backgroundIntro,)
-                  ],
+              Container(
+                width: MediaQuery.of(context).size.width,
+                height: 120,
+                color: Color.fromRGBO(250, 250, 250, 1),
+                child: Center(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      FilterWidget(),
+                    ],
+                  ),
                 ),
               ),
-              DisplayDesign()
             ],
           ),
-        )
+        ),
       ),
     );
   }
