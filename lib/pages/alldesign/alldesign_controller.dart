@@ -18,11 +18,11 @@ class AllDesignController extends GetxController{
 
   void ConstListFiler(){
     listFilter0.clear();
-    listFilter0.add(ItemFilter('Room',Colors.black,"room"));
-    listFilter0.add(ItemFilter('Style',Colors.black,"style"));
-    listFilter0.add(ItemFilter('Budget',Colors.black,"budget"));
-    listFilter0.add(ItemFilter('Size',Colors.black,"size"));
-    listFilter0.add(ItemFilter('Color',Colors.black,"color"));
+    listFilter0.add(ItemFilter('Room',mapFilter.containsKey('room')?AppColors.backgroundIntro:Colors.black,"room"));
+    listFilter0.add(ItemFilter('Style',mapFilter.containsKey('style')?AppColors.backgroundIntro:Colors.black,"style"));
+    listFilter0.add(ItemFilter('Budget',mapFilter.containsKey('budget')?AppColors.backgroundIntro:Colors.black,"budget"));
+    listFilter0.add(ItemFilter('Size',mapFilter.containsKey('size')?AppColors.backgroundIntro:Colors.black,"size"));
+    listFilter0.add(ItemFilter('Color',mapFilter.containsKey('color')?AppColors.backgroundIntro:Colors.black,"color"));
   }
 
   void ShowDialogFilter(BuildContext context, ItemFilter itemFilter) {
@@ -183,6 +183,18 @@ class AllDesignController extends GetxController{
                                   listFilter0.add(ItemFilter('Ceiling Design',Colors.black,"ceiling"));
                                 }
                                 break;
+
+                                case "Exterior":{
+                                  ConstListFiler();
+                                  listFilter0.add(ItemFilter('Number of Stories',Colors.black,"numberofstories"));
+                                  listFilter0.add(ItemFilter('Siding Material',Colors.black,"sidingmaterial"));
+                                  listFilter0.add(ItemFilter('Siding Type',Colors.black,"sidingtype"));
+                                  listFilter0.add(ItemFilter('Roof Type',Colors.black,"rooftype"));
+                                  listFilter0.add(ItemFilter('Roof Material',Colors.black,"roofmaterial"));
+                                  listFilter0.add(ItemFilter('Roof Color',Colors.black,"roofcolor"));
+                                  listFilter0.add(ItemFilter('Building Type',Colors.black,"buidingtype"));
+                                }
+                                break;
                               }
                               if(mapFilter.containsKey(key)){
                                 ItemFilter object2 = ItemFilter(mapFilter[key]?.text,Colors.black,"false");
@@ -228,18 +240,23 @@ class AllDesignController extends GetxController{
                       ),
                     )),
 
-                    Container(
-                      height: 55,
-                      width: MediaQuery.of(context).size.width,
-                      color: Color.fromRGBO(244, 244, 244, 1),
-                      child: Center(
-                        child: Text(
-                          'Deselect \"Room\"',
-                           style: TextStyle(
-                             color: Color.fromRGBO(99, 99, 99, 1),
-                             fontSize: 19,
-                             fontWeight: FontWeight.w500
-                           ),
+                    InkWell(
+                      onTap: (){
+
+                      },
+                      child: Container(
+                        height: 55,
+                        width: MediaQuery.of(context).size.width,
+                        color: Color.fromRGBO(244, 244, 244, 1),
+                        child: Center(
+                          child: Text(
+                            'Deselect \"Room\"',
+                             style: TextStyle(
+                               color: Color.fromRGBO(99, 99, 99, 1),
+                               fontSize: 19,
+                               fontWeight: FontWeight.w500
+                             ),
+                          ),
                         ),
                       ),
                     ),
@@ -250,5 +267,19 @@ class AllDesignController extends GetxController{
           );
         }
     );
+  }
+
+  void MapRemoveKey(String key){
+    mapFilter.remove(key);
+    if(key == "room"){
+      ConstListFiler();
+    } else {
+      for(int i=0; i < listFilter0.length;i++){
+        if(listFilter0[i].key == key){
+          listFilter0.insert(i, ItemFilter(listFilter0[i].text, Colors.black, key));
+          listFilter0.removeAt(i+1);
+        }
+      }
+    }
   }
 }

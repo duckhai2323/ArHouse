@@ -5,6 +5,7 @@ import 'package:thietthach_app/pages/alldesign/display_filter.dart';
 
 import '../../colors/colors.dart';
 import 'alldesign_controller.dart';
+import 'filtertext_list.dart';
 
 class AllDesignPage extends GetView<AllDesignController>{
 
@@ -81,7 +82,6 @@ class AllDesignPage extends GetView<AllDesignController>{
             children: [
               Container(
                 width: MediaQuery.of(context).size.width,
-                height: 120,
                 color: Color.fromRGBO(250, 250, 250, 1),
                 child: Center(
                   child: Column(
@@ -89,8 +89,23 @@ class AllDesignPage extends GetView<AllDesignController>{
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
+                      SizedBox(height: 15,),
                       FilterWidget(),
+                      FilterTextList(),
+                      SizedBox(height: 20,),
                     ],
+                  ),
+                ),
+              ),
+
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 15,vertical: 15),
+                child: Text(
+                  'All Photos (123)',
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 18,
+                      fontWeight: FontWeight.w600
                   ),
                 ),
               ),
