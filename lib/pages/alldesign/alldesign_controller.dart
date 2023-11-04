@@ -18,43 +18,69 @@ class AllDesignController extends GetxController{
 
   void ConstListFiler(){
     listFilter0.clear();
-    listFilter0.add(ItemFilter('Room',Colors.black,"Room"));
-    listFilter0.add(ItemFilter('Style',Colors.black,"Style"));
-    listFilter0.add(ItemFilter('Budget',Colors.black,"Budget"));
-    listFilter0.add(ItemFilter('Size',Colors.black,"Size"));
-    listFilter0.add(ItemFilter('Color',Colors.black,"Color"));
+    listFilter0.add(ItemFilter('Room',Colors.black,"room"));
+    listFilter0.add(ItemFilter('Style',Colors.black,"style"));
+    listFilter0.add(ItemFilter('Budget',Colors.black,"budget"));
+    listFilter0.add(ItemFilter('Size',Colors.black,"size"));
+    listFilter0.add(ItemFilter('Color',Colors.black,"color"));
   }
 
-  void ShowDialogFilter(BuildContext context, String key){
-    if(!mapFilter.containsKey(key)){
-      switch(key){
-        case "Room":{
+  void ShowDialogFilter(BuildContext context, ItemFilter itemFilter) {
+    int num = listFilter0.indexOf(itemFilter);
+    String? key = itemFilter.key;
+    String? title = itemFilter.text;
+
+    switch (key) {
+      case "room":
+        {
           list.clear();
-          list.add( ItemFilter("Kitchen",Colors.black,"false"));
-          list.add(ItemFilter("Bath",Colors.black,"false"));
-          list.add(ItemFilter("Bedroom",Colors.black,"false"));
-          list.add(ItemFilter("Living",Colors.black,"false"));
-          list.add(ItemFilter("Dining",Colors.black,"false"));
-          list.add(ItemFilter("Outdoor",Colors.black,"false"));
-          list.add(ItemFilter("Baby&Kids",Colors.black,"false"));
-          list.add(ItemFilter("HomeOffice",Colors.black,"false"));
-          list.add(ItemFilter("Exterior",Colors.black,"false"));
-          list.add(ItemFilter("Bedroom",Colors.black,"false"));
-          list.add(ItemFilter("Living",Colors.black,"false"));
-          list.add(ItemFilter("Dining",Colors.black,"false"));
-          list.add(ItemFilter("Baby&Kids",Colors.black,"false"));
-          list.add(ItemFilter("HomeOffice",Colors.black,"false"));
-          list.add(ItemFilter("Exterior",Colors.black,"false"));
-          DialogFilter(context,list,key);
+          list.add(ItemFilter("Kitchen", Colors.black, "false"));
+          list.add(ItemFilter("Bath", Colors.black, "false"));
+          list.add(ItemFilter("Bedroom", Colors.black, "false"));
+          list.add(ItemFilter("Living", Colors.black, "false"));
+          list.add(ItemFilter("Dining", Colors.black, "false"));
+          list.add(ItemFilter("Outdoor", Colors.black, "false"));
+          list.add(ItemFilter("Baby&Kids", Colors.black, "false"));
+          list.add(ItemFilter("HomeOffice", Colors.black, "false"));
+          list.add(ItemFilter("Exterior", Colors.black, "false"));
+          list.add(ItemFilter("Wine Cellar", Colors.black, "false"));
+          list.add(ItemFilter("Entry", Colors.black, "false"));
+          list.add(ItemFilter("Hall", Colors.black, "false"));
+          list.add(ItemFilter("Home Bar", Colors.black, "false"));
+          list.add(ItemFilter("Staircase", Colors.black, "false"));
+          list.add(ItemFilter("Basement", Colors.black, "false"));
         }
         break;
-      }
-    } else {
-      DialogFilter(context,list,key);
+
+      case "style":
+        {
+          list.clear();
+          list.add(ItemFilter("Contemporary", Colors.black, "false"));
+          list.add(ItemFilter("Eclectic", Colors.black, "false"));
+          list.add(ItemFilter("Modern", Colors.black, "false"));
+          list.add(ItemFilter("Traditional", Colors.black, "false"));
+          list.add(ItemFilter("Asian", Colors.black, "false"));
+          list.add(ItemFilter("Coastal", Colors.black, "false"));
+          list.add(ItemFilter("Craftsman", Colors.black, "false"));
+          list.add(ItemFilter("Farmhouse", Colors.black, "false"));
+          list.add(ItemFilter("French Country", Colors.black, "false"));
+          list.add(ItemFilter("Industrial", Colors.black, "false"));
+        }
+        break;
     }
+    if (mapFilter.containsKey(key)) {
+      final itemFilterPick = mapFilter[key];
+      for(int i=0; i < list.length;i++){
+        if(list[i].text == itemFilterPick?.text){
+          list.insert(i, itemFilterPick!);
+          list.removeAt(i+1);
+        }
+      }
+    }
+    DialogFilter(context,list,title!,key!,num);
   }
 
-  void DialogFilter(BuildContext context, List<ItemFilter> list,String key){
+  void DialogFilter(BuildContext context, List<ItemFilter> list,String title,String key,int num){
     showModalBottomSheet(
         context: context,
         isScrollControlled: true,
@@ -109,7 +135,7 @@ class AllDesignController extends GetxController{
                           ),
 
                           Text(
-                            key,
+                            title,
                             style: TextStyle(
                               color: Colors.black,
                               fontWeight: FontWeight.w600,
@@ -139,9 +165,9 @@ class AllDesignController extends GetxController{
                         itemBuilder: (_,index){
                           return InkWell(
                             onTap: (){
-                              ConstListFiler();
                               switch(list[index].text){
                                 case "Kitchen":{
+                                  ConstListFiler();
                                   listFilter0.add(ItemFilter('Layout',Colors.black,"layout"));
                                   listFilter0.add(ItemFilter('Type',Colors.black,"type"));
                                   listFilter0.add(ItemFilter('Number of Islands',Colors.black,"numberofislands"));
@@ -169,6 +195,10 @@ class AllDesignController extends GetxController{
                               list.insert(k,object);
                               list.removeAt(k+1);
                               mapFilter[key] = list[index];
+
+                              ItemFilter object1 = ItemFilter(title, AppColors.backgroundIntro, key);
+                              listFilter0.insert(num, object1);
+                              listFilter0.removeAt(num+1);
                             },
                             child: Padding(
                               padding: EdgeInsets.only(left: 15,top: 15,bottom: 10,right: 15),

@@ -54,7 +54,7 @@ class FilterWidget extends GetView<AllDesignController>{
               itemBuilder: (BuildContext context,index){
                 return InkWell(
                     onTap:(){
-                      controller.ShowDialogFilter(context, controller.listFilter0[index].key??"");
+                      controller.ShowDialogFilter(context, controller.listFilter0[index]);
                     } ,
                     child: ItemList(controller.listFilter0[index].text??"", controller.listFilter0[index].color!));
               },
