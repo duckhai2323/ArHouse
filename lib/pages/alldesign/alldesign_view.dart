@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:thietthach_app/pages/alldesign/display_filter.dart';
+import 'package:thietthach_app/pages/alldesign/display_image.dart';
 
 import '../../colors/colors.dart';
 import 'alldesign_controller.dart';
@@ -109,6 +110,8 @@ class AllDesignPage extends GetView<AllDesignController>{
                   ),
                 ),
               ),
+
+              DisplayImage(),
             ],
           ),
         ),

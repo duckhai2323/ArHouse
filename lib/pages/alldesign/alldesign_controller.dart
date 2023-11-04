@@ -113,7 +113,7 @@ class AllDesignController extends GetxController{
                   children: [
                     Container(
                       height: 50,
-                      padding: const EdgeInsets.symmetric(horizontal: 15,vertical: 10),
+                      padding: const EdgeInsets.only(left: 15,right: 15,top: 15),
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.only(
                             topLeft: Radius.circular(15),
@@ -123,14 +123,18 @@ class AllDesignController extends GetxController{
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Text(
-                            'Close',
-                            style: TextStyle(
-                              color: Colors.black,
-                              fontWeight: FontWeight.w600,
-                              fontSize: 19,
+                          InkWell(
+                            onTap: (){
+                              Navigator.pop(context);
+                            },
+                            child: Text(
+                              'Close',
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontWeight: FontWeight.w600,
+                                fontSize: 19,
+                              ),
                             ),
                           ),
 
@@ -143,12 +147,17 @@ class AllDesignController extends GetxController{
                             ),
                           ),
 
-                          Text(
-                            'Complete',
-                            style: TextStyle(
-                              color: AppColors.backgroundIntro,
-                              fontWeight: FontWeight.w600,
-                              fontSize: 19,
+                          InkWell(
+                            onTap: (){
+                              Navigator.pop(context);
+                            },
+                            child: Text(
+                              'Complete',
+                              style: TextStyle(
+                                color: AppColors.backgroundIntro,
+                                fontWeight: FontWeight.w600,
+                                fontSize: 19,
+                              ),
                             ),
                           ),
                         ],
@@ -242,7 +251,8 @@ class AllDesignController extends GetxController{
 
                     InkWell(
                       onTap: (){
-
+                        MapRemoveKey(key);
+                        Navigator.pop(context);
                       },
                       child: Container(
                         height: 55,
@@ -250,7 +260,7 @@ class AllDesignController extends GetxController{
                         color: Color.fromRGBO(244, 244, 244, 1),
                         child: Center(
                           child: Text(
-                            'Deselect \"Room\"',
+                            'Deselect \"${title}\"',
                              style: TextStyle(
                                color: Color.fromRGBO(99, 99, 99, 1),
                                fontSize: 19,
