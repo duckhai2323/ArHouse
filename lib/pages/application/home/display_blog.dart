@@ -114,7 +114,7 @@ class BlogList extends GetView<HomeController>{
                           width: 50,
                           height: 50,
                           decoration: BoxDecoration(
-                              color: Color.fromRGBO(73, 73, 73, 0.87),
+                              color: Color.fromRGBO(73, 73, 73, 0.7),
                               shape: BoxShape.circle
                           ),
                           child: InkWell(
@@ -124,7 +124,7 @@ class BlogList extends GetView<HomeController>{
                             child: Center(
                               child: Icon(
                                 controller.checkLove.isTrue ? CupertinoIcons.heart_solid:CupertinoIcons.heart,
-                                size: 30,
+                                size: 25,
                                 color: Colors.white,
                               ),
                             ),

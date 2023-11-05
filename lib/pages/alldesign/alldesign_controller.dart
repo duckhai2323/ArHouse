@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:thietthach_app/colors/colors.dart';
 import 'package:thietthach_app/pages/alldesign/itemfilter.dart';
+import 'package:thietthach_app/routes/names.dart';
 
 class AllDesignController extends GetxController{
   List<ItemFilter> listFilter0 = <ItemFilter>[].obs;
@@ -291,5 +292,9 @@ class AllDesignController extends GetxController{
         }
       }
     }
+  }
+
+  void HandleDesgnDetail(){
+    Get.toNamed(AppRoutes.DESIGNDETAIL);
   }
 }

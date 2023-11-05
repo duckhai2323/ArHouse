@@ -23,41 +23,44 @@ class DisplayImage extends GetView<AllDesignController>{
         itemCount: 8,
         shrinkWrap: true,
         itemBuilder: (BuildContext context, index){
-          return Stack(
-            children: [
-              Image(
-                image: AssetImage('assets/images/nhadep.jpg'),
-                width: MediaQuery.sizeOf(context).width/2-1,
-                height: 250,
-                fit: BoxFit.fill,
-              ),
+          return InkWell(
+            onTap: (){controller.HandleDesgnDetail();},
+            child: Stack(
+              children: [
+                Image(
+                  image: AssetImage('assets/images/nhadep.jpg'),
+                  width: MediaQuery.sizeOf(context).width/2-1,
+                  height: 250,
+                  fit: BoxFit.fill,
+                ),
 
-              Positioned(
-                right: 15,
-                bottom: 20,
-                child: Container(
-                  width: 45,
-                  height: 45,
-                  decoration: BoxDecoration(
-                      color: Color.fromRGBO(73, 73, 73, 0.87),
-                      shape: BoxShape.circle
-                  ),
-                  child: InkWell(
-                    onTap: (){
+                Positioned(
+                  right: 15,
+                  bottom: 20,
+                  child: Container(
+                    width: 45,
+                    height: 45,
+                    decoration: BoxDecoration(
+                        color: Color.fromRGBO(73, 73, 73, 0.7),
+                        shape: BoxShape.circle
+                    ),
+                    child: InkWell(
+                      onTap: (){
 
-                    },
-                    child: Center(
-                      child: Icon(
-                        // controller.checkLove.isTrue ? CupertinoIcons.heart_solid:CupertinoIcons.heart,
-                        CupertinoIcons.heart,
-                        size: 25,
-                        color: Colors.white,
+                      },
+                      child: Center(
+                        child: Icon(
+                          // controller.checkLove.isTrue ? CupertinoIcons.heart_solid:CupertinoIcons.heart,
+                          CupertinoIcons.heart,
+                          size: 25,
+                          color: Colors.white,
+                        ),
                       ),
                     ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           );
         },
       ),

@@ -2,6 +2,8 @@ import 'package:get/get_navigation/src/routes/get_route.dart';
 import 'package:thietthach_app/pages/alldesign/alldesign_bidings.dart';
 import 'package:thietthach_app/pages/alldesign/alldesign_view.dart';
 import 'package:thietthach_app/pages/application/application_bindings.dart';
+import 'package:thietthach_app/pages/design_detail/designdetail_bindings.dart';
+import 'package:thietthach_app/pages/design_detail/designdetail_view.dart';
 
 import '../pages/application/application_view.dart';
 import '../pages/library/library_bidings.dart';
@@ -27,6 +29,12 @@ class AppPages {
       name: AppRoutes.ALLDESIGN,
       page: ()=>AllDesignPage(),
       binding: AllDesigBinding(),
+    ),
+
+    GetPage(
+      name: AppRoutes.DESIGNDETAIL,
+      page: ()=>DesignDetailPage(),
+      binding: DesignDeatailBiding(),
     ),
   ];
 }
