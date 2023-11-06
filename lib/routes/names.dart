@@ -3,4 +3,5 @@ class AppRoutes {
   static const LIBRARYHOUSE = '/libraryhouse';
   static const ALLDESIGN = '/alldesign';
   static const DESIGNDETAIL = '/designdetail';
+  static const IMAGEVIEW = '/imageview';
 }

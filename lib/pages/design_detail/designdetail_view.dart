@@ -29,32 +29,35 @@ class DesignDetailPage extends GetView<DesignDetailController>{
               },
             ),
 
-            Positioned(
-              top: 20,
-              left: 15,
-              child: InkWell(
-                onTap: (){
-                  Navigator.pop(context);
-                },
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    Icon(Icons.arrow_back_ios,color: Colors.white,size: 25,),
-                    Text(
-                      'Return',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 20,
-                        fontWeight: FontWeight.w500
+            Obx(() => Visibility(
+              visible: controller.checkShowDialog.isTrue?false:true,
+              child: Positioned(
+                top: 20,
+                left: 15,
+                child: InkWell(
+                  onTap: (){
+                    Navigator.pop(context);
+                  },
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      Icon(Icons.arrow_back_ios,color: Colors.white,size: 25,),
+                      Text(
+                        'Return',
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 20,
+                            fontWeight: FontWeight.w500
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
-            ),
+            )),
 
-            Positioned(
+            Obx(() => Positioned(
               bottom: 30,
               child: Container(
                 width: MediaQuery.of(context).size.width,
@@ -71,21 +74,25 @@ class DesignDetailPage extends GetView<DesignDetailController>{
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
 
-                        Container(
-                          width: 50,
-                          height: 50,
-                          decoration: BoxDecoration(
-                              color: Color.fromRGBO(73, 73, 73, 0.7),
-                              shape: BoxShape.circle
-                          ),
-                          child: Center(
-                            child: Transform.rotate(
-                              angle: 90*pi/180,
-                              child: Icon(
-                                // controller.checkLove.isTrue ? CupertinoIcons.heart_solid:CupertinoIcons.heart,
-                                Icons.arrow_back_ios_new,
-                                size: 25,
-                                color: Colors.white,
+                        InkWell(
+                          onTap: (){
+                            controller.ShowDialog(context);
+                          },
+                          child: Container(
+                            width: 50,
+                            height: 50,
+                            decoration: BoxDecoration(
+                                color: Color.fromRGBO(73, 73, 73, 0.7),
+                                shape: BoxShape.circle
+                            ),
+                            child: Center(
+                              child: Transform.rotate(
+                                angle: 90*pi/180,
+                                child: Icon(
+                                  Icons.arrow_back_ios_new,
+                                  size: 25,
+                                  color: Colors.white,
+                                ),
                               ),
                             ),
                           ),
@@ -115,35 +122,38 @@ class DesignDetailPage extends GetView<DesignDetailController>{
                       ],
                     ),
 
-                    Container(
-                      width: 100,
-                      height: 45,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(4),
-                        color: AppColors.backgroundIntro,
-                      ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        mainAxisSize: MainAxisSize.max,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Icon(CupertinoIcons.heart,size: 25,color: Colors.white,),
-                          SizedBox(width: 5,),
-                          Text(
-                            'Save',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 19,
-                              fontWeight: FontWeight.w500,
+                    InkWell(
+                      onTap: (){controller.ClickSave();},
+                      child: Container(
+                        width: 100,
+                        height: 45,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(4),
+                          color: AppColors.backgroundIntro,
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          mainAxisSize: MainAxisSize.max,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Icon(controller.checkSave.isTrue ? CupertinoIcons.heart_solid:CupertinoIcons.heart,size: 25,color: Colors.white,),
+                            SizedBox(width: 5,),
+                            Text(
+                              'Save',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 19,
+                                fontWeight: FontWeight.w500,
+                              ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
                   ],
                 ),
               ),
-            ),
+            )),
           ],
         ),
       ),
