@@ -7,6 +7,7 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:thietthach_app/colors/colors.dart';
+import 'package:thietthach_app/pages/design_detail/comment.dart';
 import 'package:thietthach_app/pages/design_detail/header_widget.dart';
 
 import '../../routes/names.dart';
@@ -139,6 +140,8 @@ class DesignDetailController extends GetxController{
                           ),
 
                           ListImage(),
+
+                          Comment(),
 
                         ],
                       ),

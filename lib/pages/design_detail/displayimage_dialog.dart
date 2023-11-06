@@ -60,7 +60,7 @@ class ListImage extends GetView<DesignDetailController>{
           ),
         ),
 
-        Container(height: 10,color: Color.fromRGBO(244, 244, 244, 1),),
+        Container(height: 15,color: Color.fromRGBO(244, 244, 244, 1),),
       ],
     );
   }
