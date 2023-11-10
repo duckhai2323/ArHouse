@@ -1,14 +1,22 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
-import 'package:thietthach_app/pages/alldesign/alldesign_controller.dart';
 import 'package:thietthach_app/pages/design_detail/designdetail_controller.dart';
 
 import '../../colors/colors.dart';
+import '../../routes/names.dart';
 
 class ListImage extends GetView<DesignDetailController>{
 
+  final BuildContext context;
+  final Function(BuildContext context) HandleViewAllPhotos;
+
+  ListImage ({
+    required this.context,
+    required this.HandleViewAllPhotos,
+  });
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -41,22 +49,28 @@ class ListImage extends GetView<DesignDetailController>{
           ),
         ),
 
-        Padding(
-          padding: const EdgeInsets.only(left: 15,top: 20,bottom: 20),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                'View all photos (29 photos)',
-                style: TextStyle(
-                    color: AppColors.backgroundIntro,
-                    fontSize: 18,
-                    fontWeight: FontWeight.w600
+        InkWell(
+          onTap: (){
+            controller.HandleAllPhotosPage(context);
+            //Get.toNamed(AppRoutes.VIEWALLPHOTOS);
+          },
+          child: Padding(
+            padding: const EdgeInsets.only(left: 15,top: 20,bottom: 20),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  'View all photos (29 photos)',
+                  style: TextStyle(
+                      color: AppColors.backgroundIntro,
+                      fontSize: 18,
+                      fontWeight: FontWeight.w600
+                  ),
                 ),
-              ),
-              
-              Icon(Icons.arrow_forward_ios,size: 20,color: AppColors.backgroundIntro,)
-            ],
+
+                Icon(Icons.arrow_forward_ios,size: 20,color: AppColors.backgroundIntro,)
+              ],
+            ),
           ),
         ),
 

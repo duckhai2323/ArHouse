@@ -139,7 +139,7 @@ class DesignDetailController extends GetxController{
                             ),
                           ),
 
-                          ListImage(),
+                          ListImage(context:context,HandleViewAllPhotos: HandleAllPhotosPage,),
 
                           Comment(),
 
@@ -167,4 +167,11 @@ class DesignDetailController extends GetxController{
   void HandleImageView(){
     Get.toNamed(AppRoutes.IMAGEVIEW);
   }
+
+  void HandleAllPhotosPage(BuildContext context){
+    Navigator.pop(context);
+    checkShowDialog.value = false;
+    Get.toNamed(AppRoutes.VIEWALLPHOTOS);
+  }
+
 }
