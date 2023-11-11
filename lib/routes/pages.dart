@@ -9,6 +9,8 @@ import 'package:thietthach_app/pages/design_detail/image_view/imageview_bindings
 import 'package:thietthach_app/pages/design_detail/image_view/imageview_page.dart';
 import 'package:thietthach_app/pages/design_detail/viewallphotos/viewallphotos_bindings.dart';
 import 'package:thietthach_app/pages/design_detail/viewallphotos/viewallphotos_view.dart';
+import 'package:thietthach_app/pages/signin_signup/signin/signin_bindings.dart';
+import 'package:thietthach_app/pages/signin_signup/signin/signin_view.dart';
 
 import '../pages/application/application_view.dart';
 import '../pages/chat/chat_bindings.dart';
@@ -59,6 +61,12 @@ class AppPages {
       name: AppRoutes.CHAT,
       page: ()=>ChatPage(),
       binding: ChatBinding(),
+    ),
+
+    GetPage(
+      name: AppRoutes.SIGNIN,
+      page: ()=>SignInPage(),
+      binding: SignInBinding(),
     ),
   ];
 }
