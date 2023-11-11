@@ -104,31 +104,36 @@ class ViewAllPhotosPage extends GetView<ViewAllPhototsController>{
               ),
             ),
 
-            Container(
-              width: MediaQuery.of(context).size.width-30,
-              height: 45,
-              margin: EdgeInsets.symmetric(horizontal:15,vertical: 20),
-              decoration: BoxDecoration(
-                color: AppColors.backgroundIntro,
-                borderRadius: BorderRadius.circular(4),
-              ),
-              child:Center(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  mainAxisSize: MainAxisSize.min,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Icon(Icons.chat,size: 30,color: Colors.white,),
-                    SizedBox(width: 5,),
-                    Text(
-                      'Message',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 18,
-                        fontWeight: FontWeight.w500
+            InkWell(
+              onTap: (){
+                controller.HandleChat();
+              },
+              child: Container(
+                width: MediaQuery.of(context).size.width-30,
+                height: 45,
+                margin: EdgeInsets.symmetric(horizontal:15,vertical: 20),
+                decoration: BoxDecoration(
+                  color: AppColors.backgroundIntro,
+                  borderRadius: BorderRadius.circular(4),
+                ),
+                child:Center(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Icon(Icons.chat,size: 30,color: Colors.white,),
+                      SizedBox(width: 5,),
+                      Text(
+                        'Message',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 18,
+                          fontWeight: FontWeight.w500
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ),

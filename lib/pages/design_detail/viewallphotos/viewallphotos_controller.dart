@@ -14,4 +14,8 @@ class ViewAllPhototsController extends GetxController{
   void HandleImageView(){
     Get.toNamed(AppRoutes.IMAGEVIEW);
   }
+
+  void HandleChat(){
+    Get.toNamed(AppRoutes.CHAT);
+  }
 }

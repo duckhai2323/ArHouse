@@ -2,6 +2,7 @@ import 'package:get/get_navigation/src/routes/get_route.dart';
 import 'package:thietthach_app/pages/alldesign/alldesign_bidings.dart';
 import 'package:thietthach_app/pages/alldesign/alldesign_view.dart';
 import 'package:thietthach_app/pages/application/application_bindings.dart';
+import 'package:thietthach_app/pages/chat/chat_view.dart';
 import 'package:thietthach_app/pages/design_detail/designdetail_bindings.dart';
 import 'package:thietthach_app/pages/design_detail/designdetail_view.dart';
 import 'package:thietthach_app/pages/design_detail/image_view/imageview_bindings.dart';
@@ -10,6 +11,7 @@ import 'package:thietthach_app/pages/design_detail/viewallphotos/viewallphotos_b
 import 'package:thietthach_app/pages/design_detail/viewallphotos/viewallphotos_view.dart';
 
 import '../pages/application/application_view.dart';
+import '../pages/chat/chat_bindings.dart';
 import '../pages/library/library_bidings.dart';
 import '../pages/library/library_view.dart';
 import 'names.dart';
@@ -51,6 +53,12 @@ class AppPages {
       name: AppRoutes.VIEWALLPHOTOS,
       page: ()=>ViewAllPhotosPage(),
       binding: ViewAllPhotosBinding(),
+    ),
+
+    GetPage(
+      name: AppRoutes.CHAT,
+      page: ()=>ChatPage(),
+      binding: ChatBinding(),
     ),
   ];
 }

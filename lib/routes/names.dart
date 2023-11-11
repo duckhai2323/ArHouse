@@ -5,4 +5,5 @@ class AppRoutes {
   static const DESIGNDETAIL = '/designdetail';
   static const IMAGEVIEW = '/imageview';
   static const VIEWALLPHOTOS = '/viewallphotots';
+  static const CHAT = '/chat';
 }

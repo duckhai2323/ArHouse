@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
 import 'package:thietthach_app/pages/application/home/display_blog.dart';
 import 'package:thietthach_app/pages/application/home/display_infor.dart';
@@ -89,8 +90,8 @@ class HomePage extends GetView<HomeController>{
                         Text(
                           'Library',
                           style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w500
+                              fontSize: 16,
+                              fontWeight: FontWeight.w500
                           ),
                         ),
                       ],
@@ -165,7 +166,7 @@ class HomePage extends GetView<HomeController>{
           ),
         ),
       ),
-      body: SingleChildScrollView(
+      body:SingleChildScrollView(
         scrollDirection: Axis.vertical,
         child: Column(
           mainAxisSize: MainAxisSize.max,
@@ -181,9 +182,9 @@ class HomePage extends GetView<HomeController>{
                     child: Text(
                       'ArHouse Company',
                       style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 18,
-                        fontWeight: FontWeight.w600
+                          color: Colors.black,
+                          fontSize: 18,
+                          fontWeight: FontWeight.w600
                       ),
                     ),
                   ),
