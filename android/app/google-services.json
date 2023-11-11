@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "628961127152",
+    "project_id": "arhousepj",
+    "storage_bucket": "arhousepj.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:628961127152:android:6676f101f18ffca7057035",
+        "android_client_info": {
+          "package_name": "com.example.thietthach_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDsSDfkbfLH7mmTMY3FkPk85GaRjlXbGxE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
