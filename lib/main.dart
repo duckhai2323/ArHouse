@@ -1,4 +1,5 @@
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:thietthach_app/routes/names.dart';
@@ -8,11 +9,12 @@ import 'colors/colors.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  FirebaseOptions firebaseOptions = FirebaseOptions(
+  FirebaseOptions firebaseOptions = const FirebaseOptions(
       apiKey: "AIzaSyDsSDfkbfLH7mmTMY3FkPk85GaRjlXbGxE",
       appId: "1:628961127152:android:6676f101f18ffca7057035",
       messagingSenderId: "628961127152",
-      projectId: "arhousepj"
+      projectId: "arhousepj",
+      storageBucket: "arhousepj.appspot.com"
   );
   await Firebase.initializeApp(options:firebaseOptions);
   runApp(const MyApp());

@@ -7,4 +7,5 @@ class AppRoutes {
   static const VIEWALLPHOTOS = '/viewallphotots';
   static const CHAT = '/chat';
   static const SIGNIN = '/signin';
+  static const SIGNUP = '/signup';
 }

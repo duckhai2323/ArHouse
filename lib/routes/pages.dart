@@ -11,11 +11,13 @@ import 'package:thietthach_app/pages/design_detail/viewallphotos/viewallphotos_b
 import 'package:thietthach_app/pages/design_detail/viewallphotos/viewallphotos_view.dart';
 import 'package:thietthach_app/pages/signin_signup/signin/signin_bindings.dart';
 import 'package:thietthach_app/pages/signin_signup/signin/signin_view.dart';
+import 'package:thietthach_app/pages/signin_signup/signup/signup_view.dart';
 
 import '../pages/application/application_view.dart';
 import '../pages/chat/chat_bindings.dart';
 import '../pages/library/library_bidings.dart';
 import '../pages/library/library_view.dart';
+import '../pages/signin_signup/signup/signup_bindings.dart';
 import 'names.dart';
 
 class AppPages {
@@ -67,6 +69,12 @@ class AppPages {
       name: AppRoutes.SIGNIN,
       page: ()=>SignInPage(),
       binding: SignInBinding(),
+    ),
+
+    GetPage(
+      name: AppRoutes.SIGNUP,
+      page: ()=>SignUpPage(),
+      binding: SignUpBinding(),
     ),
   ];
 }

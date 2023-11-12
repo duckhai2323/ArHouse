@@ -13,7 +13,7 @@ class SignInController extends GetxController{
     else {obscureText_.value = true;}
   }
   void HandlePageSignup(){
-    //Get.toNamed(AppRoutes.SIGN_UP);
+    Get.toNamed(AppRoutes.SIGNUP);
   }
   Future<void> HandleApplication(String email, String password) async {
     try {

@@ -131,7 +131,7 @@ class SignInPage extends GetView<SignInController>{
                   padding: const EdgeInsets.only(top: 5),
                   child: InkWell(
                     onTap: (){
-                      //controller.HandlePageSignup();
+                      controller.HandlePageSignup();
                     },
                     child: Text(
                       'Bạn chưa có tài khoản? Đăng ký?',
