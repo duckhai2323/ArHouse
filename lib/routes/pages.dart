@@ -9,6 +9,8 @@ import 'package:thietthach_app/pages/design_detail/image_view/imageview_bindings
 import 'package:thietthach_app/pages/design_detail/image_view/imageview_page.dart';
 import 'package:thietthach_app/pages/design_detail/viewallphotos/viewallphotos_bindings.dart';
 import 'package:thietthach_app/pages/design_detail/viewallphotos/viewallphotos_view.dart';
+import 'package:thietthach_app/pages/knowledge/knowledge_bindings.dart';
+import 'package:thietthach_app/pages/knowledge/knowledge_view.dart';
 import 'package:thietthach_app/pages/signin_signup/signin/signin_bindings.dart';
 import 'package:thietthach_app/pages/signin_signup/signin/signin_view.dart';
 import 'package:thietthach_app/pages/signin_signup/signup/signup_view.dart';
@@ -75,6 +77,12 @@ class AppPages {
       name: AppRoutes.SIGNUP,
       page: ()=>SignUpPage(),
       binding: SignUpBinding(),
+    ),
+
+    GetPage(
+      name: AppRoutes.KNOWLEDGE,
+      page: ()=>KnowledgePage(),
+      binding: KnowledgeBinding(),
     ),
   ];
 }

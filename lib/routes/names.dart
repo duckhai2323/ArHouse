@@ -8,4 +8,5 @@ class AppRoutes {
   static const CHAT = '/chat';
   static const SIGNIN = '/signin';
   static const SIGNUP = '/signup';
+  static const KNOWLEDGE = '/knowledge';
 }

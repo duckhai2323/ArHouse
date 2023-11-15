@@ -25,4 +25,8 @@ class HomeController extends GetxController{
   void HandlePageLibrary(){
     Get.toNamed(AppRoutes.LIBRARYHOUSE);
   }
+
+  void HandleKnowledge(){
+    Get.toNamed(AppRoutes.KNOWLEDGE);
+  }
 }
