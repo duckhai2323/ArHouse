@@ -140,25 +140,30 @@ class HomePage extends GetView<HomeController>{
                     ],
                   ),
 
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Image(
-                        image: AssetImage('assets/images/logo4.png'),
-                        height: 48,
-                        width: 48,
-                        alignment: Alignment.center,
-                        fit: BoxFit.fill,
-                      ),
-
-                      Text(
-                          'Discussion',
-                        style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w500
+                  InkWell(
+                    onTap: (){
+                      controller.HandleKnowledge();
+                    },
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Image(
+                          image: AssetImage('assets/images/logo4.png'),
+                          height: 48,
+                          width: 48,
+                          alignment: Alignment.center,
+                          fit: BoxFit.fill,
                         ),
-                      ),
-                    ],
+
+                        Text(
+                            'Discussion',
+                          style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w500
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ],
               ),
