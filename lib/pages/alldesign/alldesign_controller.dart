@@ -77,6 +77,99 @@ class AllDesignController extends GetxController{
           list.add(ItemFilter("3", Colors.black, 'false'));
         }
         break;
+        
+      case "sidingmaterial":
+        {
+          list.clear();
+          list.add(ItemFilter("Adobe Siding Material", Colors.black, 'false'));
+          list.add(ItemFilter("Brick Siding Material", Colors.black, 'false'));
+          list.add(ItemFilter("Concrete Siding Material", Colors.black, 'false'));
+          list.add(ItemFilter("Concrete Fiberboard Siding Material", Colors.black, 'false'));
+          list.add(ItemFilter("Glass Siding Material", Colors.black, 'false'));
+          list.add(ItemFilter("Metal Siding Material", Colors.black, 'false'));
+          list.add(ItemFilter("Painted Brick Siding Material", Colors.black, 'false'));
+          list.add(ItemFilter("Stone Siding Material", Colors.black, 'false'));
+          list.add(ItemFilter("Stucco Siding Material", Colors.black, 'false'));
+          list.add(ItemFilter("Vinyl Siding Material", Colors.black, 'false'));
+          list.add(ItemFilter("Wood Siding Material", Colors.black, 'false'));
+        }
+        break;
+        
+      case "sidingtype":
+        {
+          list.clear();
+          list.add(ItemFilter("Board And Batten", Colors.black, 'false'));
+          list.add(ItemFilter("Clapboard", Colors.black, 'false'));
+          list.add(ItemFilter("Shingles", Colors.black, 'false'));
+        }
+        break;
+        
+      case "housecolor":
+        {
+          list.clear();
+          list.add(ItemFilter("Beige", Colors.black, 'false'));
+          list.add(ItemFilter("Black", Colors.black, 'false'));
+          list.add(ItemFilter("Blue", Colors.black, 'false'));
+          list.add(ItemFilter("Brown", Colors.black, 'false'));
+          list.add(ItemFilter("Gray", Colors.black, 'false'));
+          list.add(ItemFilter("Green", Colors.black, 'false'));
+          list.add(ItemFilter("Multi", Colors.black, 'false'));
+          list.add(ItemFilter("Orange", Colors.black, 'false'));
+          list.add(ItemFilter("Pink", Colors.black, 'false'));
+          list.add(ItemFilter("Purple", Colors.black, 'false'));
+          list.add(ItemFilter("Red", Colors.black, 'false'));
+          list.add(ItemFilter("White", Colors.black, 'false'));
+          list.add(ItemFilter("Yellow", Colors.black, 'false'));
+        }
+        break;
+        
+      case "rooftype":
+        {
+          list.clear();
+          list.add(ItemFilter("Butterfly", Colors.black, 'false'));
+          list.add(ItemFilter("Clipped Gable", Colors.black, 'false'));
+          list.add(ItemFilter("Flat", Colors.black, 'false'));
+          list.add(ItemFilter("Gable", Colors.black, 'false'));
+          list.add(ItemFilter("Gambrel", Colors.black, 'false'));
+          list.add(ItemFilter("Hip", Colors.black, 'false'));
+          list.add(ItemFilter("Shed", Colors.black, 'false'));
+        }
+        break;
+
+      case "roofmaterial":
+        {
+          list.clear();
+          list.add(ItemFilter("Green", Colors.black, 'false'));
+          list.add(ItemFilter("Metal", Colors.black, 'false'));
+          list.add(ItemFilter("Mixed", Colors.black, 'false'));
+          list.add(ItemFilter("Shingle", Colors.black, 'false'));
+          list.add(ItemFilter("Tile", Colors.black, 'false'));
+        }
+        break;
+
+      case "roofcolor":
+        {
+          list.clear();
+          list.add(ItemFilter("Black", Colors.black, 'false'));
+          list.add(ItemFilter("Blue", Colors.black, 'false'));
+          list.add(ItemFilter("Brown", Colors.black, 'false'));
+          list.add(ItemFilter("Gray", Colors.black, 'false'));
+          list.add(ItemFilter("Red", Colors.black, 'false'));
+          list.add(ItemFilter("White", Colors.black, 'false'));
+        }
+        break;
+
+      case "buildingtype":
+        {
+          list.clear();
+          list.add(ItemFilter("Apartment/Condo", Colors.black, 'false'));
+          list.add(ItemFilter("Duplex", Colors.black, 'false'));
+          list.add(ItemFilter("House", Colors.black, 'false'));
+          list.add(ItemFilter("Tiny House", Colors.black, 'false'));
+          list.add(ItemFilter("Townhouse", Colors.black, 'false'));
+        }
+        break;
+        
     }
     if (mapFilter.containsKey(key)) {
       final itemFilterPick = mapFilter[key];
@@ -208,6 +301,7 @@ class AllDesignController extends GetxController{
                                   listFilter0.add(ItemFilter('Number of Stories',Colors.black,"numberofstories"));
                                   listFilter0.add(ItemFilter('Siding Material',Colors.black,"sidingmaterial"));
                                   listFilter0.add(ItemFilter('Siding Type',Colors.black,"sidingtype"));
+                                  listFilter0.add(ItemFilter('House Color',Colors.black,"housecolor"));
                                   listFilter0.add(ItemFilter('Roof Type',Colors.black,"rooftype"));
                                   listFilter0.add(ItemFilter('Roof Material',Colors.black,"roofmaterial"));
                                   listFilter0.add(ItemFilter('Roof Color',Colors.black,"roofcolor"));
