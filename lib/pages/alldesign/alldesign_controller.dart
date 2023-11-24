@@ -68,6 +68,15 @@ class AllDesignController extends GetxController{
           list.add(ItemFilter("Industrial", Colors.black, "false"));
         }
         break;
+//exterior
+      case "numberofstories":
+        {
+          list.clear();
+          list.add(ItemFilter("1", Colors.black, 'false'));
+          list.add(ItemFilter("2", Colors.black, 'false'));
+          list.add(ItemFilter("3", Colors.black, 'false'));
+        }
+        break;
     }
     if (mapFilter.containsKey(key)) {
       final itemFilterPick = mapFilter[key];
