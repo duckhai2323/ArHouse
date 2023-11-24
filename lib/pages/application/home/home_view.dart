@@ -18,6 +18,7 @@ class HomePage extends GetView<HomeController>{
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         backgroundColor:AppColors.backgroundColor,
         bottom: PreferredSize(
           preferredSize: Size.fromHeight(100),
