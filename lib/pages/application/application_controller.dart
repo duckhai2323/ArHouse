@@ -5,6 +5,9 @@ import 'package:get/get.dart';
 import '../../colors/colors.dart';
 
 class ApplicationController extends GetxController{
+  static late String id;
+  static late String image;
+  static late String username;
   ApplicationController();
   final state = 0.obs;
   late final PageController pageController;
@@ -13,8 +16,10 @@ class ApplicationController extends GetxController{
   @override
   void onInit() {
     super.onInit();
+    id = Get.parameters['id']??"";
+    image = Get.parameters['image']??"";
+    username = Get.parameters['username']??"";
     bottomTab = <BottomNavigationBarItem> [
-
       const BottomNavigationBarItem(
         icon: Icon(
           CupertinoIcons.home,

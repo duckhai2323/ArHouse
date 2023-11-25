@@ -1,20 +1,28 @@
 import 'dart:ffi';
 import 'dart:ui';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:thietthach_app/colors/colors.dart';
+import 'package:thietthach_app/house/house.dart';
 import 'package:thietthach_app/pages/alldesign/itemfilter.dart';
 import 'package:thietthach_app/routes/names.dart';
+
+import '../../house/exterior.dart';
 
 class AllDesignController extends GetxController{
   List<ItemFilter> listFilter0 = <ItemFilter>[].obs;
   List<ItemFilter> list = <ItemFilter>[].obs;
+  List<House> listData = <House>[].obs;
+  final db = FirebaseFirestore.instance;
+  var listener;
   Map<String,ItemFilter> mapFilter = <String,ItemFilter>{}.obs;
   @override
   void onInit(){
     super.onInit();
     ConstListFiler();
+    GetData();
   }
 
   void ConstListFiler(){
@@ -24,6 +32,33 @@ class AllDesignController extends GetxController{
     listFilter0.add(ItemFilter('Budget',mapFilter.containsKey('budget')?AppColors.backgroundIntro:Colors.black,"budget"));
     listFilter0.add(ItemFilter('Size',mapFilter.containsKey('size')?AppColors.backgroundIntro:Colors.black,"size"));
     listFilter0.add(ItemFilter('Color',mapFilter.containsKey('color')?AppColors.backgroundIntro:Colors.black,"color"));
+  }
+
+  void GetData(){
+    var data = db.collection("projects").withConverter(
+        fromFirestore: House.fromFirestore,
+        toFirestore: (House classToTutor, options) => classToTutor.toFirestore()
+    ).orderBy("timestamp",descending: false);
+    for(var entry in mapFilter.entries){
+      data = data.where(entry.key,isEqualTo: entry.value.text);
+    }
+    listData.clear();
+    listener = data.snapshots().listen((event) {
+      for(var change in event.docChanges){
+        switch (change.type){
+          case DocumentChangeType.added:
+            if(change.doc.data()!=null) {
+              listData.insert(0, change.doc.data()!);
+            }
+            break;
+          case DocumentChangeType.modified:
+            break;
+          case DocumentChangeType.removed:
+            break;
+        }
+      }
+    });
+
   }
 
   void ShowDialogFilter(BuildContext context, ItemFilter itemFilter) {
@@ -66,6 +101,16 @@ class AllDesignController extends GetxController{
           list.add(ItemFilter("Farmhouse", Colors.black, "false"));
           list.add(ItemFilter("French Country", Colors.black, "false"));
           list.add(ItemFilter("Industrial", Colors.black, "false"));
+        }
+        break;
+
+      case "size":
+        {
+          list.clear();
+          list.add(ItemFilter("Compact", Colors.black, "false"));
+          list.add(ItemFilter("Medium", Colors.black, "false"));
+          list.add(ItemFilter("Large", Colors.black, "false"));
+          list.add(ItemFilter("Expansive", Colors.black, "false"));
         }
         break;
 //exterior
@@ -291,7 +336,7 @@ class AllDesignController extends GetxController{
                                   listFilter0.add(ItemFilter('Appliance Finish',Colors.black,"appliance"));
                                   listFilter0.add(ItemFilter('Sink',Colors.black,"sink"));
                                   listFilter0.add(ItemFilter('Floor Material',Colors.black,"floormaterial"));
-                                  listFilter0.add(ItemFilter('Floor Color',Colors.black,"Floor Color"));
+                                  listFilter0.add(ItemFilter('Floor Color',Colors.black,"floorcolor"));
                                   listFilter0.add(ItemFilter('Ceiling Design',Colors.black,"ceiling"));
                                 }
                                 break;
@@ -320,6 +365,7 @@ class AllDesignController extends GetxController{
                               list.insert(k,object);
                               list.removeAt(k+1);
                               mapFilter[key] = list[index];
+                              GetData();
 
                               ItemFilter object1 = ItemFilter(title, AppColors.backgroundIntro, key);
                               listFilter0.insert(num, object1);
@@ -385,6 +431,7 @@ class AllDesignController extends GetxController{
 
   void MapRemoveKey(String key){
     mapFilter.remove(key);
+    GetData();
     if(key == "room"){
       ConstListFiler();
     } else {
@@ -397,7 +444,7 @@ class AllDesignController extends GetxController{
     }
   }
 
-  void HandleDesgnDetail(){
-    Get.toNamed(AppRoutes.DESIGNDETAIL);
+  void HandleDesgnDetail(String id){
+    Get.toNamed(AppRoutes.DESIGNDETAIL,parameters: {"id":id});
   }
 }

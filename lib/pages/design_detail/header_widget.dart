@@ -1,3 +1,5 @@
+
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
@@ -10,7 +12,7 @@ class HeaderWidget extends GetView<DesignDetailController>{
 
   @override
   Widget build(BuildContext context) {
-    return Row(
+    return Obx(() => Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       mainAxisSize: MainAxisSize.max,
       crossAxisAlignment: CrossAxisAlignment.center,
@@ -23,8 +25,8 @@ class HeaderWidget extends GetView<DesignDetailController>{
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'IDTTG2567',
-                style: TextStyle(
+                controller.houseData[0].id!,
+                style: const TextStyle(
                   color: AppColors.backgroundIntro,
                   fontWeight: FontWeight.w500,
                   fontSize: 18,
@@ -32,7 +34,7 @@ class HeaderWidget extends GetView<DesignDetailController>{
               ),
 
               Text(
-                'ngay 3 thang 11, 2020',
+                controller.date.value!,
                 style: TextStyle(
                     fontSize: 15,
                     color: Colors.grey,
@@ -89,7 +91,7 @@ class HeaderWidget extends GetView<DesignDetailController>{
           ],
         ),
       ],
-    );
+    ));
   }
 
   Widget ItemInteract(Icon icon, String text){

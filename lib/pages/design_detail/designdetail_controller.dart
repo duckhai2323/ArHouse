@@ -1,25 +1,93 @@
 import 'dart:math';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 import 'package:thietthach_app/colors/colors.dart';
+import 'package:thietthach_app/pages/application/application_controller.dart';
 import 'package:thietthach_app/pages/design_detail/comment.dart';
 import 'package:thietthach_app/pages/design_detail/header_widget.dart';
 
+import '../../documentObject/comment.dart';
+import '../../house/house.dart';
 import '../../routes/names.dart';
 import 'displayimage_dialog.dart';
 
 class DesignDetailController extends GetxController{
+  late String? id;
   final state = 0.obs;
   PageController controller = PageController(initialPage: 0);
   final checkSave = false.obs;
   final checkShowDialog = false.obs;
+  final db = FirebaseFirestore.instance;
+  var listener;
+  final houseData = <House>[].obs;
+  final delay = false.obs;
+  final date = ''.obs;
+  final listComment = <Comment>[].obs;
+  var commentText = TextEditingController();
 
-  //IventClick
+  @override
+  void onInit() async {
+    // TODO: implement onInit
+    super.onInit();
+    id = Get.parameters['id']??"";
+    GetData(id.toString());
+    GetComment(id.toString());
+  }
+
+  Future<void> GetData(String id) async {
+    await Future.delayed(const Duration(seconds: 0));
+    final data = await db.collection("projects").withConverter(
+        fromFirestore: House.fromFirestore,
+        toFirestore: (House house, options) => house.toFirestore()
+    ).where("id",isEqualTo: id).get();
+
+    if(data.docs.isNotEmpty){
+      houseData.add(data.docs[0].data());
+    }
+    date.value = DateFormat.yMMMMd('en_US').format(houseData[0].timestamp!);
+  }
+
+  Future<void> GetComment(String id) async {
+    await Future.delayed(const Duration(seconds: 1));
+    final data = await db.collection("comments").withConverter(
+        fromFirestore: Comment.fromFirestore,
+        toFirestore: (Comment comment, options) => comment.toFirestore()
+    ).orderBy("timestamp",descending: false).where("id_blog",isEqualTo: id);
+    listComment.clear();
+    listener = data.snapshots().listen((event) {
+      for(var change in event.docChanges){
+        switch (change.type){
+          case DocumentChangeType.added:
+            if(change.doc.data()!=null) {
+              listComment.insert(0, change.doc.data()!);
+            }
+            break;
+          case DocumentChangeType.modified:
+            break;
+          case DocumentChangeType.removed:
+            break;
+        }
+      }
+    });
+    delay.value = true;
+  }
+  
+  Future<void> SendComment(String commentStr) async {
+    final comment = Comment(id,ApplicationController.id,commentStr,ApplicationController.username,ApplicationController.image,DateTime.now());
+    await db.collection('comments').withConverter(
+        fromFirestore: Comment.fromFirestore,
+        toFirestore: (Comment comment, options) => comment.toFirestore()
+    ).add(comment).then((DocumentReference doc){});
+    GetComment(id.toString());
+  }
+  
 
   void ShowDialog(BuildContext context){
     checkShowDialog.value = true;
@@ -58,7 +126,7 @@ class DesignDetailController extends GetxController{
                       children: [
                         Transform.rotate(
                           angle: 90*pi/180,
-                          child: Icon(
+                          child: const Icon(
                             Icons.arrow_forward_ios,
                             size: 25,
                             color: Colors.white,
@@ -67,7 +135,7 @@ class DesignDetailController extends GetxController{
 
                         SizedBox(width: 10),
 
-                        Text(
+                        const Text(
                           'Close',
                           style: TextStyle(
                               color: Colors.white,
@@ -97,10 +165,10 @@ class DesignDetailController extends GetxController{
                           SizedBox(height: 25,),
 
                           Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 15),
+                            padding: EdgeInsets.symmetric(horizontal: 15),
                             child: Text(
-                              'Mountain Peek',
-                              style: TextStyle(
+                              houseData[0].title!,
+                              style: const TextStyle(
                                 fontWeight: FontWeight.w500,
                                 fontSize: 18,
                               ),
@@ -112,8 +180,8 @@ class DesignDetailController extends GetxController{
                           Padding(
                             padding: const EdgeInsets.symmetric(horizontal: 15),
                             child: Text(
-                              'Positioned on the hilltop, this home captures the city lights of the Hill Country Galleria. Multi-use spaces are perfect for both intimate gatherings or for entertaining large groups. Large areas of glass open up to the generous outdoor living, dining and kitchen areas. ',
-                              style: TextStyle(
+                              houseData[0].content!,
+                              style: const TextStyle(
                                 fontWeight: FontWeight.w500,
                                 fontSize: 16,
                               ),
@@ -122,13 +190,13 @@ class DesignDetailController extends GetxController{
                             ),
                           ),
 
-                          Padding(
-                            padding: const EdgeInsets.all(15.0),
+                          const Padding(
+                            padding: EdgeInsets.all(15.0),
                             child: Divider(),
                           ),
 
-                          Padding(
-                            padding: const EdgeInsets.only(left: 15,bottom: 10),
+                          const Padding(
+                            padding: EdgeInsets.only(left: 15,bottom: 10),
                             child: Text(
                               'More photos from this project',
                               style: TextStyle(
@@ -141,7 +209,7 @@ class DesignDetailController extends GetxController{
 
                           ListImage(context:context,HandleViewAllPhotos: HandleAllPhotosPage,),
 
-                          Comment(),
+                          CommentWidget(),
 
                         ],
                       ),
