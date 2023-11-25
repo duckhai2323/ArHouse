@@ -24,9 +24,9 @@ class SignInController extends GetxController{
       User? user = userCredential.user;
       if(user!=null){
         String position = '';
-        String userId='';
+        String id='';
         String image='';
-        String fullname='';
+        String username='';
         final data = db.collection("users")
             .where('email',isEqualTo: email)
             .get()
@@ -35,11 +35,11 @@ class SignInController extends GetxController{
             for (DocumentSnapshot<Map<String, dynamic>> document in snapshot.docs) {
               Map<String, dynamic>? data = document.data();
               position = data?['position']??"";
-              userId = data?['id']??"";
+              id = data?['id']??"";
               image = data?['image']??"";
-              fullname = data?['fullName']??"";
+              username = data?['username']??"";
             }
-            Get.toNamed(AppRoutes.APPLICATION,parameters: {"position":position??"","userId":userId??"","image":image??"","fullname":fullname??""});
+            Get.toNamed(AppRoutes.APPLICATION,parameters: {"position":position??"","id":id??"","image":image??"","username":username??""});
           } else {
 
           }

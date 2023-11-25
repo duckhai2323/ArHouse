@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -14,16 +15,16 @@ class DesignDetailPage extends GetView<DesignDetailController>{
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        body: Stack(
+        body: Obx(()=>(controller.delay.isTrue)?Stack(
           children: [
             PhotoViewGallery.builder(
               scrollPhysics: const BouncingScrollPhysics(),
-              itemCount: 6,
+              itemCount: controller.houseData[0].images.length,
               pageController: controller.controller,
               onPageChanged: (index){},
               builder: (BuildContext context,int index){
                 return PhotoViewGalleryPageOptions(
-                  imageProvider: AssetImage('assets/images/nhadep.jpg'),
+                  imageProvider: CachedNetworkImageProvider(controller.houseData[0].images[index]),
                   initialScale: PhotoViewComputedScale.covered,
                 );
               },
@@ -38,7 +39,7 @@ class DesignDetailPage extends GetView<DesignDetailController>{
                   onTap: (){
                     Navigator.pop(context);
                   },
-                  child: Row(
+                  child: const Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     mainAxisSize: MainAxisSize.max,
                     children: [
@@ -62,7 +63,7 @@ class DesignDetailPage extends GetView<DesignDetailController>{
               child: Container(
                 width: MediaQuery.of(context).size.width,
                 height: 60,
-                padding: EdgeInsets.symmetric(horizontal: 20),
+                padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -81,14 +82,14 @@ class DesignDetailPage extends GetView<DesignDetailController>{
                           child: Container(
                             width: 50,
                             height: 50,
-                            decoration: BoxDecoration(
+                            decoration: const BoxDecoration(
                                 color: Color.fromRGBO(73, 73, 73, 0.7),
                                 shape: BoxShape.circle
                             ),
                             child: Center(
                               child: Transform.rotate(
                                 angle: 90*pi/180,
-                                child: Icon(
+                                child: const Icon(
                                   Icons.arrow_back_ios_new,
                                   size: 25,
                                   color: Colors.white,
@@ -98,18 +99,18 @@ class DesignDetailPage extends GetView<DesignDetailController>{
                           ),
                         ),
 
-                        SizedBox(width: 15,),
+                        const SizedBox(width: 15,),
 
                         Transform.rotate(
                           angle: 90 * pi / 180,
                           child: Container(
                             width: 50,
                             height: 50,
-                            decoration: BoxDecoration(
+                            decoration: const BoxDecoration(
                                 color: Color.fromRGBO(73, 73, 73, 0.7),
                                 shape: BoxShape.circle
                             ),
-                            child: Center(
+                            child: const Center(
                               child: Icon(
                                 // controller.checkLove.isTrue ? CupertinoIcons.heart_solid:CupertinoIcons.heart,
                                 Icons.local_offer_outlined,
@@ -137,8 +138,8 @@ class DesignDetailPage extends GetView<DesignDetailController>{
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             Icon(controller.checkSave.isTrue ? CupertinoIcons.heart_solid:CupertinoIcons.heart,size: 25,color: Colors.white,),
-                            SizedBox(width: 5,),
-                            Text(
+                            const SizedBox(width: 5,),
+                            const Text(
                               'Save',
                               style: TextStyle(
                                 color: Colors.white,
@@ -155,7 +156,12 @@ class DesignDetailPage extends GetView<DesignDetailController>{
               ),
             )),
           ],
-        ),
+        ):Center(
+          child: Container(
+            margin: EdgeInsets.only(top: 40),
+            child: CircularProgressIndicator(),
+          ),
+        )),
       ),
     );
   }

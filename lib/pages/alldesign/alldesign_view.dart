@@ -9,19 +9,21 @@ import 'alldesign_controller.dart';
 import 'filtertext_list.dart';
 
 class AllDesignPage extends GetView<AllDesignController>{
+  const AllDesignPage({super.key});
+
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          leading: Padding(
-            padding: const EdgeInsets.only(top: 10),
+          leading: const Padding(
+            padding: EdgeInsets.only(top: 10),
             child: Icon(Icons.arrow_back_ios),
           ),
           backgroundColor:AppColors.backgroundColor,
           bottom: PreferredSize(
-            preferredSize: Size.fromHeight(17),
+            preferredSize: const Size.fromHeight(17),
             child: Container(
               color: Colors.grey.shade300,
               height: 1,
@@ -40,7 +42,7 @@ class AllDesignPage extends GetView<AllDesignController>{
                       child: Padding(
                         padding: const EdgeInsets.only(top: 10,bottom: 15,left: 60,right: 15),
                         child: TextField(
-                          style: TextStyle(fontSize: 16),
+                          style: const TextStyle(fontSize: 16),
                           decoration: InputDecoration(
                             contentPadding: const EdgeInsets.only(top: 3,left: 10),
                             filled: true,
@@ -83,33 +85,33 @@ class AllDesignPage extends GetView<AllDesignController>{
             children: [
               Container(
                 width: MediaQuery.of(context).size.width,
-                color: Color.fromRGBO(250, 250, 250, 1),
+                color: const Color.fromRGBO(250, 250, 250, 1),
                 child: Center(
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      SizedBox(height: 15,),
+                      const SizedBox(height: 15,),
                       FilterWidget(),
                       FilterTextList(),
-                      SizedBox(height: 20,),
+                      const SizedBox(height: 20,),
                     ],
                   ),
                 ),
               ),
 
-              Padding(
+              Obx(() => Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 15,vertical: 15),
                 child: Text(
-                  'All Photos (123)',
-                  style: TextStyle(
+                  'All Photos (${controller.listData.length})',
+                  style: const TextStyle(
                       color: Colors.black,
                       fontSize: 18,
                       fontWeight: FontWeight.w600
                   ),
                 ),
-              ),
+              ),),
 
               DisplayImage(),
             ],
