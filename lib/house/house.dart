@@ -10,9 +10,10 @@ class House {
   final String? color;
   final String? size;
   final DateTime? timestamp;
+  final String? room;
 
   House(this.id, this.title, this.content, this.images, this.style, this.budget,
-      this.color, this.size,this.timestamp);
+      this.color, this.size,this.timestamp,this.room);
 
   factory House.fromFirestore(DocumentSnapshot<Map<String, dynamic>> snapshot,
       SnapshotOptions? options){
@@ -27,6 +28,7 @@ class House {
       data?['color'] ?? "",
       data?['size'] ?? "",
       (data?['timestamp'] as Timestamp).toDate(),
+      data?['room']??"",
     );
   }
 
@@ -41,6 +43,7 @@ class House {
       'color': color ?? "",
       'size': size ?? "",
       'timestamp':timestamp,
+      'room':room??"",
     };
   }
 }

@@ -1,5 +1,7 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
 import 'package:photo_view/photo_view.dart';
 import 'package:photo_view/photo_view_gallery.dart';
@@ -14,12 +16,12 @@ class ImageViewPage extends GetView<ImageViewController>{
           children: [
             PhotoViewGallery.builder(
               scrollPhysics: const BouncingScrollPhysics(),
-              itemCount: 6,
+              itemCount: controller.images.length,
               pageController: controller.controller,
               onPageChanged: (index){},
               builder: (BuildContext context,int index){
                 return PhotoViewGalleryPageOptions(
-                  imageProvider: AssetImage('assets/images/nhadep1.jpg'),
+                  imageProvider: CachedNetworkImageProvider(controller.images[index]),
                   initialScale: PhotoViewComputedScale.contained,
                 );
               },
@@ -32,7 +34,7 @@ class ImageViewPage extends GetView<ImageViewController>{
                 onTap: (){
                   Navigator.pop(context);
                 },
-                child: Row(
+                child: const Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   mainAxisSize: MainAxisSize.max,
                   children: [

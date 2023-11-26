@@ -10,7 +10,7 @@ class Exterior extends House{
   final String? rooftype;
   final String? roofmaterial;
   final String? roofcolor;
-  final String? buidingtype;
+  final String? buildingtype;
 
   Exterior(
       String id,
@@ -22,6 +22,7 @@ class Exterior extends House{
       String color,
       String size,
       DateTime timestamp,
+      String room,
   {
     this.numberofstories,
     this.sidingmaterial,
@@ -30,9 +31,9 @@ class Exterior extends House{
     this.rooftype,
     this.roofmaterial,
     this.roofcolor,
-    this.buidingtype
+    this.buildingtype
   }
-      ):super(id,title,content,images,style,budget,color,size,timestamp);
+      ):super(id,title,content,images,style,budget,color,size,timestamp,room);
 
   factory Exterior.fromFirestore(DocumentSnapshot<Map<String,dynamic>> snapshot,SnapshotOptions? options){
     final data = snapshot.data();
@@ -46,6 +47,7 @@ class Exterior extends House{
       data?['color']??"",
       data?['size']??"",
       (data?['timestamp'] as Timestamp).toDate(),
+      data?['room']??"",
       numberofstories: data?['numberofstories'],
       sidingmaterial: data?['sidingmaterial'],
       sidingtype: data?['sidingtype'],
@@ -53,7 +55,7 @@ class Exterior extends House{
       rooftype: data?['rooftype'],
       roofmaterial: data?['roofmaterial'],
       roofcolor: data?['roofcolor'],
-      buidingtype: data?['buidingtype'],
+      buildingtype: data?['buildingtype'],
     );
   }
 
@@ -68,6 +70,7 @@ class Exterior extends House{
       'color': super.color ?? "",
       'size': super.size ?? "",
       'timestamp':super.timestamp,
+      'room':super.room,
       'numberofstories': numberofstories ?? null,
       'sidingmaterial': sidingmaterial ?? "",
       'sidingtype': sidingtype ?? "",
@@ -75,7 +78,7 @@ class Exterior extends House{
       'rooftype': rooftype ?? "",
       'roofmaterial': roofmaterial ?? "",
       'roofcolor': roofcolor ?? "",
-      'buidingtype': buidingtype ?? "",
+      'buildingtype': buildingtype ?? "",
     };
   }
 }

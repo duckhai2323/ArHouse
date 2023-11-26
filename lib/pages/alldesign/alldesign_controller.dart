@@ -120,6 +120,14 @@ class AllDesignController extends GetxController{
           list.add(ItemFilter("1", Colors.black, 'false'));
           list.add(ItemFilter("2", Colors.black, 'false'));
           list.add(ItemFilter("3", Colors.black, 'false'));
+          list.add(ItemFilter("4", Colors.black, 'false'));
+          list.add(ItemFilter("5", Colors.black, 'false'));
+          list.add(ItemFilter("6", Colors.black, 'false'));
+          list.add(ItemFilter("7", Colors.black, 'false'));
+          list.add(ItemFilter("8", Colors.black, 'false'));
+          list.add(ItemFilter("9", Colors.black, 'false'));
+          list.add(ItemFilter("10", Colors.black, 'false'));
+
         }
         break;
         
