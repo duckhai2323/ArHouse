@@ -25,59 +25,64 @@ class DisplayDesign extends GetView<LibraryController>{
         itemCount: controller.list.length,
         shrinkWrap: true,
         itemBuilder: (BuildContext context, index){
-          return Container(
-            width: 200,
-            height: 190,
-            decoration: BoxDecoration(
-              color: AppColors.backgroundColor,
-              borderRadius: BorderRadius.circular(5),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.grey.withOpacity(0.5),
-                  spreadRadius: 1,
-                  blurRadius: 2,
-                  offset: const Offset(0,2),
-                ),
-                BoxShadow(
-                  color: Colors.grey.withOpacity(0.5),
-                  spreadRadius: 1,
-                  blurRadius: 2,
-                  offset: const Offset(2,0),
-                )
-              ],
-            ),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              mainAxisSize: MainAxisSize.max,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                ClipRRect(
-                  borderRadius: const BorderRadius.only(topRight:Radius.circular(5),topLeft: Radius.circular(5)),
-                  child: Image(
-                    image: AssetImage(controller.list[index].linkImage!),
-                    width: 200,
-                    height: 130,
-                    fit: BoxFit.fill,
+          return InkWell(
+            onTap: (){
+              controller.HandleDesignDetail(controller.list[index].textItem!);
+            },
+            child: Container(
+              width: 200,
+              height: 190,
+              decoration: BoxDecoration(
+                color: AppColors.backgroundColor,
+                borderRadius: BorderRadius.circular(5),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(0.5),
+                    spreadRadius: 1,
+                    blurRadius: 2,
+                    offset: const Offset(0,2),
                   ),
-                ),
-
-                Container(
-                  width: 200,
-                  height: 60,
-                  padding: const EdgeInsets.only(left: 30,right: 30,top: 5),
-                  child: Center(
-                    child: Text(
-                      controller.list[index].textItem!,
-                      style: const TextStyle(
-                        color: Colors.black,
-                        fontWeight: FontWeight.w500,
-                        fontSize: 18,
-                      ),
-                      textAlign:TextAlign.center,
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(0.5),
+                    spreadRadius: 1,
+                    blurRadius: 2,
+                    offset: const Offset(2,0),
+                  )
+                ],
+              ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                mainAxisSize: MainAxisSize.max,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  ClipRRect(
+                    borderRadius: const BorderRadius.only(topRight:Radius.circular(5),topLeft: Radius.circular(5)),
+                    child: Image(
+                      image: AssetImage(controller.list[index].linkImage!),
+                      width: 200,
+                      height: 130,
+                      fit: BoxFit.fill,
                     ),
                   ),
-                ),
-              ],
+
+                  Container(
+                    width: 200,
+                    height: 60,
+                    padding: const EdgeInsets.only(left: 30,right: 30,top: 5),
+                    child: Center(
+                      child: Text(
+                        controller.list[index].textItem!,
+                        style: const TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.w500,
+                          fontSize: 18,
+                        ),
+                        textAlign:TextAlign.center,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
           );
         },

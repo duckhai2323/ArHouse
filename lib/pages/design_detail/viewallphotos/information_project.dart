@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:get/get.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:thietthach_app/pages/design_detail/viewallphotos/viewallphotos_controller.dart';
@@ -7,19 +8,19 @@ class ProjectInformation extends GetView<ViewAllPhototsController>{
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return Obx(() => Container(
       width: MediaQuery.sizeOf(context).width,
-      padding: EdgeInsets.symmetric(horizontal: 15),
+      padding: const EdgeInsets.symmetric(horizontal: 15),
       child: ListView.builder(
         physics: NeverScrollableScrollPhysics(),
         scrollDirection: Axis.vertical,
         shrinkWrap: true,
-        itemCount: 6,
+        itemCount: controller.listInfor.length,
         itemBuilder: (BuildContext context, index){
-          return ItemList('Room', 'Exterior');
+          return ItemList(controller.listInfor[index].key!, controller.listInfor[index].value!);
         },
       ),
-    );
+    ));
   }
 
   Widget ItemList(String key, String value){
@@ -33,7 +34,7 @@ class ProjectInformation extends GetView<ViewAllPhototsController>{
         children: [
           Text(
             key,
-            style: TextStyle(
+            style: const TextStyle(
               fontSize: 18,
               fontWeight: FontWeight.w600,
             ),
@@ -41,7 +42,7 @@ class ProjectInformation extends GetView<ViewAllPhototsController>{
 
           Text(
             value,
-            style: TextStyle(
+            style: const TextStyle(
               fontSize: 16,
               fontWeight: FontWeight.w500,
             ),

@@ -39,7 +39,7 @@ class ListImage extends GetView<DesignDetailController>{
             shrinkWrap: true,
             itemBuilder: (BuildContext context, index){
               return InkWell(
-                onTap: (){controller.HandleImageView();},
+                onTap: (){controller.HandleImageView(index);},
                 child: Image(
                   image: CachedNetworkImageProvider(controller.houseData[0].images[index]),
                   width: MediaQuery.sizeOf(context).width/3,

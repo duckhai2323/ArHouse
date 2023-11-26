@@ -232,14 +232,15 @@ class DesignDetailController extends GetxController{
     }
   }
 
-  void HandleImageView(){
-    Get.toNamed(AppRoutes.IMAGEVIEW);
+  void HandleImageView(int index){
+    List<String> images = houseData[0].images;
+    Get.toNamed(AppRoutes.IMAGEVIEW,arguments:{'images':images, 'index':index});
   }
 
   void HandleAllPhotosPage(BuildContext context){
     Navigator.pop(context);
     checkShowDialog.value = false;
-    Get.toNamed(AppRoutes.VIEWALLPHOTOS);
+    Get.toNamed(AppRoutes.VIEWALLPHOTOS,parameters: {'id':id??"",'room':houseData[0].room??""});
   }
 
 }

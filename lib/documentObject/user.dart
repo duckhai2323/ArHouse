@@ -4,13 +4,14 @@ class UserClient {
   final String? id;
   final String? image;
   final String? fullname;
+  final String? username;
   final String? birthday;
   final String? email;
   final String? password;
   final String? numberphone;
   final String? position;
 
-  UserClient(this.id,this.image,this.fullname, this.birthday, this.email, this.password,
+  UserClient(this.id,this.image,this.fullname,this.username, this.birthday, this.email, this.password,
       this.numberphone, this.position);
 
   factory UserClient.fromFirestore(DocumentSnapshot<Map<String,dynamic>> snapshot,SnapshotOptions? options){
@@ -19,6 +20,7 @@ class UserClient {
       data?['id']??"",
       data?['image']??"",
       data?['fullname']??"",
+      data?['username']??"",
       data?['birthday']??"",
       data?['email']??"",
       data?['password']??"",
@@ -32,6 +34,7 @@ class UserClient {
       "id":id??"",
       "image":image??"",
       "fullname":fullname??"",
+      "username":username??"",
       "birthday":birthday??"",
       "email":email??"",
       "password":password??"",

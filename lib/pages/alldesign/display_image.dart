@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:thietthach_app/pages/alldesign/alldesign_controller.dart';
+import 'package:thietthach_app/pages/application/application_controller.dart';
 
 import '../../colors/colors.dart';
 
@@ -38,7 +39,7 @@ class DisplayImage extends GetView<AllDesignController>{
                 Positioned(
                   right: 15,
                   bottom: 20,
-                  child: Container(
+                  child:Container(
                     width: 45,
                     height: 45,
                     decoration: const BoxDecoration(
@@ -47,12 +48,11 @@ class DisplayImage extends GetView<AllDesignController>{
                     ),
                     child: InkWell(
                       onTap: (){
-
+                        controller.ClickItemHeart(index);
                       },
-                      child: const Center(
+                      child:Center(
                         child: Icon(
-                          // controller.checkLove.isTrue ? CupertinoIcons.heart_solid:CupertinoIcons.heart,
-                          CupertinoIcons.heart,
+                          controller.listData[index].userlike.contains(ApplicationController.id) ? CupertinoIcons.heart_solid:CupertinoIcons.heart,
                           size: 25,
                           color: Colors.white,
                         ),

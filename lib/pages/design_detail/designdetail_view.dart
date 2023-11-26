@@ -158,8 +158,8 @@ class DesignDetailPage extends GetView<DesignDetailController>{
           ],
         ):Center(
           child: Container(
-            margin: EdgeInsets.only(top: 40),
-            child: CircularProgressIndicator(),
+            margin: const EdgeInsets.only(top: 40),
+            child: const CircularProgressIndicator(),
           ),
         )),
       ),
