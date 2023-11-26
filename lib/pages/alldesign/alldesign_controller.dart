@@ -231,6 +231,250 @@ class AllDesignController extends GetxController{
         }
         break;
         
+//kitchen
+      case "layout":
+        {
+          list.clear();
+          list.add(ItemFilter("L-shape", Colors.black, 'false'));
+          list.add(ItemFilter("U-shape", Colors.black, 'false'));
+          list.add(ItemFilter("Galley", Colors.black, 'false'));
+          list.add(ItemFilter("Single-wall", Colors.black, 'false'));
+        }
+        break;
+
+      case "type":
+        {
+          list.clear();
+          list.add(ItemFilter("Kitchen/dining", Colors.black, 'false'));
+          list.add(ItemFilter("Great Room", Colors.black, 'false'));
+          list.add(ItemFilter("Enclosed", Colors.black, 'false'));
+          list.add(ItemFilter("Kitchen Pantry", Colors.black, 'false'));
+        }
+        break;
+
+      case "numberofislands":
+        {
+          list.clear();
+          list.add(ItemFilter("None", Colors.black, 'false'));
+          list.add(ItemFilter("Peninsula", Colors.black, 'false'));
+          list.add(ItemFilter("1", Colors.black, 'false'));
+          list.add(ItemFilter("2+", Colors.black, 'false'));
+        }
+        break;
+
+      case "cabinetstyle":
+        {
+          list.clear();
+          list.add(ItemFilter("Shaker", Colors.black, 'false'));
+          list.add(ItemFilter("Flat-panel", Colors.black, 'false'));
+          list.add(ItemFilter("Recessed-panel", Colors.black, 'false'));
+          list.add(ItemFilter("Raised-Panel", Colors.black, 'false'));
+          list.add(ItemFilter("Beaded Inset", Colors.black, 'false'));
+          list.add(ItemFilter("Glass-front", Colors.black, 'false'));
+          list.add(ItemFilter("Open", Colors.black, 'false'));
+          list.add(ItemFilter("Louvered", Colors.black, 'false'));
+        }
+        break;
+
+      case "cabinetfinish":
+        {
+          list.clear();
+          list.add(ItemFilter("Beige", Colors.black, 'false'));
+          list.add(ItemFilter("Black", Colors.black, 'false'));
+          list.add(ItemFilter("Blue", Colors.black, 'false'));
+          list.add(ItemFilter("Brown", Colors.black, 'false'));
+          list.add(ItemFilter("Dark Wood", Colors.black, 'false'));
+          list.add(ItemFilter("Distressed", Colors.black, 'false'));
+          list.add(ItemFilter("Gray", Colors.black, 'false'));
+          list.add(ItemFilter("Green", Colors.black, 'false'));
+          list.add(ItemFilter("Light Wood", Colors.black, 'false'));
+          list.add(ItemFilter("Medium Wood", Colors.black, 'false'));
+          list.add(ItemFilter("Orange", Colors.black, 'false'));
+          list.add(ItemFilter("Pink", Colors.black, 'false'));
+          list.add(ItemFilter("Purple", Colors.black, 'false'));
+          list.add(ItemFilter("Red", Colors.black, 'false'));
+          list.add(ItemFilter("Stainless", Colors.black, 'false'));
+          list.add(ItemFilter("Turquoise", Colors.black, 'false'));
+          list.add(ItemFilter("White", Colors.black, 'false'));
+        }
+        break;
+
+      case "countermaterial":
+        {
+          list.clear();
+          list.add(ItemFilter("Granite", Colors.black, 'false'));
+          list.add(ItemFilter("Engineered Quartz", Colors.black, 'false'));
+          list.add(ItemFilter("Quartzite", Colors.black, 'false'));
+          list.add(ItemFilter("Marble", Colors.black, 'false'));
+          list.add(ItemFilter("Solid Surface", Colors.black, 'false'));
+          list.add(ItemFilter("Wood", Colors.black, 'false'));
+          list.add(ItemFilter("Laminate", Colors.black, 'false'));
+          list.add(ItemFilter("Soapstone", Colors.black, 'false'));
+          list.add(ItemFilter("Stainless Steel", Colors.black, 'false'));
+          list.add(ItemFilter("Concrete", Colors.black, 'false'));
+          list.add(ItemFilter("Limestone", Colors.black, 'false'));
+          list.add(ItemFilter("Tile", Colors.black, 'false'));
+          list.add(ItemFilter("Glass", Colors.black, 'false'));
+          list.add(ItemFilter("Onyx", Colors.black, 'false'));
+          list.add(ItemFilter("Recycled Glass", Colors.black, 'false'));
+          list.add(ItemFilter("Terrazzo", Colors.black, 'false'));
+          list.add(ItemFilter("Copper", Colors.black, 'false'));
+          list.add(ItemFilter("Zinc", Colors.black, 'false'));
+        }
+        break;
+
+      case "countercolor":
+        {
+          list.clear();
+          list.add(ItemFilter("White", Colors.black, 'false'));
+          list.add(ItemFilter("Gray", Colors.black, 'false'));
+          list.add(ItemFilter("Black", Colors.black, 'false'));
+          list.add(ItemFilter("Beige", Colors.black, 'false'));
+          list.add(ItemFilter("Multi", Colors.black, 'false'));
+          list.add(ItemFilter("Brown", Colors.black, 'false'));
+          list.add(ItemFilter("Green", Colors.black, 'false'));
+          list.add(ItemFilter("Blue", Colors.black, 'false'));
+          list.add(ItemFilter("Yellow", Colors.black, 'false'));
+          list.add(ItemFilter("Red", Colors.black, 'false'));
+          list.add(ItemFilter("Turquoise", Colors.black, 'false'));
+          list.add(ItemFilter("Orange", Colors.black, 'false'));
+          list.add(ItemFilter("Pink", Colors.black, 'false'));
+          list.add(ItemFilter("Purple", Colors.black, 'false'));
+        }
+        break;
+
+      case "backsplashcolor":
+        {
+          list.clear();
+          list.add(ItemFilter("Beige", Colors.black, 'false'));
+          list.add(ItemFilter("Black", Colors.black, 'false'));
+          list.add(ItemFilter("Blue", Colors.black, 'false'));
+          list.add(ItemFilter("Brown", Colors.black, 'false'));
+          list.add(ItemFilter("Gray", Colors.black, 'false'));
+          list.add(ItemFilter("Green", Colors.black, 'false'));
+          list.add(ItemFilter("Metallic", Colors.black, 'false'));
+          list.add(ItemFilter("Multi", Colors.black, 'false'));
+          list.add(ItemFilter("Orange", Colors.black, 'false'));
+          list.add(ItemFilter("Pink", Colors.black, 'false'));
+          list.add(ItemFilter("Red", Colors.black, 'false'));
+          list.add(ItemFilter("White", Colors.black, 'false'));
+          list.add(ItemFilter("Yellow", Colors.black, 'false'));
+        }
+        break;
+
+      case "backsplashmaterial":
+        {
+          list.clear();
+          list.add(ItemFilter("Ceramic Tile", Colors.black, 'false'));
+          list.add(ItemFilter("Subway Tile", Colors.black, 'false'));
+          list.add(ItemFilter("Glass Tile", Colors.black, 'false'));
+          list.add(ItemFilter("Stone Tile", Colors.black, 'false'));
+          list.add(ItemFilter("Porcelain Tile", Colors.black, 'false'));
+          list.add(ItemFilter("Stone Slab", Colors.black, 'false'));
+          list.add(ItemFilter("Mosaic Tile", Colors.black, 'false'));
+          list.add(ItemFilter("Marble", Colors.black, 'false'));
+          list.add(ItemFilter("Glass Sheet", Colors.black, 'false'));
+          list.add(ItemFilter("Engineered Quartz", Colors.black, 'false'));
+          list.add(ItemFilter("Matchstick Tile", Colors.black, 'false'));
+          list.add(ItemFilter("Cement Tile", Colors.black, 'false'));
+          list.add(ItemFilter("Wood", Colors.black, 'false'));
+          list.add(ItemFilter("Metal Tile", Colors.black, 'false'));
+          list.add(ItemFilter("Mirror", Colors.black, 'false'));
+          list.add(ItemFilter("Brick", Colors.black, 'false'));
+          list.add(ItemFilter("Travertine", Colors.black, 'false'));
+          list.add(ItemFilter("Granite", Colors.black, 'false'));
+          list.add(ItemFilter("Terra-cotta Tile", Colors.black, 'false'));
+          list.add(ItemFilter("Window", Colors.black, 'false'));
+          list.add(ItemFilter("Limestone", Colors.black, 'false'));
+          list.add(ItemFilter("Slate", Colors.black, 'false'));
+          list.add(ItemFilter("Shiplap", Colors.black, 'false'));
+        }
+        break;
+
+      case "appliancefinish":
+        {
+          list.clear();
+          list.add(ItemFilter("Stainless Steel", Colors.black, 'false'));
+          list.add(ItemFilter("Panel", Colors.black, 'false'));
+          list.add(ItemFilter("Black", Colors.black, 'false'));
+          list.add(ItemFilter("White", Colors.black, 'false'));
+          list.add(ItemFilter("Color", Colors.black, 'false'));
+        }
+        break;
+
+      case "sink":
+        {
+          list.clear();
+          list.add(ItemFilter("Undermount", Colors.black, 'false'));
+          list.add(ItemFilter("Farmhouse", Colors.black, 'false'));
+          list.add(ItemFilter("Double-bowl", Colors.black, 'false'));
+          list.add(ItemFilter("Drop-in", Colors.black, 'false'));
+          list.add(ItemFilter("Single-bowl", Colors.black, 'false'));
+          list.add(ItemFilter("Integrated", Colors.black, 'false'));
+          list.add(ItemFilter("Triple-bowl", Colors.black, 'false'));
+        }
+        break;
+
+      case "floormaterial":
+        {
+          list.clear();
+          list.add(ItemFilter("Medium Hardwood", Colors.black, 'false'));
+          list.add(ItemFilter("Light Hardwood", Colors.black, 'false'));
+          list.add(ItemFilter("Dark Hardwood", Colors.black, 'false'));
+          list.add(ItemFilter("Porcelain Tile", Colors.black, 'false'));
+          list.add(ItemFilter("Ceramic Tile", Colors.black, 'false'));
+          list.add(ItemFilter("Vinyl", Colors.black, 'false'));
+          list.add(ItemFilter("Laminate", Colors.black, 'false'));
+          list.add(ItemFilter("Concrete", Colors.black, 'false'));
+          list.add(ItemFilter("Travertine", Colors.black, 'false'));
+          list.add(ItemFilter("Marble", Colors.black, 'false'));
+          list.add(ItemFilter("Limestone", Colors.black, 'false'));
+          list.add(ItemFilter("Slate", Colors.black, 'false'));
+          list.add(ItemFilter("Cement Tile", Colors.black, 'false'));
+          list.add(ItemFilter("Terra-cotta Tile", Colors.black, 'false'));
+          list.add(ItemFilter("Linoleum", Colors.black, 'false'));
+          list.add(ItemFilter("Bamboo", Colors.black, 'false'));
+          list.add(ItemFilter("Painted Wood", Colors.black, 'false'));
+          list.add(ItemFilter("Cork", Colors.black, 'false'));
+          list.add(ItemFilter("Brick", Colors.black, 'false'));
+          list.add(ItemFilter("Plywood", Colors.black, 'false'));
+          list.add(ItemFilter("Terrazzo", Colors.black, 'false'));
+          list.add(ItemFilter("Carpet", Colors.black, 'false'));
+        }
+        break;
+
+      case "floorcolor":
+        {
+          list.clear();
+          list.add(ItemFilter("Beige", Colors.black, 'false'));
+          list.add(ItemFilter("Black", Colors.black, 'false'));
+          list.add(ItemFilter("Blue", Colors.black, 'false'));
+          list.add(ItemFilter("Brown", Colors.black, 'false'));
+          list.add(ItemFilter("Gray", Colors.black, 'false'));
+          list.add(ItemFilter("Green", Colors.black, 'false'));
+          list.add(ItemFilter("Multi", Colors.black, 'false'));
+          list.add(ItemFilter("Orange", Colors.black, 'false'));
+          list.add(ItemFilter("Pink", Colors.black, 'false'));
+          list.add(ItemFilter("Purple", Colors.black, 'false'));
+          list.add(ItemFilter("Red", Colors.black, 'false'));
+          list.add(ItemFilter("Turquoise", Colors.black, 'false'));
+          list.add(ItemFilter("White", Colors.black, 'false'));
+          list.add(ItemFilter("Yellow", Colors.black, 'false'));
+        }
+        break;
+
+      case "ceilingdesign":
+        {
+          list.clear();
+          list.add(ItemFilter("Coffered", Colors.black, 'false'));
+          list.add(ItemFilter("Exposed Beam", Colors.black, 'false'));
+          list.add(ItemFilter("Shiplap", Colors.black, 'false'));
+          list.add(ItemFilter("Tray", Colors.black, 'false'));
+          list.add(ItemFilter("Vaulted", Colors.black, 'false'));
+          list.add(ItemFilter("Wallpaper", Colors.black, 'false'));
+          list.add(ItemFilter("Wood", Colors.black, 'false'));
+        }
+        break;
     }
     if (mapFilter.containsKey(key)) {
       final itemFilterPick = mapFilter[key];
