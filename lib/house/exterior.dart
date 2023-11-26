@@ -14,6 +14,7 @@ class Exterior extends House{
 
   Exterior(
       String id,
+      String token,
       String title,
       String content,
       List<String> images,
@@ -23,6 +24,7 @@ class Exterior extends House{
       String size,
       DateTime timestamp,
       String room,
+      List<String> userlike,
   {
     this.numberofstories,
     this.sidingmaterial,
@@ -33,12 +35,13 @@ class Exterior extends House{
     this.roofcolor,
     this.buildingtype
   }
-      ):super(id,title,content,images,style,budget,color,size,timestamp,room);
+      ):super(id,token,title,content,images,style,budget,color,size,timestamp,room,userlike);
 
   factory Exterior.fromFirestore(DocumentSnapshot<Map<String,dynamic>> snapshot,SnapshotOptions? options){
     final data = snapshot.data();
     return Exterior(
       data?['id']??"",
+      data?['token']??"",
       data?['title']??"",
       data?['content']??"",
       List<String>.from(data?['images'] ?? []),
@@ -48,6 +51,7 @@ class Exterior extends House{
       data?['size']??"",
       (data?['timestamp'] as Timestamp).toDate(),
       data?['room']??"",
+      List<String>.from(data?['userlike'] ?? []),
       numberofstories: data?['numberofstories'],
       sidingmaterial: data?['sidingmaterial'],
       sidingtype: data?['sidingtype'],
@@ -62,6 +66,7 @@ class Exterior extends House{
   Map<String, dynamic> toFirestore() {
     return {
       'id': super.id ?? "",
+      'token':super.token??"",
       'title': super.title ?? "",
       'content': super.content ?? "",
       'images': List<String>.from(super.images ?? []),
@@ -71,6 +76,7 @@ class Exterior extends House{
       'size': super.size ?? "",
       'timestamp':super.timestamp,
       'room':super.room,
+      'userlike': List<String>.from(super.userlike ?? []),
       'numberofstories': numberofstories ?? null,
       'sidingmaterial': sidingmaterial ?? "",
       'sidingtype': sidingtype ?? "",

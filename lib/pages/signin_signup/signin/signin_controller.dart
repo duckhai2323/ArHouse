@@ -1,10 +1,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
+import 'package:thietthach_app/documentObject/user.dart';
 
 import '../../../routes/names.dart';
 
 class SignInController extends GetxController{
+  static late UserClient profile;
   var obscureText_ = true.obs;
   final db = FirebaseFirestore.instance;
 
@@ -38,6 +40,17 @@ class SignInController extends GetxController{
               id = data?['id']??"";
               image = data?['image']??"";
               username = data?['username']??"";
+              profile = UserClient(
+                data?['id']??"",
+                data?['image']??"",
+                data?['fullname']??"",
+                data?['username']??"",
+                data?['birthday']??"",
+                data?['email']??"",
+                data?['password']??"",
+                data?['numberphone']??"",
+                data?['position']??"",
+              );
             }
             Get.toNamed(AppRoutes.APPLICATION,parameters: {"position":position??"","id":id??"","image":image??"","username":username??""});
           } else {

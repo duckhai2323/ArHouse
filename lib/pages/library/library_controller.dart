@@ -22,7 +22,7 @@ class LibraryController extends GetxController{
     Get.toNamed(AppRoutes.ALLDESIGN);
   }
 
-  void HandleCategory(){
-
+  void HandleDesignDetail(String room){
+    Get.toNamed(AppRoutes.ALLDESIGN,parameters: {'room':room});
   }
 }

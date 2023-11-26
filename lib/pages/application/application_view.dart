@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:thietthach_app/pages/application/application_controller.dart';
+import 'package:thietthach_app/pages/application/favorite/favorite_page.dart';
 import 'package:thietthach_app/pages/application/home/home_view.dart';
 
 import '../../colors/colors.dart';
@@ -21,7 +22,7 @@ class ApplicationPage extends GetView<ApplicationController>{
           },
           children: [
             HomePage(),
-            Center(child: Text('Notification'),),
+            FavoritePage(),
             Center(child: Text('Home'),),
             Center(child: Text('Like'),),
             Center(child: Text('Profile'),),

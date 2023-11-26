@@ -11,6 +11,7 @@ import 'package:image_picker/image_picker.dart';
 import '../../../documentObject/user.dart';
 
 class SignUpController extends GetxController {
+
   final firebaseAuth = FirebaseAuth.instance;
   final firebase = FirebaseFirestore.instance;
   var obscureText1_ = true.obs;
@@ -68,7 +69,7 @@ class SignUpController extends GetxController {
     final snapshot = await uploadTask!.whenComplete(() => {});
     final url = await snapshot.ref.getDownloadURL();
     String documentId = firebase.collection("users").doc().id;
-    var data  = UserClient(documentId,url, fullName, birthday, email, password, numberPhone, "client");
+    var data  = UserClient(documentId,url, fullName,"", birthday, email, password, numberPhone, "client");
     await firebase.collection('users').withConverter(
       fromFirestore: UserClient.fromFirestore,
       toFirestore: (UserClient userdata, options)=>userdata.toFirestore(),

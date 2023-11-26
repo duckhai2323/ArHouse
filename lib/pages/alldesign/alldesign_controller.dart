@@ -5,8 +5,10 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:thietthach_app/colors/colors.dart';
+import 'package:thietthach_app/documentObject/favoriteitem.dart';
 import 'package:thietthach_app/house/house.dart';
 import 'package:thietthach_app/pages/alldesign/itemfilter.dart';
+import 'package:thietthach_app/pages/application/application_controller.dart';
 import 'package:thietthach_app/routes/names.dart';
 
 import '../../house/exterior.dart';
@@ -18,10 +20,16 @@ class AllDesignController extends GetxController{
   final db = FirebaseFirestore.instance;
   var listener;
   Map<String,ItemFilter> mapFilter = <String,ItemFilter>{}.obs;
+  late String room;
   @override
   void onInit(){
     super.onInit();
+    room = Get.parameters['room']??"";
     ConstListFiler();
+    if(room!=""){
+      mapFilter['room'] = ItemFilter(room??"",AppColors.backgroundIntro , "true");
+      SetlistFilter0(room);
+    }
     GetData();
   }
 
@@ -255,7 +263,7 @@ class AllDesignController extends GetxController{
             maxChildSize: 0.8,
             builder: (BuildContext context, ScrollController scrollController){
               return Container(
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(15),
@@ -270,7 +278,7 @@ class AllDesignController extends GetxController{
                     Container(
                       height: 50,
                       padding: const EdgeInsets.only(left: 15,right: 15,top: 15),
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                           borderRadius: BorderRadius.only(
                             topLeft: Radius.circular(15),
                             topRight: Radius.circular(15),
@@ -284,7 +292,7 @@ class AllDesignController extends GetxController{
                             onTap: (){
                               Navigator.pop(context);
                             },
-                            child: Text(
+                            child: const Text(
                               'Close',
                               style: TextStyle(
                                 color: Colors.black,
@@ -296,7 +304,7 @@ class AllDesignController extends GetxController{
 
                           Text(
                             title,
-                            style: TextStyle(
+                            style: const TextStyle(
                               color: Colors.black,
                               fontWeight: FontWeight.w600,
                               fontSize: 19,
@@ -307,7 +315,7 @@ class AllDesignController extends GetxController{
                             onTap: (){
                               Navigator.pop(context);
                             },
-                            child: Text(
+                            child: const Text(
                               'Complete',
                               style: TextStyle(
                                 color: AppColors.backgroundIntro,
@@ -330,38 +338,7 @@ class AllDesignController extends GetxController{
                         itemBuilder: (_,index){
                           return InkWell(
                             onTap: (){
-                              switch(list[index].text){
-                                case "Kitchen":{
-                                  ConstListFiler();
-                                  listFilter0.add(ItemFilter('Layout',Colors.black,"layout"));
-                                  listFilter0.add(ItemFilter('Type',Colors.black,"type"));
-                                  listFilter0.add(ItemFilter('Number of Islands',Colors.black,"numberofislands"));
-                                  listFilter0.add(ItemFilter('Cabinet Style',Colors.black,"cabinetstyle"));
-                                  listFilter0.add(ItemFilter('Cabinet Finish',Colors.black,"cabinetfinish"));
-                                  listFilter0.add(ItemFilter('Counter Material',Colors.black,"countermaterial"));
-                                  listFilter0.add(ItemFilter('Counter Color',Colors.black,"countercolor"));
-                                  listFilter0.add(ItemFilter('Backplash Material',Colors.black,"blackpashmaterial"));
-                                  listFilter0.add(ItemFilter('Appliance Finish',Colors.black,"appliance"));
-                                  listFilter0.add(ItemFilter('Sink',Colors.black,"sink"));
-                                  listFilter0.add(ItemFilter('Floor Material',Colors.black,"floormaterial"));
-                                  listFilter0.add(ItemFilter('Floor Color',Colors.black,"floorcolor"));
-                                  listFilter0.add(ItemFilter('Ceiling Design',Colors.black,"ceiling"));
-                                }
-                                break;
-
-                                case "Exterior":{
-                                  ConstListFiler();
-                                  listFilter0.add(ItemFilter('Number of Stories',Colors.black,"numberofstories"));
-                                  listFilter0.add(ItemFilter('Siding Material',Colors.black,"sidingmaterial"));
-                                  listFilter0.add(ItemFilter('Siding Type',Colors.black,"sidingtype"));
-                                  listFilter0.add(ItemFilter('House Color',Colors.black,"housecolor"));
-                                  listFilter0.add(ItemFilter('Roof Type',Colors.black,"rooftype"));
-                                  listFilter0.add(ItemFilter('Roof Material',Colors.black,"roofmaterial"));
-                                  listFilter0.add(ItemFilter('Roof Color',Colors.black,"roofcolor"));
-                                  listFilter0.add(ItemFilter('Building Type',Colors.black,"buidingtype"));
-                                }
-                                break;
-                              }
+                              SetlistFilter0(list[index].text!);
                               if(mapFilter.containsKey(key)){
                                 ItemFilter object2 = ItemFilter(mapFilter[key]?.text,Colors.black,"false");
                                 int temp = list.indexOf(mapFilter[key]!);
@@ -419,7 +396,7 @@ class AllDesignController extends GetxController{
                         child: Center(
                           child: Text(
                             'Deselect \"${title}\"',
-                             style: TextStyle(
+                             style: const TextStyle(
                                color: Color.fromRGBO(99, 99, 99, 1),
                                fontSize: 19,
                                fontWeight: FontWeight.w500
@@ -435,6 +412,41 @@ class AllDesignController extends GetxController{
           );
         }
     );
+  }
+
+  void SetlistFilter0(String category){
+    switch(category){
+      case "Kitchen":{
+        ConstListFiler();
+        listFilter0.add(ItemFilter('Layout',Colors.black,"layout"));
+        listFilter0.add(ItemFilter('Type',Colors.black,"type"));
+        listFilter0.add(ItemFilter('Number of Islands',Colors.black,"numberofislands"));
+        listFilter0.add(ItemFilter('Cabinet Style',Colors.black,"cabinetstyle"));
+        listFilter0.add(ItemFilter('Cabinet Finish',Colors.black,"cabinetfinish"));
+        listFilter0.add(ItemFilter('Counter Material',Colors.black,"countermaterial"));
+        listFilter0.add(ItemFilter('Counter Color',Colors.black,"countercolor"));
+        listFilter0.add(ItemFilter('Backplash Material',Colors.black,"blackpashmaterial"));
+        listFilter0.add(ItemFilter('Appliance Finish',Colors.black,"appliance"));
+        listFilter0.add(ItemFilter('Sink',Colors.black,"sink"));
+        listFilter0.add(ItemFilter('Floor Material',Colors.black,"floormaterial"));
+        listFilter0.add(ItemFilter('Floor Color',Colors.black,"floorcolor"));
+        listFilter0.add(ItemFilter('Ceiling Design',Colors.black,"ceiling"));
+      }
+      break;
+
+      case "Exterior":{
+        ConstListFiler();
+        listFilter0.add(ItemFilter('Number of Stories',Colors.black,"numberofstories"));
+        listFilter0.add(ItemFilter('Siding Material',Colors.black,"sidingmaterial"));
+        listFilter0.add(ItemFilter('Siding Type',Colors.black,"sidingtype"));
+        listFilter0.add(ItemFilter('House Color',Colors.black,"housecolor"));
+        listFilter0.add(ItemFilter('Roof Type',Colors.black,"rooftype"));
+        listFilter0.add(ItemFilter('Roof Material',Colors.black,"roofmaterial"));
+        listFilter0.add(ItemFilter('Roof Color',Colors.black,"roofcolor"));
+        listFilter0.add(ItemFilter('Building Type',Colors.black,"buidingtype"));
+      }
+      break;
+    }
   }
 
   void MapRemoveKey(String key){
@@ -454,5 +466,27 @@ class AllDesignController extends GetxController{
 
   void HandleDesgnDetail(String id){
     Get.toNamed(AppRoutes.DESIGNDETAIL,parameters: {"id":id});
+  }
+
+  void ClickItemHeart(int index) async {
+    final itemData = listData[index];
+    if(listData[index].userlike.contains(ApplicationController.id)){
+      itemData.userlike.remove(ApplicationController.id);
+      listData.insert(index,itemData);
+      listData.removeAt(index+1);
+      await db.collection("users").doc(ApplicationController.id).collection("favorite_designs").doc(itemData.token).delete();
+    }else {
+      itemData.userlike.add(ApplicationController.id);
+      listData.insert(index,itemData);
+      listData.removeAt(index+1);
+      final favoriterItem = FavoriteItem(itemData.token,listData[index].id, listData[index].images[0],"", DateTime.now());
+      await db.collection("users").doc(ApplicationController.id).collection("favorite_designs").withConverter(
+          fromFirestore: FavoriteItem.fromFirestore,
+          toFirestore: (FavoriteItem favoriteItem, options) => favoriteItem.toFirestore()
+      ).doc(itemData.token).set(favoriterItem);
+    }
+    await db.collection("projects").doc(listData[index].token).update({
+      "userlike":List<String>.from(itemData.userlike ?? []),
+    });
   }
 }
