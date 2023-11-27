@@ -179,8 +179,8 @@ class HomePage extends GetView<HomeController>{
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Padding(
-              padding: const EdgeInsets.only(left: 10.0,right: 10,top: 15),
+            /*const Padding(
+              padding: EdgeInsets.only(left: 10.0,right: 10,top: 15),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -207,18 +207,18 @@ class HomePage extends GetView<HomeController>{
                   Icon(Icons.arrow_forward_ios,size: 16,color: AppColors.backgroundIntro,)
                 ],
               ),
-            ),
+            ),*/
 
-            InforCompany(),
+            //InforCompany(),
 
-            Padding(
-              padding: const EdgeInsets.only(left: 10.0,right: 10,top: 10),
+            const Padding(
+              padding: EdgeInsets.only(left: 10.0,right: 10,top: 15),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Expanded(
                     child: Text(
-                      'Interior Design',
+                      'Shop by Department',
                       style: TextStyle(
                           color: Colors.black,
                           fontSize: 18,
@@ -249,9 +249,9 @@ class HomePage extends GetView<HomeController>{
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Expanded(
+                  const Expanded(
                     child: Text(
-                      'Shop by Department',
+                      'Interior Design',
                       style: TextStyle(
                           color: Colors.black,
                           fontSize: 18,
@@ -260,22 +260,27 @@ class HomePage extends GetView<HomeController>{
                     ),
                   ),
 
-                  Text(
-                    'See All',
-                    style: TextStyle(
-                      color: AppColors.backgroundIntro,
-                      fontSize: 16,
-                      fontWeight: FontWeight.w500,
+                  InkWell(
+                    onTap: (){
+                      controller.HandleAllDesign();
+                    },
+                    child: const Text(
+                      'See All',
+                      style: TextStyle(
+                        color: AppColors.backgroundIntro,
+                        fontSize: 16,
+                        fontWeight: FontWeight.w500,
+                      ),
                     ),
                   ),
 
-                  Icon(Icons.arrow_forward_ios,size: 16,color: AppColors.backgroundIntro,)
+                  const Icon(Icons.arrow_forward_ios,size: 16,color: AppColors.backgroundIntro,)
                 ],
               ),
             ),
 
             //ShopDepartment(),
-            InteriorList(),
+            const InteriorList(),
             BlogList(),
           ],
         ),
