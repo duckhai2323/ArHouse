@@ -52,7 +52,7 @@ class ApplicationController extends GetxController{
         backgroundColor: Colors.transparent,
       ),
 
-      const BottomNavigationBarItem(
+      /*const BottomNavigationBarItem(
         icon: Icon(
           CupertinoIcons.chat_bubble_text,
           color: Colors.grey,
@@ -67,21 +67,21 @@ class ApplicationController extends GetxController{
 
         label: 'Chat',
         backgroundColor: Colors.transparent,
-      ),
+      ),*/
 
       const BottomNavigationBarItem(
         icon: Icon(
-          Icons.notifications_active_outlined,
+          Icons.phone_in_talk_outlined,
           color: Colors.grey,
           size: 25,
         ),
 
         activeIcon: Icon(
-          Icons.notifications_active,
+          Icons.phone_in_talk,
           color: AppColors.backgroundIntro,
           size: 25,
         ),
-        label: 'Thông báo',
+        label: 'Hotline',
         backgroundColor: Colors.transparent,
       ),
 

@@ -21,7 +21,7 @@ class HomePage extends GetView<HomeController>{
         automaticallyImplyLeading: false,
         backgroundColor:AppColors.backgroundColor,
         bottom: PreferredSize(
-          preferredSize: Size.fromHeight(100),
+          preferredSize: const Size.fromHeight(70),
           child: Container(
             color: Colors.grey.withOpacity(0.3),
             height: 1,
@@ -53,7 +53,7 @@ class HomePage extends GetView<HomeController>{
                             borderRadius: BorderRadius.circular(13),
                             borderSide: const BorderSide(color: AppColors.searchColor),
                           ),
-                          hintText: 'Tìm kiếm môn học',
+                          hintText: 'Search',
                           hintStyle: const TextStyle(color: AppColors.iconColor,fontWeight: FontWeight.w500,),
                         ),
                       ),
@@ -77,67 +77,67 @@ class HomePage extends GetView<HomeController>{
                     onTap: (){
                       controller.HandlePageLibrary();
                     },
-                    child: Column(
+                    child: const Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Image(
                           image: AssetImage('assets/images/logo1.png'),
-                          height: 48,
-                          width: 48,
+                          height: 45,
+                          width: 45,
                           alignment: Alignment.center,
                           fit: BoxFit.fill,
                         ),
 
-                        Text(
+                        /*Text(
                           'Library',
                           style: TextStyle(
                               fontSize: 16,
                               fontWeight: FontWeight.w500
                           ),
-                        ),
+                        ),*/
                       ],
                     ),
                   ),
 
-                  Column(
+                  const Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Image(
                         image: AssetImage('assets/images/logo2.png'),
-                        height: 48,
-                        width: 48,
+                        height: 45,
+                        width: 45,
                         alignment: Alignment.center,
                         fit: BoxFit.fill,
                       ),
 
-                      Text(
+                      /*Text(
                           'Expenses',
                         style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.w500
                         ),
-                      ),
+                      ),*/
                     ],
                   ),
 
-                  Column(
+                  const Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Image(
                         image: AssetImage('assets/images/logo3.png'),
-                        height: 48,
-                        width: 48,
+                        height: 45,
+                        width: 45,
                         alignment: Alignment.center,
                         fit: BoxFit.fill,
                       ),
 
-                      Text(
+                      /*Text(
                           'Products',
                         style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.w500
                         ),
-                      ),
+                      ),*/
                     ],
                   ),
 
@@ -145,24 +145,24 @@ class HomePage extends GetView<HomeController>{
                     onTap: (){
                       controller.HandleKnowledge();
                     },
-                    child: Column(
+                    child: const Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Image(
                           image: AssetImage('assets/images/logo4.png'),
-                          height: 48,
-                          width: 48,
+                          height: 45,
+                          width: 45,
                           alignment: Alignment.center,
                           fit: BoxFit.fill,
                         ),
 
-                        Text(
+                        /*Text(
                             'Discussion',
                           style: TextStyle(
                               fontSize: 16,
                               fontWeight: FontWeight.w500
                           ),
-                        ),
+                        ),*/
                       ],
                     ),
                   ),

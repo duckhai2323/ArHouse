@@ -14,6 +14,7 @@ import 'package:thietthach_app/pages/design_detail/comment.dart';
 import 'package:thietthach_app/pages/design_detail/header_widget.dart';
 
 import '../../documentObject/comment.dart';
+import '../../documentObject/favoriteitem.dart';
 import '../../house/house.dart';
 import '../../routes/names.dart';
 import 'displayimage_dialog.dart';
@@ -50,6 +51,9 @@ class DesignDetailController extends GetxController{
 
     if(data.docs.isNotEmpty){
       houseData.add(data.docs[0].data());
+    }
+    if(houseData[0].userlike.contains(ApplicationController.id)){
+      checkSave.value = true;
     }
     date.value = DateFormat.yMMMMd('en_US').format(houseData[0].timestamp!);
   }
@@ -224,14 +228,6 @@ class DesignDetailController extends GetxController{
     );
   }
 
-  void ClickSave(){
-    if(checkSave.isTrue){
-      checkSave.value = false;
-    } else{
-      checkSave.value = true;
-    }
-  }
-
   void HandleImageView(int index){
     List<String> images = houseData[0].images;
     Get.toNamed(AppRoutes.IMAGEVIEW,arguments:{'images':images, 'index':index});
@@ -241,6 +237,26 @@ class DesignDetailController extends GetxController{
     Navigator.pop(context);
     checkShowDialog.value = false;
     Get.toNamed(AppRoutes.VIEWALLPHOTOS,parameters: {'id':id??"",'room':houseData[0].room??""});
+  }
+
+  void ClickItemHeart() async {
+    final itemData = houseData[0];
+    if(checkSave.isTrue){
+      itemData.userlike.remove(ApplicationController.id);
+      await db.collection("users").doc(ApplicationController.id).collection("favorite_designs").doc(itemData.token).delete();
+      checkSave.value = false;
+    }else {
+      itemData.userlike.add(ApplicationController.id);
+      final favoriterItem = FavoriteItem(itemData.token,itemData.id, itemData.images[0],"", DateTime.now());
+      await db.collection("users").doc(ApplicationController.id).collection("favorite_designs").withConverter(
+          fromFirestore: FavoriteItem.fromFirestore,
+          toFirestore: (FavoriteItem favoriteItem, options) => favoriteItem.toFirestore()
+      ).doc(itemData.token).set(favoriterItem);
+      checkSave.value = true;
+    }
+    await db.collection("projects").doc(itemData.token).update({
+      "userlike":List<String>.from(itemData.userlike ?? []),
+    });
   }
 
 }
