@@ -1,6 +1,9 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
+import 'package:thietthach_app/pages/application/application_controller.dart';
 import 'package:thietthach_app/pages/news/listimage.dart';
 import 'package:thietthach_app/pages/news/listnews.dart';
 import 'package:thietthach_app/pages/news/news_controller.dart';
@@ -11,7 +14,7 @@ class NewsPage extends GetView<NewsController>{
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
+    return Obx(() => controller.delay.isFalse?SafeArea(
       child: Scaffold(
         appBar:AppBar(
           automaticallyImplyLeading: false,
@@ -43,18 +46,18 @@ class NewsPage extends GetView<NewsController>{
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Image(
-                image: const AssetImage('assets/images/2.jpg'),
+                image: CachedNetworkImageProvider(controller.newsData.images[0]),
                 width: MediaQuery.of(context).size.width,
                 height: 200,
                 alignment: Alignment.center,
                 fit: BoxFit.cover,
               ),
 
-              const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 20,vertical: 10),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 10),
                 child: Text(
-                  'Khai mac giai cau long mo rong df sse aaa eee www ff ',
-                  style: TextStyle(
+                  controller.newsData.title!,
+                  style: const TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.w500,
                     color: Colors.black,
@@ -65,11 +68,11 @@ class NewsPage extends GetView<NewsController>{
               ),
               const Divider(),
 
-              const Padding(
-                padding: EdgeInsets.symmetric(vertical: 5,horizontal: 10),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 5,horizontal: 10),
                 child: Text(
-                  'Nhớ nhất là khi tôi lên năm tuổi, anh trai đã đưa tôi đi câu cá ở con sông gần làng. Đây là lần đầu tiên tôi được đi câu cá. Chính vì vậy, tôi cảm thấy rất háo hức. Đầu tiên, hai anh em đã đi ra vườn để đào giun đất làm mồi câu. Sau đó, cả hai cùng nhau ra sông câu cá. Anh Tùng đã dạy tôi cách gắn mồi câu, cách câu cá. Khi nhìn anh làm, tôi cảm thấy vô cùng khâm phục. Anh trai của tôi thật giỏi. Chúng tôi đã ngồi câu rất lâu.',
-                  style: TextStyle(
+                  controller.newsData.content!,
+                  style: const TextStyle(
                     fontSize: 16,
                     color: Colors.black,
                   ),
@@ -77,7 +80,7 @@ class NewsPage extends GetView<NewsController>{
               ),
 
               ListImage(),
-              
+
               const Padding(
                 padding: EdgeInsets.symmetric(horizontal: 10),
                 child: Divider(),
@@ -88,8 +91,8 @@ class NewsPage extends GetView<NewsController>{
                 child: Text(
                   'ArHouse Group',
                   style: TextStyle(
-                    fontSize: 17,
-                    color: Colors.black
+                      fontSize: 17,
+                      color: Colors.black
                   ),
                 ),
               ),
@@ -145,12 +148,12 @@ class NewsPage extends GetView<NewsController>{
                   mainAxisSize: MainAxisSize.max,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Row(
+                    Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Expanded(
+                        const Expanded(
                           child: Text(
-                            'Comments 26',
+                            'Comments',
                             style: TextStyle(
                                 color: Colors.black,
                                 fontSize: 18,
@@ -159,16 +162,21 @@ class NewsPage extends GetView<NewsController>{
                           ),
                         ),
 
-                        Text(
-                          'See All',
-                          style: TextStyle(
-                            color: AppColors.backgroundIntro,
-                            fontSize: 16,
-                            fontWeight: FontWeight.w500,
+                        InkWell(
+                          onTap: (){
+                            controller.HandleComment();
+                          },
+                          child: const Text(
+                            'See All',
+                            style: TextStyle(
+                              color: AppColors.backgroundIntro,
+                              fontSize: 16,
+                              fontWeight: FontWeight.w500,
+                            ),
                           ),
                         ),
 
-                        Icon(Icons.arrow_forward_ios,size: 16,color: AppColors.backgroundIntro,)
+                        const Icon(Icons.arrow_forward_ios,size: 16,color: AppColors.backgroundIntro,)
                       ],
                     ),
 
@@ -177,26 +185,31 @@ class NewsPage extends GetView<NewsController>{
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        const CircleAvatar(
-                          radius: 23,
-                          backgroundImage: AssetImage('assets/images/avatar0.jpg')
+                        CircleAvatar(
+                            radius: 23,
+                            backgroundImage: CachedNetworkImageProvider(ApplicationController.image),
                         ),
                         Expanded(
-                          child: Container(
-                            height: 40,
-                            width: MediaQuery.of(context).size.width,
-                            margin: const EdgeInsets.only(left: 15,top: 10,bottom: 15),
-                            padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 10),
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(5),
-                              color: const Color.fromRGBO(244, 244, 244, 1),
-                            ),
-                            child: const Text(
-                              'Comment...',
-                              style: TextStyle(
-                                color: AppColors.iconColor,
-                                fontSize: 14,
-                                fontWeight: FontWeight.w500,
+                          child: InkWell(
+                            onTap: (){
+                              controller.HandleComment();
+                            },
+                            child: Container(
+                              height: 40,
+                              width: MediaQuery.of(context).size.width,
+                              margin: const EdgeInsets.only(left: 15,top: 10,bottom: 15),
+                              padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 10),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(5),
+                                color: const Color.fromRGBO(244, 244, 244, 1),
+                              ),
+                              child: const Text(
+                                'Comment...',
+                                style: TextStyle(
+                                  color: AppColors.iconColor,
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w500,
+                                ),
                               ),
                             ),
                           ),
@@ -228,6 +241,15 @@ class NewsPage extends GetView<NewsController>{
           ),
         ),
       ),
-    );
+    ):SafeArea(
+      child: Scaffold(
+        body: Center(
+          child: Container(
+            margin: const EdgeInsets.only(top: 40),
+            child: const CircularProgressIndicator(),
+          ),
+        ),
+      ),
+    ));
   }
 }

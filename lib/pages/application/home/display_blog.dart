@@ -142,7 +142,7 @@ class BlogList extends GetView<HomeController>{
 
                   InkWell(
                     onTap: (){
-                      Get.toNamed(AppRoutes.NEWS);
+                      Get.toNamed(AppRoutes.NEWS,parameters: {'id':controller.listNews[index].id!});
                     },
                     child: Container(
                       color: AppColors.backgroundColor,
@@ -229,39 +229,44 @@ class BlogList extends GetView<HomeController>{
                     ),
                   ),
 
-                  Container(
-                    color: AppColors.backgroundColor,
-                    width: MediaQuery.of(context).size.width,
-                    padding: const EdgeInsets.symmetric(horizontal: 15),
-                    height: 68,
-                    child:  Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        CircleAvatar(
-                            radius: 22,
-                            backgroundImage: CachedNetworkImageProvider(ApplicationController.image!)
-                        ),
-                        Expanded(
-                          child: Container(
-                            height: 40,
-                            width: MediaQuery.of(context).size.width,
-                            margin: const EdgeInsets.only(left: 15,top: 10,bottom: 15),
-                            padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 10),
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(5),
-                              color: const Color.fromRGBO(244, 244, 244, 1),
-                            ),
-                            child: const Text(
-                              'Comment...',
-                              style: TextStyle(
-                                color: AppColors.iconColor,
-                                fontSize: 14,
-                                fontWeight: FontWeight.w500,
+                  InkWell(
+                    onTap: (){
+                      controller.HandleComment(controller.listNews[index].id!);
+                    },
+                    child: Container(
+                      color: AppColors.backgroundColor,
+                      width: MediaQuery.of(context).size.width,
+                      padding: const EdgeInsets.symmetric(horizontal: 15),
+                      height: 68,
+                      child:  Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          CircleAvatar(
+                              radius: 22,
+                              backgroundImage: CachedNetworkImageProvider(ApplicationController.image!)
+                          ),
+                          Expanded(
+                            child: Container(
+                              height: 40,
+                              width: MediaQuery.of(context).size.width,
+                              margin: const EdgeInsets.only(left: 15,top: 10,bottom: 15),
+                              padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 10),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(5),
+                                color: const Color.fromRGBO(244, 244, 244, 1),
+                              ),
+                              child: const Text(
+                                'Comment...',
+                                style: TextStyle(
+                                  color: AppColors.iconColor,
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w500,
+                                ),
                               ),
                             ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
 

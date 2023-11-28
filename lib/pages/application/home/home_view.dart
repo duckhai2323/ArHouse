@@ -21,7 +21,7 @@ class HomePage extends GetView<HomeController>{
         automaticallyImplyLeading: false,
         backgroundColor:AppColors.backgroundColor,
         bottom: PreferredSize(
-          preferredSize: const Size.fromHeight(70),
+          preferredSize: const Size.fromHeight(65),
           child: Container(
             color: Colors.grey.withOpacity(0.3),
             height: 1,
@@ -35,9 +35,9 @@ class HomePage extends GetView<HomeController>{
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Expanded(
+                  /*Expanded(
                     child: Padding(
-                      padding: const EdgeInsets.only(top: 10,bottom: 15,left: 10,right: 10),
+                      padding: const EdgeInsets.only(top: 15,bottom: 15,left: 10,right: 10),
                       child: TextField(
                         style: TextStyle(fontSize: 16),
                         decoration: InputDecoration(
@@ -55,6 +55,30 @@ class HomePage extends GetView<HomeController>{
                           ),
                           hintText: 'Search',
                           hintStyle: const TextStyle(color: AppColors.iconColor,fontWeight: FontWeight.w500,),
+                        ),
+                      ),
+                    ),
+                  ),*/
+                  const Padding(
+                    padding: EdgeInsets.only(left: 15),
+                    child: Icon(Icons.search,color: AppColors.iconColor,size: 30,),
+                  ),
+                  Expanded(
+                    child: Container(
+                      height: 38,
+                      width: MediaQuery.of(context).size.width,
+                      margin: const EdgeInsets.only(left: 10,top: 10,bottom: 15,right: 10),
+                      padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 10),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(5),
+                        color: AppColors.searchColor,
+                      ),
+                      child: const Text(
+                        'Search...',
+                        style: TextStyle(
+                          color: AppColors.iconColor,
+                          fontSize: 16,
+                          fontWeight: FontWeight.w500,
                         ),
                       ),
                     ),
@@ -82,8 +106,8 @@ class HomePage extends GetView<HomeController>{
                       children: [
                         Image(
                           image: AssetImage('assets/images/logo1.png'),
-                          height: 45,
-                          width: 45,
+                          height: 43,
+                          width: 43,
                           alignment: Alignment.center,
                           fit: BoxFit.fill,
                         ),
@@ -104,8 +128,8 @@ class HomePage extends GetView<HomeController>{
                     children: [
                       Image(
                         image: AssetImage('assets/images/logo2.png'),
-                        height: 45,
-                        width: 45,
+                        height: 43,
+                        width: 43,
                         alignment: Alignment.center,
                         fit: BoxFit.fill,
                       ),
@@ -125,8 +149,8 @@ class HomePage extends GetView<HomeController>{
                     children: [
                       Image(
                         image: AssetImage('assets/images/logo3.png'),
-                        height: 45,
-                        width: 45,
+                        height: 43,
+                        width: 43,
                         alignment: Alignment.center,
                         fit: BoxFit.fill,
                       ),
@@ -150,8 +174,8 @@ class HomePage extends GetView<HomeController>{
                       children: [
                         Image(
                           image: AssetImage('assets/images/logo4.png'),
-                          height: 45,
-                          width: 45,
+                          height: 43,
+                          width: 43,
                           alignment: Alignment.center,
                           fit: BoxFit.fill,
                         ),

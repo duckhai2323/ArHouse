@@ -48,6 +48,15 @@ class HomeController extends GetxController{
             }
             break;
           case DocumentChangeType.modified:
+            if(change.doc.data()!=null) {
+              News news = change.doc.data()!;
+              for(int i = 0; i < listNews.length; i++){
+                if(listNews[i].id == news.id){
+                  listNews.insert(i, news);
+                  listNews.removeAt(i+1);
+                }
+              }
+            }
             break;
           case DocumentChangeType.removed:
             break;
@@ -82,5 +91,9 @@ class HomeController extends GetxController{
 
   void HandleDesignDetail(String room){
     Get.toNamed(AppRoutes.ALLDESIGN,parameters: {'room':room});
+  }
+
+  void HandleComment(String id_blog){
+    Get.toNamed(AppRoutes.COMMENT,parameters: {'id':id_blog});
   }
 }

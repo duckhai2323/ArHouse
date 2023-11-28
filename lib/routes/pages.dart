@@ -3,6 +3,8 @@ import 'package:thietthach_app/pages/alldesign/alldesign_bidings.dart';
 import 'package:thietthach_app/pages/alldesign/alldesign_view.dart';
 import 'package:thietthach_app/pages/application/application_bindings.dart';
 import 'package:thietthach_app/pages/chat/chat_view.dart';
+import 'package:thietthach_app/pages/commentblog/comment_bindings.dart';
+import 'package:thietthach_app/pages/commentblog/comment_view.dart';
 import 'package:thietthach_app/pages/design_detail/designdetail_bindings.dart';
 import 'package:thietthach_app/pages/design_detail/designdetail_view.dart';
 import 'package:thietthach_app/pages/design_detail/image_view/imageview_bindings.dart';
@@ -91,6 +93,12 @@ class AppPages {
       name: AppRoutes.NEWS,
       page: ()=>NewsPage(),
       binding: NewsBindings(),
+    ),
+
+    GetPage(
+      name: AppRoutes.COMMENT,
+      page: ()=>CommentPage(),
+      binding: CommentBindings(),
     ),
   ];
 }
