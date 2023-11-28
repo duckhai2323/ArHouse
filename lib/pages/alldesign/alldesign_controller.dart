@@ -131,6 +131,38 @@ class AllDesignController extends GetxController{
           list.add(ItemFilter("Expansive", Colors.black, "false"));
         }
         break;
+
+      case "budget":
+        {
+          list.clear();
+          list.add(ItemFilter("$", Colors.black, "false"));
+          list.add(ItemFilter("$$", Colors.black, "false"));
+          list.add(ItemFilter("$$$", Colors.black, "false"));
+          list.add(ItemFilter("$$$$", Colors.black, "false"));
+        }
+        break;
+
+      case "color":
+        {
+          list.clear();
+          list.add(ItemFilter("Red", Colors.black, 'false'));
+          list.add(ItemFilter("Orange", Colors.black, 'false'));
+          list.add(ItemFilter("Wood Tones", Colors.black, 'false'));
+          list.add(ItemFilter("Yellow", Colors.black, 'false'));
+          list.add(ItemFilter("Green", Colors.black, 'false'));
+          list.add(ItemFilter("Turquoise", Colors.black, 'false'));
+          list.add(ItemFilter("Blue", Colors.black, 'false'));
+          list.add(ItemFilter("Violet", Colors.black, 'false'));
+          list.add(ItemFilter("Pink", Colors.black, 'false'));
+          list.add(ItemFilter("Black & White", Colors.black, 'false'));
+          list.add(ItemFilter("Black", Colors.black, 'false'));
+          list.add(ItemFilter("Gray", Colors.black, 'false'));
+          list.add(ItemFilter("White", Colors.black, 'false'));
+          list.add(ItemFilter("Beige", Colors.black, 'false'));
+          list.add(ItemFilter("Brown", Colors.black, 'false'));
+          list.add(ItemFilter("Clear", Colors.black, 'false'));
+        }
+        break;
 //exterior
       case "numberofstories":
         {
