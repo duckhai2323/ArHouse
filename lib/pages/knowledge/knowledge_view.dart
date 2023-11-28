@@ -20,13 +20,20 @@ class KnowledgePage extends GetView<KnowledgeController>{
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          title: Text('Knowledge House'),
-          backgroundColor: AppColors.backgroundIntro,
+          leading: InkWell(
+             onTap: (){
+               Navigator.pop(context);
+             },
+              child: const Icon(Icons.arrow_back_ios,color: Colors.white,
+              ),
+          ),
+          title: const Text('Knowledge House',style: TextStyle(color: Colors.white,fontSize: 18,fontWeight: FontWeight.w500),),
+          backgroundColor: AppColors.logoColor,
         ),
         body: SingleChildScrollView(
           scrollDirection: Axis.vertical,
-          child: Obx(() => controller.loading.isTrue?Padding(
-            padding: const EdgeInsets.only(top: 15),
+          child: Obx(() => controller.loading.isTrue?const Padding(
+            padding: EdgeInsets.only(top: 15),
             child: Center(child: CircularProgressIndicator()),
           ):Column(
             mainAxisAlignment: MainAxisAlignment.start,
@@ -53,7 +60,7 @@ class KnowledgePage extends GetView<KnowledgeController>{
             padding: const EdgeInsets.only(left: 15, top: 15,bottom: 15),
             child: Text(
               title,
-              style: TextStyle(
+              style: const TextStyle(
                 fontWeight: FontWeight.w500,
                 fontSize: 18
               ),
@@ -77,8 +84,8 @@ class KnowledgePage extends GetView<KnowledgeController>{
                   }
                 },
                 child: Container(
-                  margin: EdgeInsets.only(bottom: 15,left: 15,right: 15),
-                  padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                  margin: const EdgeInsets.only(bottom: 15,left: 15,right: 15),
+                  padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
                   width: MediaQuery.of(context).size.width,
                   height: 120,
                   decoration: BoxDecoration(
@@ -123,7 +130,7 @@ class KnowledgePage extends GetView<KnowledgeController>{
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Padding(
-                              padding: EdgeInsets.only(left: 10),
+                              padding: const EdgeInsets.only(left: 10),
                               child: Text(
                                 maxLines: 2,
                                 overflow: TextOverflow.ellipsis,
@@ -170,7 +177,7 @@ class KnowledgePage extends GetView<KnowledgeController>{
           Center(
             child: Transform.rotate(
               angle: 90*pi/180,
-              child: Icon(
+              child: const Icon(
                 Icons.arrow_forward_ios,
                 size: 25,
                 color: AppColors.iconColor,
@@ -178,7 +185,7 @@ class KnowledgePage extends GetView<KnowledgeController>{
             ),
           ),
 
-          SizedBox(height: 10,),
+          const SizedBox(height: 10,),
         ],
       ),
     );

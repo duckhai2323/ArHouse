@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:thietthach_app/pages/application/application_controller.dart';
 import 'package:thietthach_app/pages/application/favorite/favorite_page.dart';
 import 'package:thietthach_app/pages/application/home/home_view.dart';
+import 'package:thietthach_app/pages/application/hotline/hotline_view.dart';
 
 import '../../colors/colors.dart';
 
@@ -23,8 +24,7 @@ class ApplicationPage extends GetView<ApplicationController>{
           children: [
             HomePage(),
             FavoritePage(),
-            Center(child: Text('Home'),),
-            Center(child: Text('Like'),),
+            HotlinePage(),
             Center(child: Text('Profile'),),
           ],
         ),

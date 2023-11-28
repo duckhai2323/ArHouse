@@ -9,4 +9,6 @@ class AppRoutes {
   static const SIGNIN = '/signin';
   static const SIGNUP = '/signup';
   static const KNOWLEDGE = '/knowledge';
+  static const NEWS = '/news';
+  static const COMMENT = '/comment';
 }

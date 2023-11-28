@@ -21,7 +21,7 @@ class HomePage extends GetView<HomeController>{
         automaticallyImplyLeading: false,
         backgroundColor:AppColors.backgroundColor,
         bottom: PreferredSize(
-          preferredSize: Size.fromHeight(100),
+          preferredSize: const Size.fromHeight(65),
           child: Container(
             color: Colors.grey.withOpacity(0.3),
             height: 1,
@@ -35,9 +35,9 @@ class HomePage extends GetView<HomeController>{
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Expanded(
+                  /*Expanded(
                     child: Padding(
-                      padding: const EdgeInsets.only(top: 10,bottom: 15,left: 10,right: 10),
+                      padding: const EdgeInsets.only(top: 15,bottom: 15,left: 10,right: 10),
                       child: TextField(
                         style: TextStyle(fontSize: 16),
                         decoration: InputDecoration(
@@ -53,8 +53,32 @@ class HomePage extends GetView<HomeController>{
                             borderRadius: BorderRadius.circular(13),
                             borderSide: const BorderSide(color: AppColors.searchColor),
                           ),
-                          hintText: 'Tìm kiếm môn học',
+                          hintText: 'Search',
                           hintStyle: const TextStyle(color: AppColors.iconColor,fontWeight: FontWeight.w500,),
+                        ),
+                      ),
+                    ),
+                  ),*/
+                  const Padding(
+                    padding: EdgeInsets.only(left: 15),
+                    child: Icon(Icons.search,color: AppColors.iconColor,size: 30,),
+                  ),
+                  Expanded(
+                    child: Container(
+                      height: 38,
+                      width: MediaQuery.of(context).size.width,
+                      margin: const EdgeInsets.only(left: 10,top: 10,bottom: 15,right: 10),
+                      padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 10),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(5),
+                        color: AppColors.searchColor,
+                      ),
+                      child: const Text(
+                        'Search...',
+                        style: TextStyle(
+                          color: AppColors.iconColor,
+                          fontSize: 16,
+                          fontWeight: FontWeight.w500,
                         ),
                       ),
                     ),
@@ -77,67 +101,67 @@ class HomePage extends GetView<HomeController>{
                     onTap: (){
                       controller.HandlePageLibrary();
                     },
-                    child: Column(
+                    child: const Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Image(
                           image: AssetImage('assets/images/logo1.png'),
-                          height: 48,
-                          width: 48,
+                          height: 43,
+                          width: 43,
                           alignment: Alignment.center,
                           fit: BoxFit.fill,
                         ),
 
-                        Text(
+                        /*Text(
                           'Library',
                           style: TextStyle(
                               fontSize: 16,
                               fontWeight: FontWeight.w500
                           ),
-                        ),
+                        ),*/
                       ],
                     ),
                   ),
 
-                  Column(
+                  const Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Image(
                         image: AssetImage('assets/images/logo2.png'),
-                        height: 48,
-                        width: 48,
+                        height: 43,
+                        width: 43,
                         alignment: Alignment.center,
                         fit: BoxFit.fill,
                       ),
 
-                      Text(
+                      /*Text(
                           'Expenses',
                         style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.w500
                         ),
-                      ),
+                      ),*/
                     ],
                   ),
 
-                  Column(
+                  const Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Image(
                         image: AssetImage('assets/images/logo3.png'),
-                        height: 48,
-                        width: 48,
+                        height: 43,
+                        width: 43,
                         alignment: Alignment.center,
                         fit: BoxFit.fill,
                       ),
 
-                      Text(
+                      /*Text(
                           'Products',
                         style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.w500
                         ),
-                      ),
+                      ),*/
                     ],
                   ),
 
@@ -145,24 +169,24 @@ class HomePage extends GetView<HomeController>{
                     onTap: (){
                       controller.HandleKnowledge();
                     },
-                    child: Column(
+                    child: const Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Image(
                           image: AssetImage('assets/images/logo4.png'),
-                          height: 48,
-                          width: 48,
+                          height: 43,
+                          width: 43,
                           alignment: Alignment.center,
                           fit: BoxFit.fill,
                         ),
 
-                        Text(
+                        /*Text(
                             'Discussion',
                           style: TextStyle(
                               fontSize: 16,
                               fontWeight: FontWeight.w500
                           ),
-                        ),
+                        ),*/
                       ],
                     ),
                   ),
@@ -179,8 +203,8 @@ class HomePage extends GetView<HomeController>{
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Padding(
-              padding: const EdgeInsets.only(left: 10.0,right: 10,top: 15),
+            /*const Padding(
+              padding: EdgeInsets.only(left: 10.0,right: 10,top: 15),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -207,18 +231,18 @@ class HomePage extends GetView<HomeController>{
                   Icon(Icons.arrow_forward_ios,size: 16,color: AppColors.backgroundIntro,)
                 ],
               ),
-            ),
+            ),*/
 
-            InforCompany(),
+            //InforCompany(),
 
-            Padding(
-              padding: const EdgeInsets.only(left: 10.0,right: 10,top: 10),
+            const Padding(
+              padding: EdgeInsets.only(left: 10.0,right: 10,top: 15),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Expanded(
                     child: Text(
-                      'Interior Design',
+                      'Shop by Department',
                       style: TextStyle(
                           color: Colors.black,
                           fontSize: 18,
@@ -249,9 +273,9 @@ class HomePage extends GetView<HomeController>{
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Expanded(
+                  const Expanded(
                     child: Text(
-                      'Shop by Department',
+                      'Interior Design',
                       style: TextStyle(
                           color: Colors.black,
                           fontSize: 18,
@@ -260,22 +284,27 @@ class HomePage extends GetView<HomeController>{
                     ),
                   ),
 
-                  Text(
-                    'See All',
-                    style: TextStyle(
-                      color: AppColors.backgroundIntro,
-                      fontSize: 16,
-                      fontWeight: FontWeight.w500,
+                  InkWell(
+                    onTap: (){
+                      controller.HandleAllDesign();
+                    },
+                    child: const Text(
+                      'See All',
+                      style: TextStyle(
+                        color: AppColors.backgroundIntro,
+                        fontSize: 16,
+                        fontWeight: FontWeight.w500,
+                      ),
                     ),
                   ),
 
-                  Icon(Icons.arrow_forward_ios,size: 16,color: AppColors.backgroundIntro,)
+                  const Icon(Icons.arrow_forward_ios,size: 16,color: AppColors.backgroundIntro,)
                 ],
               ),
             ),
 
             //ShopDepartment(),
-            InteriorList(),
+            const InteriorList(),
             BlogList(),
           ],
         ),

@@ -1,8 +1,12 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
+import 'package:intl/intl.dart';
+import 'package:thietthach_app/pages/application/application_controller.dart';
+import 'package:thietthach_app/routes/names.dart';
 
 import '../../../colors/colors.dart';
 import 'home_controller.dart';
@@ -11,18 +15,20 @@ class BlogList extends GetView<HomeController>{
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return Obx(() => SizedBox(
       width: MediaQuery.of(context).size.width,
       child: ListView.builder(
           scrollDirection: Axis.vertical,
-          itemCount: 4,
+          itemCount: controller.listNews.length,
           shrinkWrap: true,
-          physics: NeverScrollableScrollPhysics(),
+          physics: const NeverScrollableScrollPhysics(),
           itemBuilder: (BuildContext contex,index){
             return  Container(
-              color: Color.fromRGBO(244, 244, 244, 1),
-              padding: EdgeInsets.only(top: 10),
-              height: 495,
+              color: const Color.fromRGBO(244, 244, 244, 1),
+              padding: const EdgeInsets.only(top: 15),
+              constraints: const BoxConstraints(
+              minHeight: 460,
+            ),
               width: MediaQuery.of(context).size.width,
               child: Column(
                 mainAxisSize: MainAxisSize.max,
@@ -32,11 +38,11 @@ class BlogList extends GetView<HomeController>{
                   Container(
                     color: AppColors.backgroundColor,
                     width: MediaQuery.of(context).size.width,
-                    padding: EdgeInsets.only(left: 15,top: 15,bottom: 15),
+                    padding: const EdgeInsets.only(left: 15,top: 15,bottom: 15),
                     height: 50,
                     child: Text(
-                      'Trending Story in Bathroom Of The Week',
-                      style: TextStyle(
+                      controller.listNews[index].theme!,
+                      style: const TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.w600,
                         color: Colors.black,
@@ -57,7 +63,7 @@ class BlogList extends GetView<HomeController>{
                           },
                           children: [
                             Image(
-                              image: AssetImage('assets/images/2.jpg'),
+                              image: CachedNetworkImageProvider(controller.listNews[index].images[0]),
                               width: MediaQuery.of(context).size.width,
                               height: 200,
                               alignment: Alignment.center,
@@ -65,7 +71,7 @@ class BlogList extends GetView<HomeController>{
                             ),
 
                             Image(
-                              image: AssetImage('assets/images/2.jpg'),
+                              image: CachedNetworkImageProvider(controller.listNews[index].images[1]),
                               width: MediaQuery.of(context).size.width,
                               height: 200,
                               alignment: Alignment.center,
@@ -73,7 +79,7 @@ class BlogList extends GetView<HomeController>{
                             ),
 
                             Image(
-                              image: AssetImage('assets/images/2.jpg'),
+                              image: CachedNetworkImageProvider(controller.listNews[index].images[2]),
                               width: MediaQuery.of(context).size.width,
                               height: 200,
                               alignment: Alignment.center,
@@ -81,7 +87,7 @@ class BlogList extends GetView<HomeController>{
                             ),
 
                             Image(
-                              image: AssetImage('assets/images/2.jpg'),
+                              image: CachedNetworkImageProvider(controller.listNews[index].images[3]),
                               width: MediaQuery.of(context).size.width,
                               height: 200,
                               alignment: Alignment.center,
@@ -113,7 +119,7 @@ class BlogList extends GetView<HomeController>{
                         child: Container(
                           width: 50,
                           height: 50,
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                               color: Color.fromRGBO(73, 73, 73, 0.7),
                               shape: BoxShape.circle
                           ),
@@ -134,17 +140,22 @@ class BlogList extends GetView<HomeController>{
                     ],
                   )),
 
-                  Container(
-                    color: AppColors.backgroundColor,
-                    width: MediaQuery.of(context).size.width,
-                    height: 65,
-                    padding: EdgeInsets.symmetric(horizontal: 15,vertical: 10),
-                    child: Text(
-                      'Bathroom of the Week: Clean Modern Style for a Master Bath',
-                      style: TextStyle(
-                        fontSize: 17,
-                        fontWeight: FontWeight.w700,
-                        color: Colors.black,
+                  InkWell(
+                    onTap: (){
+                      Get.toNamed(AppRoutes.NEWS,parameters: {'id':controller.listNews[index].id!});
+                    },
+                    child: Container(
+                      color: AppColors.backgroundColor,
+                      width: MediaQuery.of(context).size.width,
+                      height: 65,
+                      padding: const EdgeInsets.symmetric(horizontal: 15,vertical: 10),
+                      child: Text(
+                       controller.listNews[index].title!,
+                        style: const TextStyle(
+                          fontSize: 17,
+                          fontWeight: FontWeight.w700,
+                          color: Colors.black,
+                        ),
                       ),
                     ),
                   ),
@@ -152,10 +163,10 @@ class BlogList extends GetView<HomeController>{
                   Container(
                     color: AppColors.backgroundColor,
                     width: MediaQuery.of(context).size.width,
-                    padding: EdgeInsets.only(left: 15,bottom: 5),
+                    padding: const EdgeInsets.only(left: 15,bottom: 5),
                     child: Text(
-                      'ngay 3 thang 11, 2020',
-                      style: TextStyle(
+                      DateFormat.yMMMMd('en_US').format(controller.listNews[index].timestamp!),
+                      style: const TextStyle(
                           fontSize: 14,
                           color: Colors.black,
                           fontWeight: FontWeight.w500
@@ -167,7 +178,7 @@ class BlogList extends GetView<HomeController>{
                     color: AppColors.backgroundColor,
                     width: MediaQuery.of(context).size.width,
                     padding: const EdgeInsets.symmetric(horizontal: 15),
-                    child: Divider(
+                    child: const Divider(
                     ),
                   ),
 
@@ -175,8 +186,8 @@ class BlogList extends GetView<HomeController>{
                     color: AppColors.backgroundColor,
                     width: MediaQuery.of(context).size.width,
                     padding: const EdgeInsets.only(left: 15),
-                    child: Text(
-                      'Comments 27',
+                    child: const Text(
+                      'Comments',
                       style: TextStyle(
                           fontSize: 14,
                           color: Colors.black,
@@ -185,56 +196,76 @@ class BlogList extends GetView<HomeController>{
                     ),
                   ),
 
-                  Container(
-                    color: AppColors.backgroundColor,
-                    width: MediaQuery.of(context).size.width,
-                    padding: const EdgeInsets.symmetric(horizontal: 15),
-                    child: RichText(
-                      maxLines: 2,
-                      overflow: TextOverflow.ellipsis,
-                      text: TextSpan(
-                          style: DefaultTextStyle.of(context).style,
-                          children: <TextSpan>[
-                            TextSpan(
-                              text: 'KaiTaiYou26 ',
-                              style: TextStyle(
-                                color: Colors.black,
-                                fontWeight: FontWeight.w700,
-                                fontSize: 15,
+                  Visibility(
+                    visible: (controller.listNews[index].last_username!=""),
+                    child: Container(
+                      color: AppColors.backgroundColor,
+                      width: MediaQuery.of(context).size.width,
+                      padding: const EdgeInsets.symmetric(horizontal: 15),
+                      child: RichText(
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                        text: TextSpan(
+                            style: DefaultTextStyle.of(context).style,
+                            children: <TextSpan>[
+                              TextSpan(
+                                text: controller.listNews[index].last_username,
+                                style: const TextStyle(
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.w700,
+                                  fontSize: 15,
+                                ),
                               ),
-                            ),
-                            TextSpan(
-                              text: "of the printing and typesetting hhh hhh hhhh hhhh hhhh hhh hhh vvv industry fsnfsnfnsfns sfnskfnsnf",
-                              style: TextStyle(
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w500,
-                                  color: Colors.black
+                              TextSpan(
+                                text: ': ${controller.listNews[index].last_comment}',
+                                style: const TextStyle(
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w500,
+                                    color: Colors.black
+                                ),
                               ),
-                            ),
-                          ]),
+                            ]),
+                      ),
                     ),
                   ),
 
-                  Container(
-                    color: AppColors.backgroundColor,
-                    width: MediaQuery.of(context).size.width,
-                    height: 65,
+                  InkWell(
+                    onTap: (){
+                      controller.HandleComment(controller.listNews[index].id!);
+                    },
                     child: Container(
-                      height: 40,
+                      color: AppColors.backgroundColor,
                       width: MediaQuery.of(context).size.width,
-                      margin: EdgeInsets.only(left: 15,right: 15,top: 10,bottom: 15),
-                      padding: EdgeInsets.symmetric(horizontal: 10,vertical: 10),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(5),
-                        color: Color.fromRGBO(244, 244, 244, 1),
-                      ),
-                      child: Text(
-                        'Comment...',
-                        style: TextStyle(
-                          color: AppColors.iconColor,
-                          fontSize: 14,
-                          fontWeight: FontWeight.w500,
-                        ),
+                      padding: const EdgeInsets.symmetric(horizontal: 15),
+                      height: 68,
+                      child:  Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          CircleAvatar(
+                              radius: 22,
+                              backgroundImage: CachedNetworkImageProvider(ApplicationController.image!)
+                          ),
+                          Expanded(
+                            child: Container(
+                              height: 40,
+                              width: MediaQuery.of(context).size.width,
+                              margin: const EdgeInsets.only(left: 15,top: 10,bottom: 15),
+                              padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 10),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(5),
+                                color: const Color.fromRGBO(244, 244, 244, 1),
+                              ),
+                              child: const Text(
+                                'Comment...',
+                                style: TextStyle(
+                                  color: AppColors.iconColor,
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w500,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                   ),
@@ -244,6 +275,6 @@ class BlogList extends GetView<HomeController>{
             );
           }
       ),
-    );
+    ));
   }
 }

@@ -60,6 +60,16 @@ class AllDesignController extends GetxController{
             }
             break;
           case DocumentChangeType.modified:
+            if(change.doc.data()!=null){
+              House house = change.doc.data()!;
+              for(int i=0; i < listData.length;i++){
+                if(listData[i].id == house.id){
+                  listData.insert(i, house);
+                  listData.removeAt(i+1);
+                  return;
+                }
+              }
+            }
             break;
           case DocumentChangeType.removed:
             break;

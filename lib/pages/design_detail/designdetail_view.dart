@@ -124,7 +124,7 @@ class DesignDetailPage extends GetView<DesignDetailController>{
                     ),
 
                     InkWell(
-                      onTap: (){controller.ClickSave();},
+                      onTap: (){controller.ClickItemHeart(); print(controller.checkSave);},
                       child: Container(
                         width: 100,
                         height: 45,
