@@ -3,7 +3,10 @@ import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:thietthach_app/documentObject/inforitem.dart';
 import 'package:thietthach_app/house/exterior.dart';
+import 'package:thietthach_app/pages/application/application_controller.dart';
 
+import '../../../documentObject/msg.dart';
+import '../../../documentObject/user.dart';
 import '../../../house/house.dart';
 import '../../../routes/names.dart';
 
@@ -14,6 +17,8 @@ class ViewAllPhototsController extends GetxController{
   final dataHouse = [].obs;
   final db = FirebaseFirestore.instance;
   final delay = false.obs;
+  final dataUser = [].obs;
+  late UserClient to_user;
   List<InforItem> listInfor = <InforItem>[].obs;
 
   @override
@@ -38,6 +43,7 @@ class ViewAllPhototsController extends GetxController{
 
           if(data.docs.isNotEmpty){
             dataHouse.add(data.docs[0].data());
+            GetInforAdmin(dataHouse[0].admin);
           }
           listInfor.add(InforItem("Room",dataHouse[0].room));
           listInfor.add(InforItem("Number of Stories",dataHouse[0].numberofstories));
@@ -57,6 +63,43 @@ class ViewAllPhototsController extends GetxController{
         break;
     }
     delay.value = true;
+  }
+
+  Future<void> GetInforAdmin(String id) async {
+    final data = await db.collection("admins").withConverter(
+        fromFirestore: UserClient.fromFirestore,
+        toFirestore: (UserClient exterior, options) => exterior.toFirestore()
+    ).where("id",isEqualTo: id).get();
+
+    if(data.docs.isNotEmpty){
+      to_user = data.docs[0].data();
+    }
+  }
+
+  ClickItem(UserClient to_user) async {
+    String checkFist = 'false';
+    String doc_id="";
+
+    var from_messages = await db.collection("message").withConverter(
+        fromFirestore:Msg.fromFirestore,
+        toFirestore: (Msg msg, options) => msg.toFirestore()
+    ).where(
+        "from_uid", isEqualTo: ApplicationController.id
+    ).where("to_uid",isEqualTo: to_user.id).get();
+
+    var to_messages = await db.collection("message").withConverter(
+        fromFirestore:Msg.fromFirestore,
+        toFirestore: (Msg msg, options) => msg.toFirestore()
+    ).where(
+        "from_uid", isEqualTo: to_user.id
+    ).where("to_uid",isEqualTo: ApplicationController.id).get();
+
+    if(from_messages.docs.isNotEmpty || to_messages.docs.isNotEmpty){
+      checkFist = 'true';
+      if(from_messages.docs.isNotEmpty){doc_id = from_messages.docs.first.id;}
+      if(to_messages.docs.isNotEmpty){doc_id = to_messages.docs.first.id;}
+    }
+    Get.toNamed(AppRoutes.CHAT,parameters: {"to_uid": to_user.id??"","to_name":to_user.username??"","to_avatar":to_user.image??"","check_first":checkFist??"","doc_id":doc_id??""});
   }
 
   void ShowInformation(){

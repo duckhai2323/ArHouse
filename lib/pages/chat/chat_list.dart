@@ -11,36 +11,29 @@ import 'chat_right_item.dart';
 class ChatList extends GetView<ChatController>{
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return Obx(()=>Container(
       padding: const EdgeInsets.only(bottom: 80),
       child: CustomScrollView(
-        //controller: controller.msgScrolling,
+        controller: controller.msgScrolling,
         reverse: true,
         slivers: [
-          SliverPadding(padding: EdgeInsets.all(0),
+          SliverPadding(
+            padding: const EdgeInsets.all(0),
             sliver: SliverList(
               delegate: SliverChildBuilderDelegate(
                     (context, index){
-                  /*if(controller.listContent[index].uid == controller.user_id){
+                  if(controller.listContent[index].uid == controller.user_id){
                     return ChatRightItem(controller.listContent[index].content.toString());
                   }else {
                     return ChatLeftItem(controller.listContent[index].content.toString(),controller.to_avatar.toString());
-                  }*/
-                      Random random = Random();
-                      int x  = random.nextInt(2) +1;
-                      if(x == 1) {
-                        return ChatRightItem('anh co o do ko a');
-                      } else {
-                        return ChatLeftItem('ko em a! anh ve r','aa');
-                      }
+                  }
                 },
-                //childCount: controller.listContent.length,
-                childCount: 6,
+                childCount: controller.listContent.length,
               ),
             ),
           ),
         ],
       ),
-    );
+    ));
   }
 }

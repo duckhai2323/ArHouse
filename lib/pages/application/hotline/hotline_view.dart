@@ -1,19 +1,20 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
+import 'package:thietthach_app/documentObject/user.dart';
 import 'package:thietthach_app/pages/application/hotline/hotline_controller.dart';
 
 import '../../../colors/colors.dart';
 
 class HotlinePage extends GetView<HotlineController>{
-
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
+    return Obx(() => controller.delay.isFalse?SafeArea(
       child: Scaffold(
         appBar: AppBar(
           automaticallyImplyLeading: false,
-          backgroundColor:AppColors.logoColor,
+          backgroundColor:AppColors.backgroundColor,
           bottom: PreferredSize(
             preferredSize: const Size.fromHeight(10),
             child: Container(
@@ -27,26 +28,36 @@ class HotlinePage extends GetView<HotlineController>{
               style: TextStyle(
                 fontWeight: FontWeight.w500,
                 fontSize: 19,
-                color: AppColors.backgroundColor,
+                color: Colors.black,
               ),
             ),
           ),
         ),
-        body: Column(
+        body: Obx(()=>Column(
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment:MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            ItemHotline(context,"Nhan vien tu van", "0987678678"),
-            ItemHotline(context,"Nhan vien tu van", "0987678678"),
-            ItemHotline(context,"Nhan vien tu van", "0987678678"),
+            ItemHotline(context,"Construction consultant",controller.listConsultant.firstWhere((element) => element.position == "consultant1")),
+            ItemHotline(context,"Customer service",controller.listConsultant.firstWhere((element) => element.position == "consultant2")),
+            ItemHotline(context,"Warranty - maintenance",controller.listConsultant.firstWhere((element) => element.position == "consultant3")),
           ],
+        ),),
+      ),
+    )
+        :SafeArea(
+      child: Scaffold(
+        body: Center(
+          child: Container(
+            margin: const EdgeInsets.only(top: 40),
+            child: const CircularProgressIndicator(),
+          ),
         ),
       ),
-    );
+    ));
   }
 
-  Widget ItemHotline(BuildContext context,String title, String numberphone){
+  Widget ItemHotline(BuildContext context,String title,UserClient consultant){
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 15),
       width: MediaQuery.sizeOf(context).width,
@@ -68,22 +79,35 @@ class HotlinePage extends GetView<HotlineController>{
                 style: const TextStyle(
                   fontWeight: FontWeight.w500,
                   fontSize: 17,
-                  color: Colors.black,
+                  color: AppColors.backgroundIntro,
                 ),
               ),
 
-              const Icon(
-                CupertinoIcons.chat_bubble_text_fill,
-                color: AppColors.backgroundIntro,
-                size: 30,
+              InkWell(
+                onTap: (){
+                  controller.ClickItem(consultant);
+                },
+                child: const Icon(
+                  CupertinoIcons.chat_bubble_text_fill,
+                  color: AppColors.backgroundIntro,
+                  size: 30,
+                ),
               ),
             ],
           ),
 
-          const SizedBox(height: 5,),
 
           Text(
-            numberphone,
+            consultant.username!,
+            style: const TextStyle(
+                color: Colors.black,
+                fontSize: 17,
+                fontWeight: FontWeight.w500,
+            ),
+          ),
+
+          Text(
+            consultant.numberphone!,
             style: const TextStyle(
               color: AppColors.iconColor
             ),

@@ -26,7 +26,7 @@ class SignInPage extends GetView<SignInController>{
           ),
           title: const Center(
             child: Text(
-              'Đăng nhập / Đăng ký',
+              'Sign In / Sign Up',
               style: TextStyle(
                   color: Colors.black,
                   fontFamily: "Roboto-Medium",
@@ -100,7 +100,7 @@ class SignInPage extends GetView<SignInController>{
                     controller.HandleApplication(text1Controller.text,text2Controller.text);
                   },
                   child: Container(
-                    margin: const EdgeInsets.symmetric(horizontal: 25),
+                    margin: const EdgeInsets.symmetric(horizontal: 25,vertical: 5),
                     height: 40,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(3),
@@ -116,7 +116,7 @@ class SignInPage extends GetView<SignInController>{
                     ),
                     child:const Center(
                       child: Text(
-                        'Đăng nhập',
+                        'Khách hàng',
                         style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
@@ -127,6 +127,37 @@ class SignInPage extends GetView<SignInController>{
                   ),
                 ),
 
+                InkWell(
+                  onTap: (){
+                    controller.HandleApplication(text1Controller.text,text2Controller.text);
+                  },
+                  child: Container(
+                    margin: const EdgeInsets.symmetric(horizontal: 25,vertical: 10),
+                    height: 40,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(3),
+                        color:AppColors.backgroundIntro,
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey.withOpacity(0.5),
+                            spreadRadius: 1,
+                            blurRadius: 2,
+                            offset: Offset(0,1),
+                          )
+                        ]
+                    ),
+                    child:const Center(
+                      child: Text(
+                        'Nhân viên',
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
                 Padding(
                   padding: const EdgeInsets.only(top: 5),
                   child: InkWell(

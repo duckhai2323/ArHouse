@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
@@ -19,9 +20,8 @@ class ChatAppBar extends GetView<ChatController>{
           Row(
             children: [
               CircleAvatar(
-                radius: 25,
-                // backgroundImage: CachedNetworkImageProvider("${controller.to_avatar}"),
-                backgroundImage: AssetImage('assets/images/yoona.jpg'),
+                radius: 26,
+                backgroundImage: CachedNetworkImageProvider(controller.to_avatar!),
               ),
 
               const SizedBox(width: 15,),
@@ -33,8 +33,7 @@ class ChatAppBar extends GetView<ChatController>{
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      //controller.to_name??"",
-                      'yoona',
+                      controller.to_name??"",
                       style: const TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.bold,

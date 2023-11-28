@@ -17,9 +17,9 @@ class AllDesignPage extends GetView<AllDesignController>{
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          leading: const Padding(
-            padding: EdgeInsets.only(top: 10),
-            child: Icon(Icons.arrow_back_ios),
+          leading: Padding(
+            padding: const EdgeInsets.only(top: 10),
+            child: InkWell(onTap:(){Navigator.pop(context);},child: const Icon(Icons.arrow_back_ios)),
           ),
           backgroundColor:AppColors.backgroundColor,
           bottom: PreferredSize(

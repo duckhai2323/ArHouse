@@ -1,6 +1,7 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
 import 'package:thietthach_app/pages/chat/chat_appbar.dart';
 
@@ -12,7 +13,7 @@ class ChatPage extends GetView<ChatController>{
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
+    return Obx(() => SafeArea(
       child: Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.white,
@@ -25,7 +26,9 @@ class ChatPage extends GetView<ChatController>{
             ),
           ),
           leading: InkWell(
-            onTap: (){},
+            onTap: (){
+              Navigator.pop(context);
+            },
             child: const Icon(
               Icons.arrow_back_ios,
               color: AppColors.backgroundIntro,
@@ -34,17 +37,27 @@ class ChatPage extends GetView<ChatController>{
           flexibleSpace: ChatAppBar(),
         ),
         body: ConstrainedBox(
-          constraints: BoxConstraints.expand(),
+          constraints: const BoxConstraints.expand(),
           child: Stack(
             children: [
               ChatList(),
               Positioned(
                 bottom: 5,
-                height: 50,
+                height: 65,
                 child: Container(
-                  height: 50,
+                  height: 65,
                   width: MediaQuery.of(context).size.width,
-                  color: Colors.transparent,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withOpacity(0.1), // Màu của đường bóng và độ trong suốt
+                        spreadRadius: 2, // Kích thước đường bóng
+                        blurRadius: 10, // Độ mờ của đường bóng
+                        offset: Offset(0, -3), // Độ dịch chuyển của đường bóng (0,-3 sẽ đẩy lên phía trên)
+                      ),
+                    ],
+                  ),
                   child: Padding(
                     padding: const EdgeInsets.only(left: 15),
                     child: Row(
@@ -52,100 +65,91 @@ class ChatPage extends GetView<ChatController>{
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Visibility(
-                          //visible: controller.visible.value,
-                          visible: true,
+                          visible: controller.visible.value,
                           child: const Icon(
                             Icons.add_circle,
-                            color: Colors.lightBlue,
+                            color: AppColors.backgroundIntro,
                             size: 30,
                           ),
                         ),
                         InkWell(
                           onTap: (){
-                            //controller.visible.value = true;
+                            controller.visible.value = true;
                           },
                           child: Visibility(
-                            //visible: !controller.visible.value,
-                            visible: true,
+                            visible: !controller.visible.value,
                             child: const Padding(
                               padding: EdgeInsets.only(right: 15),
                               child: Icon(
                                 Icons.arrow_forward_ios,
-                                color: Colors.lightBlue,
+                                color: AppColors.backgroundIntro,
                                 size: 25,
                               ),
                             ),
                           ),
                         ),
                         Visibility(
-                            //visible: controller.visible.value,
-                            visible: true,
-                            child: SizedBox(width: 20,)),
+                            visible: controller.visible.value,
+                            child: const SizedBox(width: 20,)),
                         Visibility(
-                          //visible: controller.visible.value,
-                          visible: true,
+                          visible: controller.visible.value,
                           child: const Icon(
                             Icons.camera_alt,
-                            color: Colors.lightBlue,
+                            color:AppColors.backgroundIntro,
                             size: 30,
                           ),
                         ),
                         Visibility(
-                            //visible: controller.visible.value,
-                            visible: true,
-                            child: SizedBox(width: 20,)
+                            visible: controller.visible.value,
+                            child: const SizedBox(width: 20,)
                         ),
                         Visibility(
-                          //visible: controller.visible.value,
-                          visible: true,
+                          visible: controller.visible.value,
                           child: const Icon(
                             Icons.image_rounded,
-                            color: Colors.lightBlue,
+                            color: AppColors.backgroundIntro,
                             size: 30,
                           ),
                         ),
                         Visibility(
-                            //visible: controller.visible.value,
-                            visible: true,
-                            child: SizedBox(width: 20,)
+                            visible: controller.visible.value,
+                            child: const SizedBox(width: 20,)
                         ),
                         Visibility(
-                          //visible: controller.visible.value,
-                          visible: true,
+                          visible: controller.visible.value,
                           child: const Icon(
                             Icons.mic,
-                            color: Colors.lightBlue,
+                            color: AppColors.backgroundIntro,
                             size: 30,
                           ),
                         ),
                         Visibility(
-                            //visible: controller.visible.value,
-                            visible: true,
-                            child: SizedBox(width: 20,)),
+                            visible: controller.visible.value,
+                            child: const SizedBox(width: 20,)),
                         Expanded(
                           child: Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 6),
+                            padding: const EdgeInsets.symmetric(vertical: 12),
                             child: TextField(
-                              //controller: messageText,
+                              controller: controller.messageText,
                               style: TextStyle(fontSize: 18),
                               decoration: InputDecoration(
                                 contentPadding: const EdgeInsets.only(top: 5,left: 10),
                                 filled: true,
                                 fillColor: Colors.grey.shade200,
-                                suffixIcon: Icon(Icons.insert_emoticon_rounded,color: Colors.lightBlue,size: 25,),
+                                suffixIcon: Icon(Icons.insert_emoticon_rounded,color: AppColors.backgroundIntro,size: 25,),
                                 enabledBorder: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(18),
                                   borderSide: BorderSide(color: Colors.grey.shade200,width: 1),
                                 ),
                                 focusedBorder:  OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(18),
-                                  borderSide: BorderSide(color: Colors.lightBlue),
+                                  borderSide: BorderSide(color: AppColors.backgroundIntro),
                                 ),
                                 hintText: 'Aa',
                                 hintStyle: const TextStyle(color: Colors.grey,fontWeight: FontWeight.bold,),
                               ),
                               onTap: (){
-                                //controller.visible.value = false;
+                                controller.visible.value = false;
                               },
                             ),
                           ),
@@ -153,28 +157,28 @@ class ChatPage extends GetView<ChatController>{
                         SizedBox(width: 20,),
                         InkWell(
                           onTap: (){
-                           /* String str = messageText.text.toString();
+                            String str = controller.messageText.text.toString();
                             if(str!=""){
                               controller.sendMessage(str);
                             }
-                            messageText.text = "";*/
+                            controller.messageText.text = "";
                           },
                           child: const Icon(
                             Icons.send,
-                            color: Colors.lightBlue,
+                            color: AppColors.backgroundIntro,
                             size: 25,
                           ),
                         ),
                         SizedBox(width: 15,),
                       ],
                     ),
-                    ),
                   ),
                 ),
+              ),
             ],
           ),
         ),
       ),
-    );
+    ));
   }
 }
