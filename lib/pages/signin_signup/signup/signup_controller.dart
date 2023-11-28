@@ -69,7 +69,7 @@ class SignUpController extends GetxController {
     final snapshot = await uploadTask!.whenComplete(() => {});
     final url = await snapshot.ref.getDownloadURL();
     String documentId = firebase.collection("users").doc().id;
-    var data  = UserClient(documentId,url, fullName,"", birthday, email, password, numberPhone, "client");
+    var data  = UserClient(documentId,url, fullName,"", birthday, email, password, numberPhone, "client","","");
     await firebase.collection('users').withConverter(
       fromFirestore: UserClient.fromFirestore,
       toFirestore: (UserClient userdata, options)=>userdata.toFirestore(),

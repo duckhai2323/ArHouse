@@ -135,10 +135,10 @@ class AllDesignController extends GetxController{
       case "budget":
         {
           list.clear();
-          list.add(ItemFilter("$", Colors.black, "false"));
-          list.add(ItemFilter("$$", Colors.black, "false"));
-          list.add(ItemFilter("$$$", Colors.black, "false"));
-          list.add(ItemFilter("$$$$", Colors.black, "false"));
+          list.add(ItemFilter("\$", Colors.black, "false"));
+          list.add(ItemFilter("\$\$", Colors.black, "false"));
+          list.add(ItemFilter("\$\$\$", Colors.black, "false"));
+          list.add(ItemFilter("\$\$\$\$", Colors.black, "false"));
         }
         break;
 

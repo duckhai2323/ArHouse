@@ -50,6 +50,8 @@ class SignInController extends GetxController{
                 data?['password']??"",
                 data?['numberphone']??"",
                 data?['position']??"",
+                data?['address']??"",
+                data?['favorite']??"",
               );
             }
             Get.toNamed(AppRoutes.APPLICATION,parameters: {"position":position??"","id":id??"","image":image??"","username":username??""});
