@@ -76,6 +76,8 @@ class NewsPage extends GetView<NewsController>{
                     fontSize: 16,
                     color: Colors.black,
                   ),
+                  maxLines: 15,
+                  overflow: TextOverflow.ellipsis,
                 ),
               ),
 

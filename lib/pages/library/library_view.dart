@@ -16,11 +16,11 @@ class LibraryPage extends GetView<LibraryController>{
         appBar: AppBar(
           leading: Padding(
             padding: const EdgeInsets.only(top: 10),
-            child: Icon(Icons.arrow_back_ios),
+            child: InkWell(onTap:(){Navigator.pop(context);},child: const Icon(Icons.arrow_back_ios)),
           ),
           backgroundColor:AppColors.backgroundColor,
           bottom: PreferredSize(
-            preferredSize: Size.fromHeight(17),
+            preferredSize: const Size.fromHeight(17),
             child: Container(
               height: 1,
             ),
@@ -37,7 +37,7 @@ class LibraryPage extends GetView<LibraryController>{
                       child: Padding(
                         padding: const EdgeInsets.only(top: 10,bottom: 15,left: 60,right: 15),
                         child: TextField(
-                          style: TextStyle(fontSize: 16),
+                          style: const TextStyle(fontSize: 16),
                           decoration: InputDecoration(
                             contentPadding: const EdgeInsets.only(top: 3,left: 10),
                             filled: true,

@@ -129,7 +129,7 @@ class ViewAllPhotosPage extends GetView<ViewAllPhototsController>{
 
               InkWell(
                 onTap: (){
-                  controller.HandleChat();
+                  controller.ClickItem(controller.to_user);
                 },
                 child: Container(
                   width: MediaQuery.of(context).size.width-30,
