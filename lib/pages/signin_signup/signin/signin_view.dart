@@ -129,7 +129,7 @@ class SignInPage extends GetView<SignInController>{
 
                 InkWell(
                   onTap: (){
-                    controller.HandleApplication(text1Controller.text,text2Controller.text);
+                    controller.HandleApplicationAdmin(text1Controller.text,text2Controller.text);
                   },
                   child: Container(
                     margin: const EdgeInsets.symmetric(horizontal: 25,vertical: 10),
