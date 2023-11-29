@@ -13,6 +13,8 @@ import 'package:thietthach_app/pages/design_detail/viewallphotos/viewallphotos_b
 import 'package:thietthach_app/pages/design_detail/viewallphotos/viewallphotos_view.dart';
 import 'package:thietthach_app/pages/knowledge/knowledge_bindings.dart';
 import 'package:thietthach_app/pages/knowledge/knowledge_view.dart';
+import 'package:thietthach_app/pages/news/list/list_binding.dart';
+import 'package:thietthach_app/pages/news/list/list_view.dart';
 import 'package:thietthach_app/pages/news/news_bindings.dart';
 import 'package:thietthach_app/pages/news/news_view.dart';
 import 'package:thietthach_app/pages/signin_signup/signin/signin_bindings.dart';
@@ -93,6 +95,12 @@ class AppPages {
       name: AppRoutes.NEWS,
       page: ()=>NewsPage(),
       binding: NewsBindings(),
+    ),
+
+    GetPage(
+      name: AppRoutes.LISTNEWS,
+      page: ()=>ListNewsPage(),
+      binding: ListNewsBindings(),
     ),
 
     GetPage(

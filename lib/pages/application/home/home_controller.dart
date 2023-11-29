@@ -12,6 +12,7 @@ import '../../library/item.dart';
 
 class HomeController extends GetxController{
   HomeController();
+  List<ItemList> products = [];
   List<String> images = <String>[].obs;
   List<News> listNews = <News>[].obs;
   final db = FirebaseFirestore.instance;
@@ -25,6 +26,13 @@ class HomeController extends GetxController{
     // TODO: implement onInit
     super.onInit();
     GetListNews();
+
+    products.add(ItemList('Outdoor','assets/images/products/out.png'));
+    products.add(ItemList('Bathroom','assets/images/products/bath.png'));
+    products.add(ItemList('Kitchen','assets/images/products/kit.png'));
+    products.add(ItemList('Living','assets/images/products/livi.png'));
+    products.add(ItemList('Bedroom','assets/images/products/bed.png'));
+
     list.add(ItemList('HomeOffice','assets/images/library/homeoffice.jpg'));
     list.add(ItemList('Kitchen','assets/images/library/kitchen.jpg'));
     list.add(ItemList('Living','assets/images/library/living.jpg'));
@@ -83,6 +91,10 @@ class HomeController extends GetxController{
 
   void HandleKnowledge(){
     Get.toNamed(AppRoutes.KNOWLEDGE);
+  }
+
+  void HandleListNews(){
+    Get.toNamed(AppRoutes.LISTNEWS);
   }
 
   void HandleAllDesign(){

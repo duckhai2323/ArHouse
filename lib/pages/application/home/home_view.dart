@@ -123,25 +123,30 @@ class HomePage extends GetView<HomeController>{
                     ),
                   ),
 
-                  const Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Image(
-                        image: AssetImage('assets/images/logo2.png'),
-                        height: 43,
-                        width: 43,
-                        alignment: Alignment.center,
-                        fit: BoxFit.fill,
-                      ),
-
-                      /*Text(
-                          'Expenses',
-                        style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w500
+                  InkWell(
+                    onTap: (){
+                      controller.HandleKnowledge();
+                    },
+                    child: const Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Image(
+                          image: AssetImage('assets/images/logo2.png'),
+                          height: 43,
+                          width: 43,
+                          alignment: Alignment.center,
+                          fit: BoxFit.fill,
                         ),
-                      ),*/
-                    ],
+
+                        /*Text(
+                            'Expenses',
+                          style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w500
+                          ),
+                        ),*/
+                      ],
+                    ),
                   ),
 
                   const Column(
@@ -167,7 +172,7 @@ class HomePage extends GetView<HomeController>{
 
                   InkWell(
                     onTap: (){
-                      controller.HandleKnowledge();
+                      controller.HandleListNews();
                     },
                     child: const Column(
                       mainAxisAlignment: MainAxisAlignment.center,
