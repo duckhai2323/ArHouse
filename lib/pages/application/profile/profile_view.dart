@@ -26,7 +26,7 @@ class ProfilePage extends GetView<ProfilerController>{
 
                 InkWell(
                   onTap: (){
-                    //Navigator.pop(context);
+                    controller.SignOut(context);
                   },
                   child: const Padding(
                     padding: EdgeInsets.only(left: 15),
@@ -53,6 +53,7 @@ class ProfilePage extends GetView<ProfilerController>{
                   children: [
                     InkWell(
                       onTap: (){
+                        FocusScope.of(context).unfocus();
                         controller.ClickUpdate();
                       },
                       child: const Text(

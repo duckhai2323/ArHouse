@@ -26,7 +26,7 @@ class SignInPage extends GetView<SignInController>{
           ),
           title: const Center(
             child: Text(
-              'Sign In / Sign Up',
+              'Đăng nhập / Đăng ký',
               style: TextStyle(
                   color: Colors.black,
                   fontFamily: "Roboto-Medium",
@@ -59,7 +59,7 @@ class SignInPage extends GetView<SignInController>{
                   padding: EdgeInsets.symmetric(horizontal: 25),
                   child: TextField(
                     controller: text1Controller,
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       hintText: 'Email',
                       hintStyle: TextStyle(color: Colors.grey,fontSize: 14,fontFamily: "Roboto-Medium"),
                       prefixIcon: Icon(Icons.email_outlined,size: 23,color: Colors.grey),
@@ -79,7 +79,7 @@ class SignInPage extends GetView<SignInController>{
                     keyboardType: TextInputType.visiblePassword,
                     decoration:InputDecoration(
                       hintText: 'Password',
-                      hintStyle: TextStyle(color: Colors.grey,fontSize: 14,fontFamily: "Roboto-Medium"),
+                      hintStyle: const TextStyle(color: Colors.grey,fontSize: 14,fontFamily: "Roboto-Medium"),
                       prefixIcon: Icon(Icons.lock_outline,size: 23,color: Colors.grey),
                       suffixIcon: InkWell(
                         onTap: (){

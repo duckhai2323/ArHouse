@@ -65,15 +65,20 @@ class MessageController extends GetxController {
   }
 
   ClickItemChat(Msg msg) async {
-    var messages = await db.collection("message").withConverter(
+    var messages1 = await db.collection("message").withConverter(
         fromFirestore:Msg.fromFirestore,
         toFirestore: (Msg msg, options) => msg.toFirestore()
     ).where("from_uid",isEqualTo:msg.from_uid).where("to_uid",isEqualTo: token).get();
 
+    var messages2 = await db.collection("message").withConverter(
+        fromFirestore:Msg.fromFirestore,
+        toFirestore: (Msg msg, options) => msg.toFirestore()
+    ).where("from_uid",isEqualTo: token).where("to_uid",isEqualTo:msg.to_uid).get();
+
     if(msg.from_uid == token){
-      Get.toNamed(AppRoutes.CHAT,parameters: {"to_uid": msg.to_uid??"","to_name":msg.to_name??"","to_avatar":msg.to_avatar??"","check_first":"true","doc_id":messages.docs.first.id??""});
+      Get.toNamed(AppRoutes.CHAT,parameters: {"to_uid": msg.to_uid??"","to_name":msg.to_name??"","to_avatar":msg.to_avatar??"","check_first":"true","doc_id":messages2.docs.first.id??""});
     } else {
-      Get.toNamed(AppRoutes.CHAT,parameters: {"to_uid": msg.from_uid??"","to_name":msg.from_name??"","to_avatar":msg.from_avatar??"","check_first":"true","doc_id":messages.docs.first.id??""});
+      Get.toNamed(AppRoutes.CHAT,parameters: {"to_uid": msg.from_uid??"","to_name":msg.from_name??"","to_avatar":msg.from_avatar??"","check_first":"true","doc_id":messages1.docs.first.id??""});
     }
   }
 }

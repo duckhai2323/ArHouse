@@ -149,25 +149,30 @@ class HomePage extends GetView<HomeController>{
                     ),
                   ),
 
-                  const Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Image(
-                        image: AssetImage('assets/images/logo3.png'),
-                        height: 43,
-                        width: 43,
-                        alignment: Alignment.center,
-                        fit: BoxFit.fill,
-                      ),
-
-                      /*Text(
-                          'Products',
-                        style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w500
+                  InkWell(
+                    onTap: (){
+                      controller.HandleProducts();
+                    },
+                    child: const Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Image(
+                          image: AssetImage('assets/images/logo3.png'),
+                          height: 43,
+                          width: 43,
+                          alignment: Alignment.center,
+                          fit: BoxFit.fill,
                         ),
-                      ),*/
-                    ],
+
+                        /*Text(
+                            'Products',
+                          style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w500
+                          ),
+                        ),*/
+                      ],
+                    ),
                   ),
 
                   InkWell(

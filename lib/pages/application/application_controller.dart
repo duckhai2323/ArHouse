@@ -51,11 +51,11 @@ class ApplicationController extends GetxController{
           color: AppColors.backgroundIntro,
           size: 25,
         ),
-        label: 'Yêu thích',
+        label: 'Favorite',
         backgroundColor: Colors.transparent,
       ),
 
-      /*const BottomNavigationBarItem(
+      const BottomNavigationBarItem(
         icon: Icon(
           CupertinoIcons.chat_bubble_text,
           color: Colors.grey,
@@ -70,7 +70,7 @@ class ApplicationController extends GetxController{
 
         label: 'Chat',
         backgroundColor: Colors.transparent,
-      ),*/
+      ),
 
       const BottomNavigationBarItem(
         icon: Icon(
@@ -100,7 +100,7 @@ class ApplicationController extends GetxController{
           color: AppColors.backgroundIntro,
           size: 25,
         ),
-        label: 'Tôi',
+        label: 'Profile',
         backgroundColor: Colors.transparent,
       ),
     ];
@@ -134,7 +134,7 @@ class ApplicationController extends GetxController{
           color: AppColors.backgroundIntro,
           size: 25,
         ),
-        label: 'Yêu thích',
+        label: 'Favorite',
         backgroundColor: Colors.transparent,
       ),
 
@@ -157,6 +157,22 @@ class ApplicationController extends GetxController{
 
       const BottomNavigationBarItem(
         icon: Icon(
+          Icons.phone_in_talk_outlined,
+          color: Colors.grey,
+          size: 25,
+        ),
+
+        activeIcon: Icon(
+          Icons.phone_in_talk,
+          color: AppColors.backgroundIntro,
+          size: 25,
+        ),
+        label: 'Hotline',
+        backgroundColor: Colors.transparent,
+      ),
+
+      const BottomNavigationBarItem(
+        icon: Icon(
           Icons.perm_identity,
           color: Colors.grey,
           size: 25,
@@ -167,7 +183,7 @@ class ApplicationController extends GetxController{
           color: AppColors.backgroundIntro,
           size: 25,
         ),
-        label: 'Tôi',
+        label: 'Profile',
         backgroundColor: Colors.transparent,
       ),
     ];

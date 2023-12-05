@@ -2,13 +2,12 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:thietthach_app/documentObject/inforitem.dart';
-import 'package:thietthach_app/house/exterior.dart';
-import 'package:thietthach_app/house/kitchen.dart';
 import 'package:thietthach_app/pages/application/application_controller.dart';
 
+import '../../../documentObject/house/exterior.dart';
+import '../../../documentObject/house/kitchen.dart';
 import '../../../documentObject/msg.dart';
 import '../../../documentObject/user.dart';
-import '../../../house/house.dart';
 import '../../../routes/names.dart';
 
 class ViewAllPhototsController extends GetxController{

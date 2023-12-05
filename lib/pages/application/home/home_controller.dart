@@ -108,4 +108,8 @@ class HomeController extends GetxController{
   void HandleComment(String id_blog){
     Get.toNamed(AppRoutes.COMMENT,parameters: {'id':id_blog});
   }
+
+  void HandleProducts(){
+    Get.toNamed(AppRoutes.PRODUCTS);
+  }
 }

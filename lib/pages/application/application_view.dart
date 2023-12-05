@@ -26,7 +26,8 @@ class ApplicationPage extends GetView<ApplicationController>{
           children: [
             HomePage(),
             FavoritePage(),
-            controller.position=="admin"?MessagePage():HotlinePage(),
+            MessagePage(),
+            HotlinePage(),
             ProfilePage(),
           ],
         ),

@@ -12,4 +12,5 @@ class AppRoutes {
   static const NEWS = '/news';
   static const LISTNEWS = '/listnews';
   static const COMMENT = '/comment';
+  static const PRODUCTS = '/products';
 }

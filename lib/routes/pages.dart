@@ -17,6 +17,8 @@ import 'package:thietthach_app/pages/news/list/list_binding.dart';
 import 'package:thietthach_app/pages/news/list/list_view.dart';
 import 'package:thietthach_app/pages/news/news_bindings.dart';
 import 'package:thietthach_app/pages/news/news_view.dart';
+import 'package:thietthach_app/pages/products/products_binding.dart';
+import 'package:thietthach_app/pages/products/products_view.dart';
 import 'package:thietthach_app/pages/signin_signup/signin/signin_bindings.dart';
 import 'package:thietthach_app/pages/signin_signup/signin/signin_view.dart';
 import 'package:thietthach_app/pages/signin_signup/signup/signup_view.dart';
@@ -107,6 +109,12 @@ class AppPages {
       name: AppRoutes.COMMENT,
       page: ()=>CommentPage(),
       binding: CommentBindings(),
+    ),
+
+    GetPage(
+      name: AppRoutes.PRODUCTS,
+      page: ()=>ProductsPage(),
+      binding: ProductsBinding(),
     ),
   ];
 }

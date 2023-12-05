@@ -35,7 +35,7 @@ class HeaderWidget extends GetView<DesignDetailController>{
 
               Text(
                 controller.date.value!,
-                style: TextStyle(
+                style: const TextStyle(
                     fontSize: 15,
                     color: Colors.grey,
                     fontWeight: FontWeight.w500
@@ -52,8 +52,8 @@ class HeaderWidget extends GetView<DesignDetailController>{
                       direction: Axis.horizontal,
                       allowHalfRating: true,
                       itemCount: 5,
-                      itemPadding: EdgeInsets.symmetric(horizontal: 2.0),
-                      itemBuilder: (context, _) => Icon(
+                      itemPadding: const EdgeInsets.symmetric(horizontal: 2.0),
+                      itemBuilder: (context, _) => const Icon(
                         Icons.star,
                         color: Colors.amber,
                       ),
@@ -62,7 +62,7 @@ class HeaderWidget extends GetView<DesignDetailController>{
                         print(rating);
                       },
                     ),
-                    Text(
+                    const Text(
                       ' . 2 Reviews',
                       style: TextStyle(
                           fontSize: 15,
@@ -82,12 +82,12 @@ class HeaderWidget extends GetView<DesignDetailController>{
           mainAxisAlignment: MainAxisAlignment.start,
           mainAxisSize: MainAxisSize.min,
           children: [
-            ItemInteract(Icon(CupertinoIcons.heart,size: 30,color: AppColors.backgroundIntro,),'10'),
-            SizedBox(width: 15,),
+            InkWell(onTap:(){controller.ClickItemHeart();},child: ItemInteract(Icon(controller.checkSave.isFalse?CupertinoIcons.heart:CupertinoIcons.heart_solid,size: 30,color: AppColors.backgroundIntro,),controller.houseData[0].userlike.length.toString()!)),
+            const SizedBox(width: 15,),
             ItemInteract(Icon(Icons.share,size: 30,color: AppColors.backgroundIntro,), '5'),
-            SizedBox(width: 15,),
+            const SizedBox(width: 15,),
             ItemInteract(Icon(Icons.chat_outlined,size: 30,color: AppColors.backgroundIntro,),'2'),
-            SizedBox(width: 15,),
+            const SizedBox(width: 15,),
           ],
         ),
       ],
@@ -102,7 +102,7 @@ class HeaderWidget extends GetView<DesignDetailController>{
         icon,
         Text(
           text,
-          style: TextStyle(
+          style: const TextStyle(
               color: AppColors.backgroundIntro,
               fontSize: 15,
               fontWeight: FontWeight.w500
