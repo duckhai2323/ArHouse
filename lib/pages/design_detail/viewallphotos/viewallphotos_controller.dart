@@ -2,12 +2,12 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:thietthach_app/documentObject/inforitem.dart';
-import 'package:thietthach_app/house/exterior.dart';
 import 'package:thietthach_app/pages/application/application_controller.dart';
 
+import '../../../documentObject/house/exterior.dart';
+import '../../../documentObject/house/kitchen.dart';
 import '../../../documentObject/msg.dart';
 import '../../../documentObject/user.dart';
-import '../../../house/house.dart';
 import '../../../routes/names.dart';
 
 class ViewAllPhototsController extends GetxController{
@@ -58,7 +58,29 @@ class ViewAllPhototsController extends GetxController{
         break;
       case "Kitchen":
         {
+          dataHouse.value = <Kitchen>[];
+          final data = await db.collection("projects").withConverter(
+              fromFirestore: Kitchen.fromFirestore,
+              toFirestore: (Kitchen kitchen, options) => kitchen.toFirestore()
+          ).where("id",isEqualTo: id).get();
 
+          if(data.docs.isNotEmpty){
+            dataHouse.add(data.docs[0].data());
+            GetInforAdmin(dataHouse[0].admin);
+          }
+          listInfor.add(InforItem("Layout",dataHouse[0].layout));
+          listInfor.add(InforItem("type",dataHouse[0].type));
+          listInfor.add(InforItem("Number of Islands",dataHouse[0].numberofislands));
+          listInfor.add(InforItem("Cabinet Style",dataHouse[0].cabinetstyle));
+          listInfor.add(InforItem("Cabinet Finish",dataHouse[0].cabinetfinish));
+          listInfor.add(InforItem("Counter Material",dataHouse[0].countermaterial));
+          listInfor.add(InforItem("Counter Color",dataHouse[0].countercolor));
+          listInfor.add(InforItem("Back Splash Color",dataHouse[0].backsplashcolor));
+          listInfor.add(InforItem("Appliance Finish",dataHouse[0].appliancefinish));
+          listInfor.add(InforItem("Sink",dataHouse[0].sink));
+          listInfor.add(InforItem("Floor Material",dataHouse[0].floormaterial));
+          listInfor.add(InforItem("Floor Color",dataHouse[0].floorcolor));
+          listInfor.add(InforItem("Ceiling Design",dataHouse[0].ceilingdesign));
         }
         break;
     }

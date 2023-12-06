@@ -6,12 +6,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:thietthach_app/colors/colors.dart';
 import 'package:thietthach_app/documentObject/favoriteitem.dart';
-import 'package:thietthach_app/house/house.dart';
 import 'package:thietthach_app/pages/alldesign/itemfilter.dart';
 import 'package:thietthach_app/pages/application/application_controller.dart';
 import 'package:thietthach_app/routes/names.dart';
 
-import '../../house/exterior.dart';
+import '../../documentObject/house/house.dart';
 
 class AllDesignController extends GetxController{
   List<ItemFilter> listFilter0 = <ItemFilter>[].obs;
@@ -135,10 +134,10 @@ class AllDesignController extends GetxController{
       case "budget":
         {
           list.clear();
-          list.add(ItemFilter("$", Colors.black, "false"));
-          list.add(ItemFilter("$$", Colors.black, "false"));
-          list.add(ItemFilter("$$$", Colors.black, "false"));
-          list.add(ItemFilter("$$$$", Colors.black, "false"));
+          list.add(ItemFilter("\$", Colors.black, "false"));
+          list.add(ItemFilter("\$\$", Colors.black, "false"));
+          list.add(ItemFilter("\$\$\$", Colors.black, "false"));
+          list.add(ItemFilter("\$\$\$\$", Colors.black, "false"));
         }
         break;
 

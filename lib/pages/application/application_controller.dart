@@ -8,10 +8,12 @@ class ApplicationController extends GetxController{
   static late String id;
   static late String image;
   static late String username;
+  final position = ''.obs;
   ApplicationController();
   final state = 0.obs;
   late final PageController pageController;
   late final List<BottomNavigationBarItem> bottomTab;
+  late final List<BottomNavigationBarItem> bottomTabAmin;
 
   @override
   void onInit() {
@@ -19,6 +21,7 @@ class ApplicationController extends GetxController{
     id = Get.parameters['id']??"";
     image = Get.parameters['image']??"";
     username = Get.parameters['username']??"";
+    position.value = Get.parameters['position']??"";
     bottomTab = <BottomNavigationBarItem> [
       const BottomNavigationBarItem(
         icon: Icon(
@@ -48,11 +51,11 @@ class ApplicationController extends GetxController{
           color: AppColors.backgroundIntro,
           size: 25,
         ),
-        label: 'Yêu thích',
+        label: 'Favorite',
         backgroundColor: Colors.transparent,
       ),
 
-      /*const BottomNavigationBarItem(
+      const BottomNavigationBarItem(
         icon: Icon(
           CupertinoIcons.chat_bubble_text,
           color: Colors.grey,
@@ -67,7 +70,7 @@ class ApplicationController extends GetxController{
 
         label: 'Chat',
         backgroundColor: Colors.transparent,
-      ),*/
+      ),
 
       const BottomNavigationBarItem(
         icon: Icon(
@@ -97,7 +100,90 @@ class ApplicationController extends GetxController{
           color: AppColors.backgroundIntro,
           size: 25,
         ),
-        label: 'Tôi',
+        label: 'Profile',
+        backgroundColor: Colors.transparent,
+      ),
+    ];
+
+    bottomTabAmin = <BottomNavigationBarItem> [
+      const BottomNavigationBarItem(
+        icon: Icon(
+          CupertinoIcons.home,
+          color: Colors.grey,
+          size: 25,
+        ),
+
+        activeIcon: Icon(
+          CupertinoIcons.house_fill,
+          color: AppColors.backgroundIntro,
+          size: 25,
+        ),
+        label: 'Home',
+        backgroundColor: Colors.transparent,
+      ),
+
+      const BottomNavigationBarItem(
+        icon: Icon(
+          CupertinoIcons.heart,
+          color: Colors.grey,
+          size: 25,
+        ),
+
+        activeIcon: Icon(
+          CupertinoIcons.heart_solid,
+          color: AppColors.backgroundIntro,
+          size: 25,
+        ),
+        label: 'Favorite',
+        backgroundColor: Colors.transparent,
+      ),
+
+      const BottomNavigationBarItem(
+        icon: Icon(
+          CupertinoIcons.chat_bubble_text,
+          color: Colors.grey,
+          size: 25,
+        ),
+
+        activeIcon: Icon(
+          CupertinoIcons.chat_bubble_text_fill,
+          color: AppColors.backgroundIntro,
+          size: 25,
+        ),
+
+        label: 'Chat',
+        backgroundColor: Colors.transparent,
+      ),
+
+      const BottomNavigationBarItem(
+        icon: Icon(
+          Icons.phone_in_talk_outlined,
+          color: Colors.grey,
+          size: 25,
+        ),
+
+        activeIcon: Icon(
+          Icons.phone_in_talk,
+          color: AppColors.backgroundIntro,
+          size: 25,
+        ),
+        label: 'Hotline',
+        backgroundColor: Colors.transparent,
+      ),
+
+      const BottomNavigationBarItem(
+        icon: Icon(
+          Icons.perm_identity,
+          color: Colors.grey,
+          size: 25,
+        ),
+
+        activeIcon: Icon(
+          Icons.person,
+          color: AppColors.backgroundIntro,
+          size: 25,
+        ),
+        label: 'Profile',
         backgroundColor: Colors.transparent,
       ),
     ];

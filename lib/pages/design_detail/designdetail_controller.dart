@@ -15,7 +15,7 @@ import 'package:thietthach_app/pages/design_detail/header_widget.dart';
 
 import '../../documentObject/comment.dart';
 import '../../documentObject/favoriteitem.dart';
-import '../../house/house.dart';
+import '../../documentObject/house/house.dart';
 import '../../routes/names.dart';
 import 'displayimage_dialog.dart';
 

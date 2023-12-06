@@ -123,51 +123,61 @@ class HomePage extends GetView<HomeController>{
                     ),
                   ),
 
-                  const Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Image(
-                        image: AssetImage('assets/images/logo2.png'),
-                        height: 43,
-                        width: 43,
-                        alignment: Alignment.center,
-                        fit: BoxFit.fill,
-                      ),
-
-                      /*Text(
-                          'Expenses',
-                        style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w500
+                  InkWell(
+                    onTap: (){
+                      controller.HandleKnowledge();
+                    },
+                    child: const Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Image(
+                          image: AssetImage('assets/images/logo2.png'),
+                          height: 43,
+                          width: 43,
+                          alignment: Alignment.center,
+                          fit: BoxFit.fill,
                         ),
-                      ),*/
-                    ],
-                  ),
 
-                  const Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Image(
-                        image: AssetImage('assets/images/logo3.png'),
-                        height: 43,
-                        width: 43,
-                        alignment: Alignment.center,
-                        fit: BoxFit.fill,
-                      ),
-
-                      /*Text(
-                          'Products',
-                        style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w500
-                        ),
-                      ),*/
-                    ],
+                        /*Text(
+                            'Expenses',
+                          style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w500
+                          ),
+                        ),*/
+                      ],
+                    ),
                   ),
 
                   InkWell(
                     onTap: (){
-                      controller.HandleKnowledge();
+                      controller.HandleProducts();
+                    },
+                    child: const Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Image(
+                          image: AssetImage('assets/images/logo3.png'),
+                          height: 43,
+                          width: 43,
+                          alignment: Alignment.center,
+                          fit: BoxFit.fill,
+                        ),
+
+                        /*Text(
+                            'Products',
+                          style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w500
+                          ),
+                        ),*/
+                      ],
+                    ),
+                  ),
+
+                  InkWell(
+                    onTap: (){
+                      controller.HandleListNews();
                     },
                     child: const Column(
                       mainAxisAlignment: MainAxisAlignment.center,

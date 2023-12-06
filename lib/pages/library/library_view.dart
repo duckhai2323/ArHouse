@@ -51,7 +51,7 @@ class LibraryPage extends GetView<LibraryController>{
                               borderRadius: BorderRadius.circular(13),
                               borderSide: const BorderSide(color: AppColors.searchColor),
                             ),
-                            hintText: 'Tìm kiếm môn học',
+                            hintText: 'Search',
                             hintStyle: const TextStyle(color: AppColors.iconColor,fontWeight: FontWeight.w500,),
                           ),
                         ),

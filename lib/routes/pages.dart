@@ -13,8 +13,12 @@ import 'package:thietthach_app/pages/design_detail/viewallphotos/viewallphotos_b
 import 'package:thietthach_app/pages/design_detail/viewallphotos/viewallphotos_view.dart';
 import 'package:thietthach_app/pages/knowledge/knowledge_bindings.dart';
 import 'package:thietthach_app/pages/knowledge/knowledge_view.dart';
+import 'package:thietthach_app/pages/news/list/list_binding.dart';
+import 'package:thietthach_app/pages/news/list/list_view.dart';
 import 'package:thietthach_app/pages/news/news_bindings.dart';
 import 'package:thietthach_app/pages/news/news_view.dart';
+import 'package:thietthach_app/pages/products/products_binding.dart';
+import 'package:thietthach_app/pages/products/products_view.dart';
 import 'package:thietthach_app/pages/signin_signup/signin/signin_bindings.dart';
 import 'package:thietthach_app/pages/signin_signup/signin/signin_view.dart';
 import 'package:thietthach_app/pages/signin_signup/signup/signup_view.dart';
@@ -96,9 +100,21 @@ class AppPages {
     ),
 
     GetPage(
+      name: AppRoutes.LISTNEWS,
+      page: ()=>ListNewsPage(),
+      binding: ListNewsBindings(),
+    ),
+
+    GetPage(
       name: AppRoutes.COMMENT,
       page: ()=>CommentPage(),
       binding: CommentBindings(),
+    ),
+
+    GetPage(
+      name: AppRoutes.PRODUCTS,
+      page: ()=>ProductsPage(),
+      binding: ProductsBinding(),
     ),
   ];
 }

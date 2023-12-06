@@ -40,7 +40,7 @@ class MenuLibrary extends GetView<LibraryController>{
                   onTap: (){
                     controller.HandleAllDesign();
                   },
-                  child: Row(
+                  child: const Row(
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
@@ -52,9 +52,9 @@ class MenuLibrary extends GetView<LibraryController>{
                       ),
 
                       Padding(
-                        padding: const EdgeInsets.only(left: 5),
+                        padding: EdgeInsets.only(left: 5),
                         child: Text(
-                          'Tất cả hình ảnh',
+                          'All Designs',
                           style: TextStyle(
                             fontSize: 17,
                             fontWeight: FontWeight.w500,
@@ -81,7 +81,7 @@ class MenuLibrary extends GetView<LibraryController>{
                     ),
                   ],
                 ),
-                child: Row(
+                child: const Row(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -93,7 +93,7 @@ class MenuLibrary extends GetView<LibraryController>{
                     ),
 
                     Padding(
-                      padding: const EdgeInsets.only(left: 5),
+                      padding: EdgeInsets.only(left: 5),
                       child: Text(
                         'Blog',
                         style: TextStyle(
@@ -107,7 +107,7 @@ class MenuLibrary extends GetView<LibraryController>{
               ),
             ],
           ),
-          SizedBox(height: 15,),
+          const SizedBox(height: 15,),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             mainAxisSize: MainAxisSize.max,
@@ -120,7 +120,7 @@ class MenuLibrary extends GetView<LibraryController>{
                 decoration: BoxDecoration(
                   color: AppColors.backgroundColor,
                   borderRadius: BorderRadius.circular(6),
-                  boxShadow: [
+                  boxShadow: const [
                     BoxShadow(
                       color: Colors.grey,
                       offset: Offset(0, 2),
@@ -129,7 +129,7 @@ class MenuLibrary extends GetView<LibraryController>{
                     ),
                   ],
                 ),
-                child: Row(
+                child: const Row(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -141,9 +141,9 @@ class MenuLibrary extends GetView<LibraryController>{
                     ),
 
                     Padding(
-                      padding: const EdgeInsets.only(left: 5),
+                      padding: EdgeInsets.only(left: 5),
                       child: Text(
-                        'Thảo luận',
+                        'Discussion',
                         style: TextStyle(
                           fontSize: 17,
                           fontWeight: FontWeight.w500,
@@ -160,7 +160,7 @@ class MenuLibrary extends GetView<LibraryController>{
                 decoration: BoxDecoration(
                   color: AppColors.backgroundColor,
                   borderRadius: BorderRadius.circular(6),
-                  boxShadow: [
+                  boxShadow: const [
                     BoxShadow(
                       color: Colors.grey,
                       offset: Offset(0, 2),
@@ -169,7 +169,7 @@ class MenuLibrary extends GetView<LibraryController>{
                     ),
                   ],
                 ),
-                child: Row(
+                child: const Row(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -181,7 +181,7 @@ class MenuLibrary extends GetView<LibraryController>{
                     ),
 
                     Padding(
-                      padding: const EdgeInsets.only(left: 5),
+                      padding: EdgeInsets.only(left: 5),
                       child: Text(
                         'Shopping',
                         style: TextStyle(

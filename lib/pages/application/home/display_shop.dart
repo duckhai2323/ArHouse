@@ -18,9 +18,8 @@ class ShopDepartment extends GetView<HomeController>{
         shrinkWrap: true,
         itemBuilder: (BuildContext context, index){
           return Container(
-            margin: EdgeInsets.only(left: 10,bottom: 10, top: 10,right: 5),
-            width: 160,
-            height: 170,
+            margin: const EdgeInsets.only(left: 10,bottom: 10, top: 10,right: 5),
+            width: 145,
             decoration: BoxDecoration(
               color: AppColors.backgroundColor,
               borderRadius: BorderRadius.circular(4),
@@ -45,27 +44,29 @@ class ShopDepartment extends GetView<HomeController>{
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 ClipRRect(
-                  borderRadius: BorderRadius.only(topRight:Radius.circular(4),topLeft: Radius.circular(4)),
+                  borderRadius: const BorderRadius.only(topRight:Radius.circular(4),topLeft: Radius.circular(4)),
                   child: Image(
-                    image: AssetImage('assets/images/badroom1.jpg'),
-                    width: 160,
-                    height: 120,
+                    image: AssetImage(controller.products[index].linkImage!),
+                    width: 145,
+                    height: 110,
                     fit: BoxFit.fill,
                   ),
                 ),
 
-                Container(
-                  width: 160,
-                  height: 50,
-                  child: Center(
-                    child: Text(
-                      'Bathroom',
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontWeight: FontWeight.w500,
-                        fontSize: 18,
+                SizedBox(
+                  width: 145,
+                  height: 30,
+                  child: Padding(
+                    padding: const EdgeInsets.only(top: 10),
+                    child: Center(
+                      child: Text(
+                        controller.products[index].textItem!,
+                        style: const TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.w500,
+                          fontSize: 18,
+                        ),
                       ),
-                      textAlign:TextAlign.center,
                     ),
                   ),
                 ),

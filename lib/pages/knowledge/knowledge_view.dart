@@ -20,15 +20,22 @@ class KnowledgePage extends GetView<KnowledgeController>{
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
+          bottom: PreferredSize(
+            preferredSize: const Size.fromHeight(0),
+            child: Container(
+              color: Colors.grey.withOpacity(0.3),
+              height: 1,
+            ),
+          ),
           leading: InkWell(
              onTap: (){
                Navigator.pop(context);
              },
-              child: const Icon(Icons.arrow_back_ios,color: Colors.white,
+              child: const Icon(Icons.arrow_back_ios,color: Colors.black,
               ),
           ),
-          title: const Text('Knowledge House',style: TextStyle(color: Colors.white,fontSize: 18,fontWeight: FontWeight.w500),),
-          backgroundColor: AppColors.logoColor,
+          title: const Text('Knowledge House',style: TextStyle(color: Colors.black,fontSize: 18,fontWeight: FontWeight.w500),),
+          backgroundColor: AppColors.backgroundColor,
         ),
         body: SingleChildScrollView(
           scrollDirection: Axis.vertical,
@@ -70,7 +77,7 @@ class KnowledgePage extends GetView<KnowledgeController>{
           YoutubePlayerScreen(),
           ListView.builder(
             scrollDirection: Axis.vertical,
-            itemCount: 3,
+            itemCount: list.length,
             shrinkWrap: true,
             physics: NeverScrollableScrollPhysics(),
             itemBuilder: (BuildContext context, index ){

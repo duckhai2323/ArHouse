@@ -102,7 +102,7 @@ class NewsPage extends GetView<NewsController>{
               const Padding(
                 padding: EdgeInsets.symmetric(horizontal: 10,vertical: 5),
                 child: Text(
-                  '20 nam xay dung sieu to khong lo',
+                  '20 Năm Xây Dựng Nhà Ở Chuyên Nghiệp',
                   style: TextStyle(
                       fontSize: 17,
                       color: Colors.black
@@ -113,7 +113,7 @@ class NewsPage extends GetView<NewsController>{
               const Padding(
                 padding: EdgeInsets.symmetric(horizontal: 10,vertical: 5),
                 child: Text(
-                  'He thong chi nhanh rong khap the gioi voi nhung du an sieu to khong lo',
+                  'Hệ thống chi nhánh rộng khắp cả nước đặc biệt là thành phố HCM và thủ đô Hà Nội thuận tiện để khách hàng liên hệ, tìm hiểu thêm tại: https://arhouse.vn/trangchu/lienhe',
                   style: TextStyle(
                       fontSize: 17,
                       color: Colors.black

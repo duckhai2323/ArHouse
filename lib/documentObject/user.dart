@@ -10,9 +10,11 @@ class UserClient {
   final String? password;
   final String? numberphone;
   final String? position;
+  final String? address;
+  final String? favorite;
 
   UserClient(this.id,this.image,this.fullname,this.username, this.birthday, this.email, this.password,
-      this.numberphone, this.position);
+      this.numberphone, this.position,this.address,this.favorite);
 
   factory UserClient.fromFirestore(DocumentSnapshot<Map<String,dynamic>> snapshot,SnapshotOptions? options){
     final data = snapshot.data();
@@ -26,6 +28,9 @@ class UserClient {
       data?['password']??"",
       data?['numberphone']??"",
       data?['position']??"",
+      data?['address']??"",
+      data?['favorite']??"",
+
     );
   }
 
@@ -40,6 +45,8 @@ class UserClient {
       "password":password??"",
       "numberPhone":numberphone??"",
       "position":position??"",
+      "address":address??"",
+      "favorite":favorite??"",
     };
   }
 }
