@@ -7,6 +7,7 @@ import '../../../routes/names.dart';
 
 class FavoriteController extends GetxController{
   List<FavoriteItem> listFavor = <FavoriteItem>[].obs;
+  List<FavoriteItem> listFavor2 = <FavoriteItem>[].obs;
   final db = FirebaseFirestore.instance;
   var listener;
   @override
@@ -14,6 +15,7 @@ class FavoriteController extends GetxController{
     // TODO: implement onInit
     super.onInit();
     GetData();
+    GetDataProducts();
   }
 
   Future<void> GetData() async {
@@ -36,6 +38,33 @@ class FavoriteController extends GetxController{
             if (change.doc.data() != null) {
               FavoriteItem removedItem = change.doc.data()!;
               listFavor.removeWhere((item) => item.id == removedItem.id);
+            }
+            break;
+        }
+      }
+    });
+  }
+
+  Future<void> GetDataProducts() async {
+    var data = await db.collection("users").doc(ApplicationController.id).collection("favorite_products").withConverter(
+        fromFirestore: FavoriteItem.fromFirestore,
+        toFirestore: (FavoriteItem favoriteItem, options) => favoriteItem.toFirestore()
+    ).orderBy("timestamp",descending: false);
+    listFavor2.clear();
+    listener = data.snapshots().listen((event) {
+      for(var change in event.docChanges){
+        switch (change.type){
+          case DocumentChangeType.added:
+            if(change.doc.data()!=null) {
+              listFavor2.insert(0, change.doc.data()!);
+            }
+            break;
+          case DocumentChangeType.modified:
+            break;
+          case DocumentChangeType.removed:
+            if (change.doc.data() != null) {
+              FavoriteItem removedItem = change.doc.data()!;
+              listFavor2.removeWhere((item) => item.id == removedItem.id);
             }
             break;
         }

@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
 import 'package:thietthach_app/pages/application/favorite/displaydesigns.dart';
+import 'package:thietthach_app/pages/application/favorite/displayproducts.dart';
 import 'package:thietthach_app/pages/application/favorite/facvorite_controller.dart';
 
 import '../../../colors/colors.dart';
@@ -69,7 +70,7 @@ class FavoritePage extends GetView<FavoriteController>{
             body: TabBarView(
               children: [
                 DisplayImage(),
-                DisplayImage(),
+                DisplayProducts(),
               ],
             ),
           )
